@@ -313,7 +313,7 @@
             margin: 50px 0;
         }
 
-        /* TESTIMONIOS - CARRUSEL */
+        /* TESTIMONIOS - CARRUSEL - MEJORADO PARA MÓVIL */
         .testimonials-elegant {
             background: linear-gradient(135deg, #fafafa, #f0f0f0);
             padding: 100px 20px;
@@ -594,10 +594,46 @@
                 font-size: 1.8em;
             }
 
+            /* MEJORAS ESPECÍFICAS PARA TESTIMONIOS EN MÓVIL */
             .testimonial-card {
                 padding: 30px 20px;
                 margin: 10px;
                 min-width: calc(100% - 20px);
+            }
+
+            .testimonial-card::before {
+                font-size: 4em;
+                top: -10px;
+                left: 15px;
+            }
+
+            .testimonial-card p {
+                font-size: 16px;
+                line-height: 1.6;
+            }
+
+            .testimonial-card .flex img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .testimonial-card .flex div {
+                font-size: 14px;
+            }
+
+            .carousel-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2em;
+            }
+
+            .carousel-indicators {
+                margin-top: 15px;
+            }
+
+            .indicator {
+                width: 10px;
+                height: 10px;
             }
 
             .confirmation-notification {
@@ -619,6 +655,47 @@
             
             .map-container-elegant {
                 height: 300px;
+            }
+
+            /* MEJORAS ADICIONALES PARA TESTIMONIOS EN PANTALLAS PEQUEÑAS */
+            .testimonials-elegant {
+                padding: 60px 15px;
+            }
+
+            .testimonial-card {
+                padding: 25px 15px;
+                margin: 5px;
+                min-width: calc(100% - 10px);
+            }
+
+            .testimonial-card::before {
+                font-size: 3.5em;
+                top: -5px;
+                left: 10px;
+            }
+
+            .testimonial-card p {
+                font-size: 15px;
+                margin-bottom: 15px;
+            }
+
+            .testimonial-card .flex img {
+                width: 35px;
+                height: 35px;
+                margin-right: 10px;
+            }
+
+            .testimonial-card .flex div {
+                font-size: 13px;
+            }
+
+            .carousel-btn {
+                width: 45px;
+                height: 45px;
+            }
+
+            .carousel-indicators {
+                gap: 8px;
             }
         }
 
@@ -1055,7 +1132,7 @@
         </div>
     </section>
 
-    <!-- TESTIMONIOS ACTUALIZADOS - CARRUSEL -->
+    <!-- TESTIMONIOS ACTUALIZADOS - CARRUSEL MEJORADO PARA MÓVIL -->
     <section class="testimonials-elegant">
         <div class="container mx-auto">
             <h2 class="section-title gradient-text slide-in">Quienes ya probaron Atomy</h2>
