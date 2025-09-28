@@ -595,10 +595,21 @@
             }
 
             /* MEJORAS ESPECÍFICAS PARA TESTIMONIOS EN MÓVIL */
+            .testimonial-carousel {
+                max-width: 100%;
+                overflow: hidden;
+            }
+            
+            .carousel-container {
+                width: 100%;
+            }
+            
             .testimonial-card {
                 padding: 30px 20px;
                 margin: 10px;
                 min-width: calc(100% - 20px);
+                width: calc(100% - 20px);
+                box-sizing: border-box;
             }
 
             .testimonial-card::before {
@@ -659,13 +670,14 @@
 
             /* MEJORAS ADICIONALES PARA TESTIMONIOS EN PANTALLAS PEQUEÑAS */
             .testimonials-elegant {
-                padding: 60px 15px;
+                padding: 60px 10px;
             }
 
             .testimonial-card {
                 padding: 25px 15px;
                 margin: 5px;
                 min-width: calc(100% - 10px);
+                width: calc(100% - 10px);
             }
 
             .testimonial-card::before {
