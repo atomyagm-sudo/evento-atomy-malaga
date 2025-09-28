@@ -529,6 +529,7 @@
             justify-content: center;
             align-items: center;
             z-index: 2000;
+            padding: 20px;
         }
 
         .modal-overlay.active {
@@ -562,7 +563,7 @@
             font-size: 1.5em;
         }
 
-        /* RESPONSIVE */
+        /* RESPONSIVE GENERAL */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5em;
@@ -578,11 +579,6 @@
             
             .map-container-elegant {
                 height: 400px;
-            }
-            
-            .elegant-form {
-                padding: 30px 20px;
-                margin: 20px;
             }
             
             .countdown-item {
@@ -624,6 +620,86 @@
             .map-container-elegant {
                 height: 300px;
             }
+        }
+
+        /* MEJORAS RESPONSIVE ESPECÍFICAS PARA EL FORMULARIO EN MÓVIL */
+        @media (max-width: 768px) {
+            .elegant-form {
+                padding: 25px 15px;
+                margin: 10px;
+                max-width: 95%;
+                max-height: 90vh;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .modal-overlay.active {
+                padding: 10px;
+                align-items: flex-start;
+                padding-top: 50px;
+            }
+            
+            .form-input-elegant, .select-time {
+                padding: 16px 15px;
+                font-size: 16px;
+                margin-bottom: 15px;
+                min-height: 50px;
+            }
+            
+            .grid.md\:grid-cols-2 {
+                grid-template-columns: 1fr !important;
+                gap: 10px;
+            }
+            
+            .submit-btn-elegant {
+                padding: 16px;
+                font-size: 1.1em;
+            }
+            
+            /* Mejorar el modal para que sea más fácil de cerrar */
+            .elegant-form .absolute {
+                top: 10px;
+                right: 10px;
+                z-index: 10;
+                background: rgba(255,255,255,0.9);
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .elegant-form {
+                padding: 20px 12px;
+                border-radius: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .main-cta {
+                padding: 16px 30px;
+                font-size: 1.1em;
+            }
+            
+            /* Hacer los inputs más grandes y fáciles de tocar */
+            .form-input-elegant, .select-time {
+                min-height: 55px;
+                font-size: 16px;
+            }
+
+            .bg-gray-50 {
+                padding: 15px 10px !important;
+            }
+        }
+
+        /* Scroll suave para el modal en móvil */
+        .elegant-form {
+            -webkit-overflow-scrolling: touch;
         }
     </style>
 </head>
