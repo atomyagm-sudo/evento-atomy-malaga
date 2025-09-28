@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- METADATOS SEO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evento Atomy Málaga 2025 | Skincare Coreano + Sorteos | 4 Octubre</title>
+    <meta name="description" content="¡Evento exclusivo Atomy en Málaga! 4 Octubre 2025. Tratamiento facial de 4 pasos, sorteos de productos coreanos y experiencia skincare. Entrada 10€ incluye hasta 6 personas. ¡Reserva ya!">
+    <meta name="keywords" content="atomy malaga, evento atomy, skincare coreano, tratamiento facial, productos atomy, belleza coreana, malaga octubre 2025, sorteo atomy">
+    
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="Evento Exclusivo Atomy Málaga - 4 Octubre 2025">
+    <meta property="og:description" content="Experiencia única de skincare coreano con Atomy. Tratamientos faciales, sorteos y productos exclusivos. ¡No te lo pierdas!">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/banner-atomy.png">
+    
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Evento Atomy Málaga 2025 | Skincare Coreano">
+    <meta name="twitter:description" content="Únete al evento exclusivo de Atomy en Málaga. 4 Octubre 2025">
+    
+    <!-- SCHEMA MARKUP -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Experiencia Atomy: Skincare Coreano & Sorteos Exclusivos",
+      "description": "Evento exclusivo de Atomy en Málaga con tratamiento facial de 4 pasos y sorteos de productos coreanos",
+      "startDate": "2025-10-04T10:00",
+      "endDate": "2025-10-04T21:00",
+      "location": {
+        "@type": "Place",
+        "name": "Hotel Staybridge Suites Málaga",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Paseo de los Mártires 36",
+          "addressLocality": "Málaga",
+          "addressCountry": "ES"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "10",
+        "priceCurrency": "EUR",
+        "description": "Entrada grupal (hasta 6 personas)"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "Atomy Málaga",
+        "email": "atomy.agm@gmail.com",
+        "telephone": "+34641248134"
+      }
+    }
+    </script>
+
+    <!-- CSS Y FUENTES -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary-color: #d6a3a3;
+            --secondary-color: #c48c8c;
+            --accent-color: #9c6b6b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fef7f7 0%, #f8f8f8 100%);
+            color: #4a4a4a;
+            overflow-x: hidden;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 20px rgba(214, 163, 163, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(214, 163, 163, 0.8); }
+            100% { box-shadow: 0 0 20px rgba(214, 163, 163, 0.4); }
+        }
+
+        .slide-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .slide-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* HEADER CON LOGO ATomy */
+        .elegant-header {
+            background: linear-gradient(135deg, rgba(214, 163, 163, 0.95), rgba(196, 140, 140, 0.95));
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+        }
+
+        .logo-atomy {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2em;
+            font-weight: 800;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+
+        .urgency-banner {
+            background: linear-gradient(90deg, #fff, #f8f8f8);
+            color: #555;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 70px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('assets/banner-atomy.png') center/cover;
+            text-align: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.5);
+            line-height: 1.1;
+        }
+
+        .main-cta {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 15px 35px rgba(214, 163, 163, 0.4);
+            display: inline-block;
+            margin: 25px 0;
+        }
+
+        .main-cta:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(214, 163, 163, 0.6);
+        }
+
+        /* COUNTDOWN */
+        .countdown-elegant {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            min-width: 100px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .countdown-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: white;
+            line-height: 1;
+        }
+
+        .countdown-label {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* SECCIONES */
+        .elegant-section {
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        /* BENEFICIOS */
+        .benefits-grid-elegant {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2em;
+            color: white;
+        }
+
+        /* MAPA GRANDE */
+        .map-container-elegant {
+            width: 100%;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            margin: 50px 0;
+        }
+
+        /* TESTIMONIOS - CARRUSEL */
+        .testimonials-elegant {
+            background: linear-gradient(135deg, #fafafa, #f0f0f0);
+            padding: 100px 20px;
+        }
+
+        .testimonial-carousel {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin: 20px;
+            position: relative;
+            min-width: calc(100% - 40px);
+            flex-shrink: 0;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 6em;
+            color: var(--primary-color);
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            opacity: 0.2;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        .carousel-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        /* FORMULARIO */
+        .elegant-form {
+            background: white;
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-input-elegant {
+            width: 100%;
+            padding: 18px 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #fafafa;
+            margin-bottom: 20px;
+        }
+
+        .form-input-elegant:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(214, 163, 163, 0.1);
+        }
+
+        .select-time {
+            width: 100%;
+            padding: 18px 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #fafafa;
+            margin-bottom: 20px;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 16px;
+        }
+
+        .select-time:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(214, 163, 163, 0.1);
+        }
+
+        .submit-btn-elegant {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 18px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .submit-btn-elegant:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(214, 163, 163, 0.4);
+        }
+
+        /* FOOTER */
+        .elegant-footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        /* OPTIMIZACIÓN CONVERSIÓN */
+        .conversion-optimized {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .urgency-badge {
+            background: #e74c3c;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        .social-proof {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .proof-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        /* NOTIFICACIÓN DE CONFIRMACIÓN */
+        .confirmation-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 1500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateX(120%);
+            transition: transform 0.5s ease;
+            max-width: 300px;
+        }
+
+        .confirmation-notification.show {
+            transform: translateX(0);
+        }
+
+        .confirmation-icon {
+            color: #4CAF50;
+            font-size: 1.5em;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .section-title {
+                font-size: 2.2em;
+            }
+            
+            .benefits-grid-elegant {
+                grid-template-columns: 1fr;
+            }
+            
+            .map-container-elegant {
+                height: 400px;
+            }
+            
+            .elegant-form {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            
+            .countdown-item {
+                min-width: 80px;
+                padding: 15px;
+            }
+            
+            .countdown-number {
+                font-size: 2em;
+            }
+
+            .logo-atomy {
+                font-size: 1.8em;
+            }
+
+            .testimonial-card {
+                padding: 30px 20px;
+                margin: 10px;
+                min-width: calc(100% - 20px);
+            }
+
+            .confirmation-notification {
+                max-width: 250px;
+                right: 10px;
+                bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .main-cta {
+                padding: 18px 35px;
+                font-size: 1.1em;
+            }
+            
+            .map-container-elegant {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        // Observador para animaciones al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Inicializar animaciones
+        document.addEventListener('DOMContentLoaded', function() {
+            // Observar elementos para animaciones
+            document.querySelectorAll('.slide-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Inicializar contador - FECHA CORREGIDA: 4 DE OCTUBRE 2025
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+
+            // Inicializar carrusel de testimonios
+            initTestimonialCarousel();
+
+            // Inicializar notificaciones de confirmación
+            initConfirmationNotifications();
+        });
+
+        // Contador con fecha correcta: 4 de octubre 2025
+        function updateCountdown() {
+            const eventDate = new Date("October 4, 2025 10:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Actualizar contadores en toda la página
+            document.querySelectorAll("#days").forEach(el => el.textContent = days.toString().padStart(2, '0'));
+            document.querySelectorAll("#hours").forEach(el => el.textContent = hours.toString().padStart(2, '0'));
+            document.querySelectorAll("#minutes").forEach(el => el.textContent = minutes.toString().padStart(2, '0'));
+            document.querySelectorAll("#seconds").forEach(el => el.textContent = seconds.toString().padStart(2, '0'));
+
+            // Actualizar también el display del banner
+            document.getElementById("countdown-display").innerHTML = 
+                `Finaliza en: <span>${days.toString().padStart(2, '0')}</span>d <span>${hours.toString().padStart(2, '0')}</span>h <span>${minutes.toString().padStart(2, '0')}</span>m <span>${seconds.toString().padStart(2, '0')}</span>s`;
+        }
+
+        // Carrusel de testimonios
+        function initTestimonialCarousel() {
+            const container = document.querySelector('.carousel-container');
+            const cards = document.querySelectorAll('.testimonial-card');
+            const indicators = document.querySelectorAll('.indicator');
+            const prevBtn = document.querySelector('.carousel-prev');
+            const nextBtn = document.querySelector('.carousel-next');
+            
+            let currentIndex = 0;
+            const totalCards = cards.length;
+            
+            function updateCarousel() {
+                container.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Actualizar indicadores
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentIndex);
+                });
+            }
+            
+            function nextCard() {
+                currentIndex = (currentIndex + 1) % totalCards;
+                updateCarousel();
+            }
+            
+            function prevCard() {
+                currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+                updateCarousel();
+            }
+            
+            // Event listeners para botones
+            nextBtn.addEventListener('click', nextCard);
+            prevBtn.addEventListener('click', prevCard);
+            
+            // Event listeners para indicadores
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+            
+            // Cambio automático cada 5 segundos
+            setInterval(nextCard, 5000);
+        }
+
+        // Notificaciones de confirmación aleatorias
+        function initConfirmationNotifications() {
+            const names = ['María', 'Ana', 'Laura', 'Sofía', 'Elena', 'Carmen', 'Patricia', 'Isabel', 'Lucía', 'Paula'];
+            const cities = ['Málaga', 'Sevilla', 'Granada', 'Córdoba', 'Madrid', 'Barcelona', 'Valencia'];
+            
+            function showRandomConfirmation() {
+                const randomName = names[Math.floor(Math.random() * names.length)];
+                const randomCity = cities[Math.floor(Math.random() * cities.length)];
+                
+                const notification = document.getElementById('confirmation-notification');
+                const nameElement = document.getElementById('confirmation-name');
+                const cityElement = document.getElementById('confirmation-city');
+                
+                nameElement.textContent = randomName;
+                cityElement.textContent = randomCity;
+                
+                notification.classList.add('show');
+                
+                // Ocultar después de 4 segundos
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 4000);
+            }
+            
+            // Mostrar primera notificación después de 10 segundos
+            setTimeout(showRandomConfirmation, 10000);
+            
+            // Mostrar notificaciones cada 25-35 segundos
+            setInterval(showRandomConfirmation, 25000 + Math.random() * 10000);
+        }
+
+        // Función del modal
+        window.showModal = () => {
+            document.getElementById('reservation-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        window.hideModal = () => {
+            document.getElementById('reservation-modal').classList.remove('active');
+            document.getElementById('reservation-form').reset();
+            document.getElementById('thank-you-message').style.display = 'none';
+            document.getElementById('reservation-form').style.display = 'block';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Formulario con Formspree
+        window.handleSubmit = function(event) {
+            event.preventDefault();
+            
+            const form = document.getElementById('reservation-form');
+            const submitButton = form.querySelector('button[type="submit"]');
+            
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            submitButton.disabled = true;
+            
+            // Recopilar datos del formulario
+            const formData = new FormData(form);
+            
+            // Enviar formulario a Formspree
+            fetch('https://formspree.io/f/xjvqjwbg', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Éxito
+                    form.style.display = 'none';
+                    document.getElementById('thank-you-message').style.display = 'block';
+                    
+                    // Mostrar notificación de confirmación
+                    const notification = document.getElementById('confirmation-notification');
+                    document.getElementById('confirmation-name').textContent = formData.get('nombre');
+                    document.getElementById('confirmation-city').textContent = 'Málaga';
+                    
+                    notification.classList.add('show');
+                    setTimeout(() => {
+                        notification.classList.remove('show');
+                    }, 4000);
+                } else {
+                    // Error
+                    throw new Error('Error al enviar el formulario');
+                }
+            })
+            .catch(error => {
+                // Mostrar mensaje de error
+                alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.');
+                submitButton.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Confirmar Mi Reserva';
+                submitButton.disabled = false;
+            });
+        };
+
+        // Cerrar modal al hacer clic fuera
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal-overlay')) {
+                hideModal();
+            }
+        });
+
+        // Cerrar con ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') hideModal();
+        });
+    </script>
+
+    <!-- HEADER CON LOGO ATomy -->
+    <header class="elegant-header">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="logo-atomy">ATOMY</div>
+                <button onclick="showModal()" class="bg-white text-pink-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-all">
+                    Reservar Ahora
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- BANNER DE URGENCIA ACTUALIZADO -->
+    <div class="urgency-banner">
+        ⚡ <strong>100 PERSONAS YA CONFIRMARON • SOLO 30 PLAZAS RESTANTES</strong> • 
+        <span id="countdown-display" class="ml-2">Finaliza en: <span id="days">00</span>d <span id="hours">00</span>h <span id="minutes">00</span>m <span id="seconds">00</span>s</span>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="slide-in">
+                <p class="text-white text-xl mb-4 opacity-90">Sábado 4 de Octubre 2025 • Málaga</p>
+                <h1>Experiencia Atomy: Skincare Coreano & Sorteos Exclusivos</h1>
+                <p class="text-white text-lg mb-8 opacity-90">Tratamiento facial de 4 pasos + Conocé la marca + Participá de increíbles sorteos</p>
+                
+                <div class="bg-white bg-opacity-20 rounded-2xl p-6 mb-6 inline-block">
+                    <p class="text-white text-lg font-semibold">🎟️ Entrada: <strong>10€</strong> - Incluye a vos + hasta 5 invitados</p>
+                    <p class="text-white text-sm">(Se abona al llegar al evento)</p>
+                </div>
+                <br>
+                
+                <button onclick="showModal()" class="main-cta pulse-glow">
+                    <i class="fas fa-calendar-plus mr-2"></i>Reservar Mi Plaza VIP
+                </button>
+                
+                <div class="countdown-elegant">
+                    <div class="countdown-item floating">
+                        <div class="countdown-number" id="days">00</div>
+                        <div class="countdown-label">Días</div>
+                    </div>
+                    <div class="countdown-item floating" style="animation-delay: 0.2s">
+                        <div class="countdown-number" id="hours">00</div>
+                        <div class="countdown-label">Horas</div>
+                    </div>
+                    <div class="countdown-item floating" style="animation-delay: 0.4s">
+                        <div class="countdown-number" id="minutes">00</div>
+                        <div class="countdown-label">Minutos</div>
+                    </div>
+                    <div class="countdown-item floating" style="animation-delay: 0.6s">
+                        <div class="countdown-number" id="seconds">00</div>
+                        <div class="countdown-label">Segundos</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF ACTUALIZADO -->
+    <div class="conversion-optimized">
+        <div class="urgency-badge">⚠️ SOLO 30 PLAZAS RESTANTES</div>
+        <h2 class="text-3xl font-bold mb-4">¡Más de 100 personas ya confirmaron su asistencia!</h2>
+        <div class="social-proof">
+            <div class="proof-item">
+                <i class="fas fa-users"></i>
+                <span>100+ Reservas Confirmadas</span>
+            </div>
+            <div class="proof-item">
+                <i class="fas fa-star"></i>
+                <span>Evento Exclusivo</span>
+            </div>
+            <div class="proof-item">
+                <i class="fas fa-calendar-check"></i>
+                <span>4 de Octubre 2025</span>
+            </div>
+        </div>
+        <button onclick="showModal()" class="main-cta bg-white text-pink-600">
+            <i class="fas fa-lock mr-2"></i>Quiero Mi Plaza
+        </button>
+    </div>
+
+    <!-- BENEFICIOS ACTUALIZADOS -->
+    <section class="elegant-section">
+        <div class="container mx-auto">
+            <h2 class="section-title gradient-text slide-in">¿Qué Incluye Tu Entrada de 10€?</h2>
+            <div class="benefits-grid-elegant">
+                <div class="benefit-card slide-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Tratamiento Skincare de 4 Pasos</h3>
+                    <p class="text-gray-600">Experiencia práctica para todos los participantes</p>
+                </div>
+                
+                <div class="benefit-card slide-in" style="animation-delay: 0.2s">
+                    <div class="benefit-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Sorteos Exclusivos</h3>
+                    <p class="text-gray-600">Participación en increíbles sorteos de productos Atomy</p>
+                </div>
+                
+                <div class="benefit-card slide-in" style="animation-delay: 0.4s">
+                    <div class="benefit-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Descubrí la Marca</h3>
+                    <p class="text-gray-600">Conocé todos los productos Atomy y sus beneficios</p>
+                </div>
+
+                <div class="benefit-card slide-in" style="animation-delay: 0.6s">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Hasta 6 Personas</h3>
+                    <p class="text-gray-600">Tu entrada incluye a vos + 5 invitados (10€ total)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAPA -->
+    <section class="elegant-section bg-gray-50">
+        <div class="container mx-auto">
+            <h2 class="section-title gradient-text slide-in">Ubicación del Evento</h2>
+            <p class="text-center text-gray-600 mb-8 text-lg">Hotel Staybridge Suites • Paseo de los Mártires 36, Málaga<br>
+            <strong>Sábado 4 de Octubre 2025</strong></p>
+            
+            <div class="map-container-elegant slide-in">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1260.7128323957545!2d-4.427557071166203!3d36.73047497934034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd72f7e772791af5%3A0x9541b978ef482ca6!2sStaybridge%20Suites%20Malaga!5e0!3m2!1ses-419!2sar!4v1758741497380!5m2!1ses-419!2sar" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS ACTUALIZADOS - CARRUSEL -->
+    <section class="testimonials-elegant">
+        <div class="container mx-auto">
+            <h2 class="section-title gradient-text slide-in">Quienes ya probaron Atomy</h2>
+            
+            <div class="testimonial-carousel slide-in">
+                <div class="carousel-container">
+                    <!-- Testimonio 1 -->
+                    <div class="testimonial-card">
+                        <p class="text-gray-700 mb-4">"Los productos Atomy cambiaron completamente mi piel. En solo un mes noté una diferencia increíble en textura y luminosidad."</p>
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="María" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <div class="font-semibold">María González</div>
+                                <div class="text-sm text-gray-500">Usuaria Atomy desde 2024</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonio 2 -->
+                    <div class="testimonial-card">
+                        <p class="text-gray-700 mb-4">"La calidad de los productos coreanos es incomparable. Atomy superó todas mis expectativas, especialmente la línea de skincare."</p>
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ana" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <div class="font-semibold">Ana Martínez</div>
+                                <div class="text-sm text-gray-500">Especialista en Skincare</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 3 -->
+                    <div class="testimonial-card">
+                        <p class="text-gray-700 mb-4">"Empecé usando la crema hidratante y ahora tengo toda la línea. La diferencia con otras marcas es abismal, se nota la calidad coreana."</p>
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Laura" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <div class="font-semibold">Laura Fernández</div>
+                                <div class="text-sm text-gray-500">Clienta satisfecha</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 4 -->
+                    <div class="testimonial-card">
+                        <p class="text-gray-700 mb-4">"Recomiendo Atomy a todas mis amigas. Los resultados son visibles desde la primera semana de uso. ¡Vale cada euro!"</p>
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Sofía" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <div class="font-semibold">Sofía Rodríguez</div>
+                                <div class="text-sm text-gray-500">Fanática de la belleza coreana</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 5 (NUEVO) -->
+                    <div class="testimonial-card">
+                        <p class="text-gray-700 mb-4">"Después de probar muchas marcas, Atomy es la única que realmente ha mejorado mi piel sensible sin causar irritaciones."</p>
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/women/27.jpg" alt="Elena" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <div class="font-semibold">Elena Vargas</div>
+                                <div class="text-sm text-gray-500">Piel sensible</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 6 (NUEVO) -->
+                    <div class="testimonial-card">
+                        <p class="text-gray-700 mb-4">"La textura de los productos es increíble, se absorben rápidamente y no dejan la piel grasosa. ¡Me encanta!"</p>
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Carmen" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <div class="font-semibold">Carmen López</div>
+                                <div class="text-sm text-gray-500">Usuaria desde 2023</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 7 (NUEVO) -->
+                    <div class="testimonial-card">
+                        <p class="text-gray-700 mb-4">"Como profesional de estética, recomiendo Atomy por sus ingredientes de alta calidad y resultados comprobables."</p>
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/women/71.jpg" alt="Patricia" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <div class="font-semibold">Patricia Moreno</div>
+                                <div class="text-sm text-gray-500">Esteticista profesional</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Controles del carrusel -->
+                <div class="carousel-controls">
+                    <button class="carousel-btn carousel-prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn carousel-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <!-- Indicadores -->
+                <div class="carousel-indicators">
+                    <span class="indicator active" data-slide="0"></span>
+                    <span class="indicator" data-slide="1"></span>
+                    <span class="indicator" data-slide="2"></span>
+                    <span class="indicator" data-slide="3"></span>
+                    <span class="indicator" data-slide="4"></span>
+                    <span class="indicator" data-slide="5"></span>
+                    <span class="indicator" data-slide="6"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="conversion-optimized">
+        <div class="container mx-auto">
+            <div class="urgency-badge">🎟️ ENTRADA: 10€ (INCLUYE HASTA 6 PERSONAS)</div>
+            <h2 class="text-4xl font-bold mb-4">¿Lista para Experimentar la Belleza Coreana?</h2>
+            <p class="text-xl mb-8 opacity-90">Últimas 30 plazas disponibles para el sábado 4 de octubre</p>
+            
+            <div class="max-w-md mx-auto">
+                <ul class="text-left mb-8 space-y-3">
+                    <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-green-300"></i> Tratamiento skincare de 4 pasos</li>
+                    <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-green-300"></i> Participación en sorteos exclusivos</li>
+                    <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-green-300"></i> Conocé todos los productos Atomy</li>
+                    <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-green-300"></i> Podés venir con hasta 5 invitados</li>
+                </ul>
+                
+                <button onclick="showModal()" class="main-cta bg-white text-pink-600 text-lg py-4 px-8">
+                    <i class="fas fa-bolt mr-2"></i>RESERVAR MI ENTRADA (10€)
+                </button>
+                
+                <p class="text-sm mt-4 opacity-75">💳 Pago directo en el evento • 👥 Incluye hasta 6 personas</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="elegant-footer">
+        <div class="container mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Información del Evento</h3>
+                    <p><i class="fas fa-calendar-day mr-2"></i> Sábado 4 de Octubre 2025</p>
+                    <p><i class="fas fa-clock mr-2"></i> Horarios: 10:00 - 12:00 - 15:00 - 17:00 - 19:00</p>
+                    <p><i class="fas fa-map-marker-alt mr-2"></i> Hotel Staybridge Suites, Málaga</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Precio y Condiciones</h3>
+                    <p><i class="fas fa-ticket mr-2"></i> Entrada: 10€ por grupo</p>
+                    <p><i class="fas fa-users mr-2"></i> Incluye hasta 6 personas</p>
+                    <p><i class="fas fa-money-bill-wave mr-2"></i> Pago directo en el evento</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contacto</h3>
+                    <p><i class="fas fa-phone mr-2"></i> +34 641 248 134</p>
+                    <p><i class="fas fa-envelope mr-2"></i> atomy.agm@gmail.com</p>
+                    <a href="https://wa.me/34641248134" class="inline-block mt-2 bg-green-500 text-white px-4 py-2 rounded-lg">
+                        <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+                    </a>
+                </div>
+            </div>
+            
+            <p class="text-center opacity-75">© 2025 Atomy Málaga - Evento Exclusivo 4 de Octubre</p>
+        </div>
+    </footer>
+
+    <!-- MODAL CON FORMULARIO COMPLETO PARA FORMSPREE -->
+    <div id="reservation-modal" class="modal-overlay">
+        <div class="elegant-form relative">
+            <button onclick="hideModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <h2 class="text-3xl font-bold text-center mb-2 gradient-text">Reserva Tu Entrada</h2>
+            <p class="text-center text-gray-600 mb-6">10€ - Incluye a vos + hasta 5 invitados (se abona al llegar)</p>
+            
+            <form id="reservation-form" action="https://formspree.io/f/xjvqjwbg" method="POST" onsubmit="return handleSubmit(event)">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Nombre *</label>
+                        <input type="text" name="nombre" class="form-input-elegant" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Apellido *</label>
+                        <input type="text" name="apellido" class="form-input-elegant" required>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Teléfono *</label>
+                        <input type="tel" name="telefono" class="form-input-elegant" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Email *</label>
+                        <input type="email" name="email" class="form-input-elegant" required>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-2">Selecciona tu horario preferido *</label>
+                    <select name="horario" class="select-time" required>
+                        <option value="" disabled selected>Elige un horario</option>
+                        <option value="10:00">10:00</option>
+                        <option value="12:00">12:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="17:00">17:00</option>
+                        <option value="19:00">19:00</option>
+                    </select>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-lg mt-4">
+                    <h3 class="font-semibold mb-3">Tus Invitados (opcional)</h3>
+                    <p class="text-sm text-gray-600 mb-3">Podés agregar hasta 5 invitados. Si venís solo/a, dejá estos campos vacíos.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <input type="text" name="invitado1" class="form-input-elegant" placeholder="Invitado 1">
+                        <input type="text" name="invitado2" class="form-input-elegant" placeholder="Invitado 2">
+                        <input type="text" name="invitado3" class="form-input-elegant" placeholder="Invitado 3">
+                        <input type="text" name="invitado4" class="form-input-elegant" placeholder="Invitado 4">
+                        <input type="text" name="invitado5" class="form-input-elegant" placeholder="Invitado 5">
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn-elegant">
+                    <i class="fas fa-check-circle mr-2"></i>Confirmar Mi Reserva
+                </button>
+                
+                <p class="text-xs text-gray-500 mt-4 text-center">* La entrada de 10€ incluye a vos + hasta 5 invitados. Se abona al llegar al evento.</p>
+            </form>
+            
+            <div id="thank-you-message" class="text-center py-8 hidden">
+                <div class="text-green-500 text-6xl mb-4">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">¡Reserva Confirmada!</h3>
+                <p class="text-gray-600 mb-4">Te esperamos el <strong>4 de Octubre</strong> en el Hotel Staybridge Suites</p>
+                <p class="text-gray-500 text-sm">Recibirás un recordatorio por email</p>
+                <button onclick="hideModal()" class="submit-btn-elegant bg-gray-600 mt-4">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFICACIÓN DE CONFIRMACIÓN -->
+    <div id="confirmation-notification" class="confirmation-notification">
+        <div class="confirmation-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div>
+            <p><strong id="confirmation-name">María</strong> de <span id="confirmation-city">Málaga</span> acaba de reservar</p>
+        </div>
+    </div>
+</body>
+</html>
