@@ -53,6 +53,24 @@
     }
     </script>
 
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1974179936709784');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1974179936709784&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
     <!-- CSS Y FUENTES -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -563,6 +581,31 @@
             font-size: 1.5em;
         }
 
+        /* PÁGINA DE AGRADECIMIENTO */
+        .thank-you-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #fef7f7 0%, #f8f8f8 100%);
+            padding: 20px;
+        }
+
+        .thank-you-container {
+            max-width: 800px;
+            text-align: center;
+            background: white;
+            padding: 60px 40px;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .thank-you-icon {
+            font-size: 5em;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+
         /* RESPONSIVE GENERAL */
         @media (max-width: 768px) {
             .hero h1 {
@@ -651,6 +694,10 @@
                 max-width: 250px;
                 right: 10px;
                 bottom: 10px;
+            }
+
+            .thank-you-container {
+                padding: 40px 20px;
             }
         }
 
@@ -825,6 +872,12 @@
 
             // Inicializar notificaciones de confirmación
             initConfirmationNotifications();
+
+            // Verificar si estamos en la página de agradecimiento
+            if (window.location.pathname.includes('thankyou.html')) {
+                // Disparar evento de conversión para el Pixel de Facebook
+                fbq('track', 'Lead');
+            }
         });
 
         // Contador con fecha correcta: 4 de octubre 2025
@@ -940,7 +993,7 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Formulario con Formspree
+        // Formulario con Formspree y redirección a página de agradecimiento
         window.handleSubmit = function(event) {
             event.preventDefault();
             
@@ -963,19 +1016,8 @@
             })
             .then(response => {
                 if (response.ok) {
-                    // Éxito
-                    form.style.display = 'none';
-                    document.getElementById('thank-you-message').style.display = 'block';
-                    
-                    // Mostrar notificación de confirmación
-                    const notification = document.getElementById('confirmation-notification');
-                    document.getElementById('confirmation-name').textContent = formData.get('nombre');
-                    document.getElementById('confirmation-city').textContent = 'Málaga';
-                    
-                    notification.classList.add('show');
-                    setTimeout(() => {
-                        notification.classList.remove('show');
-                    }, 4000);
+                    // Éxito - redirigir a página de agradecimiento
+                    window.location.href = 'thankyou.html';
                 } else {
                     // Error
                     throw new Error('Error al enviar el formulario');
@@ -1002,407 +1044,451 @@
         });
     </script>
 
-    <!-- HEADER CON LOGO ATomy -->
-    <header class="elegant-header">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center">
-                <div class="logo-atomy">ATOMY</div>
-                <button onclick="showModal()" class="bg-white text-pink-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-all">
-                    Reservar Ahora
-                </button>
+    <!-- Verificar si estamos en la página de agradecimiento -->
+    <div id="main-content" style="display: none;">
+        <!-- Contenido principal de la página -->
+        
+        <!-- HEADER CON LOGO ATomy -->
+        <header class="elegant-header">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center">
+                    <div class="logo-atomy">ATOMY</div>
+                    <button onclick="showModal()" class="bg-white text-pink-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-all">
+                        Reservar Ahora
+                    </button>
+                </div>
             </div>
+        </header>
+
+        <!-- BANNER DE URGENCIA ACTUALIZADO -->
+        <div class="urgency-banner">
+            ⚡ <strong>100 PERSONAS YA CONFIRMARON • SOLO 30 PLAZAS RESTANTES</strong> • 
+            <span id="countdown-display" class="ml-2">Finaliza en: <span id="days">00</span>d <span id="hours">00</span>h <span id="minutes">00</span>m <span id="seconds">00</span>s</span>
         </div>
-    </header>
 
-    <!-- BANNER DE URGENCIA ACTUALIZADO -->
-    <div class="urgency-banner">
-        ⚡ <strong>100 PERSONAS YA CONFIRMARON • SOLO 30 PLAZAS RESTANTES</strong> • 
-        <span id="countdown-display" class="ml-2">Finaliza en: <span id="days">00</span>d <span id="hours">00</span>h <span id="minutes">00</span>m <span id="seconds">00</span>s</span>
-    </div>
-
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="slide-in">
-                <p class="text-white text-xl mb-4 opacity-90">Sábado 4 de Octubre 2025 • Málaga</p>
-                <h1>Experiencia Atomy: Skincare Coreano & Sorteos Exclusivos</h1>
-                <p class="text-white text-lg mb-8 opacity-90">Tratamiento facial de 4 pasos + Conocé la marca + Participá de increíbles sorteos</p>
-                
-                <div class="bg-white bg-opacity-20 rounded-2xl p-6 mb-6 inline-block">
-                    <p class="text-white text-lg font-semibold">🎟️ Entrada: <strong>10€</strong> - Incluye a vos + hasta 5 invitados</p>
-                    <p class="text-white text-sm">(Se abona al llegar al evento)</p>
-                </div>
-                <br>
-                
-                <button onclick="showModal()" class="main-cta pulse-glow">
-                    <i class="fas fa-calendar-plus mr-2"></i>Reservar Mi Plaza VIP
-                </button>
-                
-                <div class="countdown-elegant">
-                    <div class="countdown-item floating">
-                        <div class="countdown-number" id="days">00</div>
-                        <div class="countdown-label">Días</div>
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="slide-in">
+                    <p class="text-white text-xl mb-4 opacity-90">Sábado 4 de Octubre 2025 • Málaga</p>
+                    <h1>Experiencia Atomy: Skincare Coreano & Sorteos Exclusivos</h1>
+                    <p class="text-white text-lg mb-8 opacity-90">Tratamiento facial de 4 pasos + Conocé la marca + Participá de increíbles sorteos</p>
+                    
+                    <div class="bg-white bg-opacity-20 rounded-2xl p-6 mb-6 inline-block">
+                        <p class="text-white text-lg font-semibold">🎟️ Entrada: <strong>10€</strong> - Incluye a vos + hasta 5 invitados</p>
+                        <p class="text-white text-sm">(Se abona al llegar al evento)</p>
                     </div>
-                    <div class="countdown-item floating" style="animation-delay: 0.2s">
-                        <div class="countdown-number" id="hours">00</div>
-                        <div class="countdown-label">Horas</div>
-                    </div>
-                    <div class="countdown-item floating" style="animation-delay: 0.4s">
-                        <div class="countdown-number" id="minutes">00</div>
-                        <div class="countdown-label">Minutos</div>
-                    </div>
-                    <div class="countdown-item floating" style="animation-delay: 0.6s">
-                        <div class="countdown-number" id="seconds">00</div>
-                        <div class="countdown-label">Segundos</div>
+                    <br>
+                    
+                    <button onclick="showModal()" class="main-cta pulse-glow">
+                        <i class="fas fa-calendar-plus mr-2"></i>Reservar Mi Plaza VIP
+                    </button>
+                    
+                    <div class="countdown-elegant">
+                        <div class="countdown-item floating">
+                            <div class="countdown-number" id="days">00</div>
+                            <div class="countdown-label">Días</div>
+                        </div>
+                        <div class="countdown-item floating" style="animation-delay: 0.2s">
+                            <div class="countdown-number" id="hours">00</div>
+                            <div class="countdown-label">Horas</div>
+                        </div>
+                        <div class="countdown-item floating" style="animation-delay: 0.4s">
+                            <div class="countdown-number" id="minutes">00</div>
+                            <div class="countdown-label">Minutos</div>
+                        </div>
+                        <div class="countdown-item floating" style="animation-delay: 0.6s">
+                            <div class="countdown-number" id="seconds">00</div>
+                            <div class="countdown-label">Segundos</div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- SOCIAL PROOF ACTUALIZADO -->
+        <div class="conversion-optimized">
+            <div class="urgency-badge">⚠️ SOLO 30 PLAZAS RESTANTES</div>
+            <h2 class="text-3xl font-bold mb-4">¡Más de 100 personas ya confirmaron su asistencia!</h2>
+            <div class="social-proof">
+                <div class="proof-item">
+                    <i class="fas fa-users"></i>
+                    <span>100+ Reservas Confirmadas</span>
+                </div>
+                <div class="proof-item">
+                    <i class="fas fa-star"></i>
+                    <span>Evento Exclusivo</span>
+                </div>
+                <div class="proof-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>4 de Octubre 2025</span>
+                </div>
+            </div>
+            <button onclick="showModal()" class="main-cta bg-white text-pink-600">
+                <i class="fas fa-lock mr-2"></i>Quiero Mi Plaza
+            </button>
         </div>
-    </section>
 
-    <!-- SOCIAL PROOF ACTUALIZADO -->
-    <div class="conversion-optimized">
-        <div class="urgency-badge">⚠️ SOLO 30 PLAZAS RESTANTES</div>
-        <h2 class="text-3xl font-bold mb-4">¡Más de 100 personas ya confirmaron su asistencia!</h2>
-        <div class="social-proof">
-            <div class="proof-item">
-                <i class="fas fa-users"></i>
-                <span>100+ Reservas Confirmadas</span>
-            </div>
-            <div class="proof-item">
-                <i class="fas fa-star"></i>
-                <span>Evento Exclusivo</span>
-            </div>
-            <div class="proof-item">
-                <i class="fas fa-calendar-check"></i>
-                <span>4 de Octubre 2025</span>
-            </div>
-        </div>
-        <button onclick="showModal()" class="main-cta bg-white text-pink-600">
-            <i class="fas fa-lock mr-2"></i>Quiero Mi Plaza
-        </button>
-    </div>
-
-    <!-- BENEFICIOS ACTUALIZADOS -->
-    <section class="elegant-section">
-        <div class="container mx-auto">
-            <h2 class="section-title gradient-text slide-in">¿Qué Incluye Tu Entrada de 10€?</h2>
-            <div class="benefits-grid-elegant">
-                <div class="benefit-card slide-in">
-                    <div class="benefit-icon">
-                        <i class="fas fa-spa"></i>
+        <!-- BENEFICIOS ACTUALIZADOS -->
+        <section class="elegant-section">
+            <div class="container mx-auto">
+                <h2 class="section-title gradient-text slide-in">¿Qué Incluye Tu Entrada de 10€?</h2>
+                <div class="benefits-grid-elegant">
+                    <div class="benefit-card slide-in">
+                        <div class="benefit-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Tratamiento Skincare de 4 Pasos</h3>
+                        <p class="text-gray-600">Experiencia práctica para todos los participantes</p>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Tratamiento Skincare de 4 Pasos</h3>
-                    <p class="text-gray-600">Experiencia práctica para todos los participantes</p>
+                    
+                    <div class="benefit-card slide-in" style="animation-delay: 0.2s">
+                        <div class="benefit-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Sorteos Exclusivos</h3>
+                        <p class="text-gray-600">Participación en increíbles sorteos de productos Atomy</p>
+                    </div>
+                    
+                    <div class="benefit-card slide-in" style="animation-delay: 0.4s">
+                        <div class="benefit-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Descubrí la Marca</h3>
+                        <p class="text-gray-600">Conocé todos los productos Atomy y sus beneficios</p>
+                    </div>
+
+                    <div class="benefit-card slide-in" style="animation-delay: 0.6s">
+                        <div class="benefit-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Hasta 6 Personas</h3>
+                        <p class="text-gray-600">Tu entrada incluye a vos + 5 invitados (10€ total)</p>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- MAPA -->
+        <section class="elegant-section bg-gray-50">
+            <div class="container mx-auto">
+                <h2 class="section-title gradient-text slide-in">Ubicación del Evento</h2>
+                <p class="text-center text-gray-600 mb-8 text-lg">Hotel Staybridge Suites • Paseo de los Mártires 36, Málaga<br>
+                <strong>Sábado 4 de Octubre 2025</strong></p>
                 
-                <div class="benefit-card slide-in" style="animation-delay: 0.2s">
-                    <div class="benefit-icon">
-                        <i class="fas fa-gift"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Sorteos Exclusivos</h3>
-                    <p class="text-gray-600">Participación en increíbles sorteos de productos Atomy</p>
+                <div class="map-container-elegant slide-in">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1260.7128323957545!2d-4.427557071166203!3d36.73047497934034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd72f7e772791af5%3A0x9541b978ef482ca6!2sStaybridge%20Suites%20Malaga!5e0!3m2!1ses-419!2sar!4v1758741497380!5m2!1ses-419!2sar" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIOS ACTUALIZADOS - CARRUSEL MEJORADO PARA MÓVIL -->
+        <section class="testimonials-elegant">
+            <div class="container mx-auto">
+                <h2 class="section-title gradient-text slide-in">Quienes ya probaron Atomy</h2>
                 
-                <div class="benefit-card slide-in" style="animation-delay: 0.4s">
-                    <div class="benefit-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Descubrí la Marca</h3>
-                    <p class="text-gray-600">Conocé todos los productos Atomy y sus beneficios</p>
-                </div>
+                <div class="testimonial-carousel slide-in">
+                    <div class="carousel-container">
+                        <!-- Testimonio 1 -->
+                        <div class="testimonial-card">
+                            <p class="text-gray-700 mb-4">"Los productos Atomy cambiaron completamente mi piel. En solo un mes noté una diferencia increíble en textura y luminosidad."</p>
+                            <div class="flex items-center">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="María" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <div class="font-semibold">María González</div>
+                                    <div class="text-sm text-gray-500">Usuaria Atomy desde 2024</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonio 2 -->
+                        <div class="testimonial-card">
+                            <p class="text-gray-700 mb-4">"La calidad de los productos coreanos es incomparable. Atomy superó todas mis expectativas, especialmente la línea de skincare."</p>
+                            <div class="flex items-center">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ana" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <div class="font-semibold">Ana Martínez</div>
+                                    <div class="text-sm text-gray-500">Especialista en Skincare</div>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="benefit-card slide-in" style="animation-delay: 0.6s">
-                    <div class="benefit-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Hasta 6 Personas</h3>
-                    <p class="text-gray-600">Tu entrada incluye a vos + 5 invitados (10€ total)</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                        <!-- Testimonio 3 -->
+                        <div class="testimonial-card">
+                            <p class="text-gray-700 mb-4">"Empecé usando la crema hidratante y ahora tengo toda la línea. La diferencia con otras marcas es abismal, se nota la calidad coreana."</p>
+                            <div class="flex items-center">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Laura" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <div class="font-semibold">Laura Fernández</div>
+                                    <div class="text-sm text-gray-500">Clienta satisfecha</div>
+                                </div>
+                            </div>
+                        </div>
 
-    <!-- MAPA -->
-    <section class="elegant-section bg-gray-50">
-        <div class="container mx-auto">
-            <h2 class="section-title gradient-text slide-in">Ubicación del Evento</h2>
-            <p class="text-center text-gray-600 mb-8 text-lg">Hotel Staybridge Suites • Paseo de los Mártires 36, Málaga<br>
-            <strong>Sábado 4 de Octubre 2025</strong></p>
-            
-            <div class="map-container-elegant slide-in">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1260.7128323957545!2d-4.427557071166203!3d36.73047497934034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd72f7e772791af5%3A0x9541b978ef482ca6!2sStaybridge%20Suites%20Malaga!5e0!3m2!1ses-419!2sar!4v1758741497380!5m2!1ses-419!2sar" 
-                    width="100%" 
-                    height="100%" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
-        </div>
-    </section>
+                        <!-- Testimonio 4 -->
+                        <div class="testimonial-card">
+                            <p class="text-gray-700 mb-4">"Recomiendo Atomy a todas mis amigas. Los resultados son visibles desde la primera semana de uso. ¡Vale cada euro!"</p>
+                            <div class="flex items-center">
+                                <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Sofía" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <div class="font-semibold">Sofía Rodríguez</div>
+                                    <div class="text-sm text-gray-500">Fanática de la belleza coreana</div>
+                                </div>
+                            </div>
+                        </div>
 
-    <!-- TESTIMONIOS ACTUALIZADOS - CARRUSEL MEJORADO PARA MÓVIL -->
-    <section class="testimonials-elegant">
-        <div class="container mx-auto">
-            <h2 class="section-title gradient-text slide-in">Quienes ya probaron Atomy</h2>
-            
-            <div class="testimonial-carousel slide-in">
-                <div class="carousel-container">
-                    <!-- Testimonio 1 -->
-                    <div class="testimonial-card">
-                        <p class="text-gray-700 mb-4">"Los productos Atomy cambiaron completamente mi piel. En solo un mes noté una diferencia increíble en textura y luminosidad."</p>
-                        <div class="flex items-center">
-                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="María" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <div class="font-semibold">María González</div>
-                                <div class="text-sm text-gray-500">Usuaria Atomy desde 2024</div>
+                        <!-- Testimonio 5 (NUEVO) -->
+                        <div class="testimonial-card">
+                            <p class="text-gray-700 mb-4">"Después de probar muchas marcas, Atomy es la única que realmente ha mejorado mi piel sensible sin causar irritaciones."</p>
+                            <div class="flex items-center">
+                                <img src="https://randomuser.me/api/portraits/women/27.jpg" alt="Elena" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <div class="font-semibold">Elena Vargas</div>
+                                    <div class="text-sm text-gray-500">Piel sensible</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonio 6 (NUEVO) -->
+                        <div class="testimonial-card">
+                            <p class="text-gray-700 mb-4">"La textura de los productos es increíble, se absorben rápidamente y no dejan la piel grasosa. ¡Me encanta!"</p>
+                            <div class="flex items-center">
+                                <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Carmen" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <div class="font-semibold">Carmen López</div>
+                                    <div class="text-sm text-gray-500">Usuaria desde 2023</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonio 7 (NUEVO) -->
+                        <div class="testimonial-card">
+                            <p class="text-gray-700 mb-4">"Como profesional de estética, recomiendo Atomy por sus ingredientes de alta calidad y resultados comprobables."</p>
+                            <div class="flex items-center">
+                                <img src="https://randomuser.me/api/portraits/women/71.jpg" alt="Patricia" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <div class="font-semibold">Patricia Moreno</div>
+                                    <div class="text-sm text-gray-500">Esteticista profesional</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Testimonio 2 -->
-                    <div class="testimonial-card">
-                        <p class="text-gray-700 mb-4">"La calidad de los productos coreanos es incomparable. Atomy superó todas mis expectativas, especialmente la línea de skincare."</p>
-                        <div class="flex items-center">
-                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ana" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <div class="font-semibold">Ana Martínez</div>
-                                <div class="text-sm text-gray-500">Especialista en Skincare</div>
-                            </div>
-                        </div>
+                    <!-- Controles del carrusel -->
+                    <div class="carousel-controls">
+                        <button class="carousel-btn carousel-prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn carousel-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
-
-                    <!-- Testimonio 3 -->
-                    <div class="testimonial-card">
-                        <p class="text-gray-700 mb-4">"Empecé usando la crema hidratante y ahora tengo toda la línea. La diferencia con otras marcas es abismal, se nota la calidad coreana."</p>
-                        <div class="flex items-center">
-                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Laura" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <div class="font-semibold">Laura Fernández</div>
-                                <div class="text-sm text-gray-500">Clienta satisfecha</div>
-                            </div>
-                        </div>
+                    
+                    <!-- Indicadores -->
+                    <div class="carousel-indicators">
+                        <span class="indicator active" data-slide="0"></span>
+                        <span class="indicator" data-slide="1"></span>
+                        <span class="indicator" data-slide="2"></span>
+                        <span class="indicator" data-slide="3"></span>
+                        <span class="indicator" data-slide="4"></span>
+                        <span class="indicator" data-slide="5"></span>
+                        <span class="indicator" data-slide="6"></span>
                     </div>
-
-                    <!-- Testimonio 4 -->
-                    <div class="testimonial-card">
-                        <p class="text-gray-700 mb-4">"Recomiendo Atomy a todas mis amigas. Los resultados son visibles desde la primera semana de uso. ¡Vale cada euro!"</p>
-                        <div class="flex items-center">
-                            <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Sofía" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <div class="font-semibold">Sofía Rodríguez</div>
-                                <div class="text-sm text-gray-500">Fanática de la belleza coreana</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonio 5 (NUEVO) -->
-                    <div class="testimonial-card">
-                        <p class="text-gray-700 mb-4">"Después de probar muchas marcas, Atomy es la única que realmente ha mejorado mi piel sensible sin causar irritaciones."</p>
-                        <div class="flex items-center">
-                            <img src="https://randomuser.me/api/portraits/women/27.jpg" alt="Elena" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <div class="font-semibold">Elena Vargas</div>
-                                <div class="text-sm text-gray-500">Piel sensible</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonio 6 (NUEVO) -->
-                    <div class="testimonial-card">
-                        <p class="text-gray-700 mb-4">"La textura de los productos es increíble, se absorben rápidamente y no dejan la piel grasosa. ¡Me encanta!"</p>
-                        <div class="flex items-center">
-                            <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Carmen" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <div class="font-semibold">Carmen López</div>
-                                <div class="text-sm text-gray-500">Usuaria desde 2023</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonio 7 (NUEVO) -->
-                    <div class="testimonial-card">
-                        <p class="text-gray-700 mb-4">"Como profesional de estética, recomiendo Atomy por sus ingredientes de alta calidad y resultados comprobables."</p>
-                        <div class="flex items-center">
-                            <img src="https://randomuser.me/api/portraits/women/71.jpg" alt="Patricia" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <div class="font-semibold">Patricia Moreno</div>
-                                <div class="text-sm text-gray-500">Esteticista profesional</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Controles del carrusel -->
-                <div class="carousel-controls">
-                    <button class="carousel-btn carousel-prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="carousel-btn carousel-next">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-                
-                <!-- Indicadores -->
-                <div class="carousel-indicators">
-                    <span class="indicator active" data-slide="0"></span>
-                    <span class="indicator" data-slide="1"></span>
-                    <span class="indicator" data-slide="2"></span>
-                    <span class="indicator" data-slide="3"></span>
-                    <span class="indicator" data-slide="4"></span>
-                    <span class="indicator" data-slide="5"></span>
-                    <span class="indicator" data-slide="6"></span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA FINAL -->
-    <section class="conversion-optimized">
-        <div class="container mx-auto">
-            <div class="urgency-badge">🎟️ ENTRADA: 10€ (INCLUYE HASTA 6 PERSONAS)</div>
-            <h2 class="text-4xl font-bold mb-4">¿Lista para Experimentar la Belleza Coreana?</h2>
-            <p class="text-xl mb-8 opacity-90">Últimas 30 plazas disponibles para el sábado 4 de octubre</p>
-            
-            <div class="max-w-md mx-auto">
-                <ul class="text-left mb-8 space-y-3">
-                    <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-green-300"></i> Tratamiento skincare de 4 pasos</li>
-                    <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-green-300"></i> Participación en sorteos exclusivos</li>
-                    <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-green-300"></i> Conocé todos los productos Atomy</li>
-                    <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-green-300"></i> Podés venir con hasta 5 invitados</li>
-                </ul>
+        <!-- CTA FINAL -->
+        <section class="conversion-optimized">
+            <div class="container mx-auto">
+                <div class="urgency-badge">🎟️ ENTRADA: 10€ (INCLUYE HASTA 6 PERSONAS)</div>
+                <h2 class="text-4xl font-bold mb-4">¿Lista para Experimentar la Belleza Coreana?</h2>
+                <p class="text-xl mb-8 opacity-90">Últimas 30 plazas disponibles para el sábado 4 de octubre</p>
                 
-                <button onclick="showModal()" class="main-cta bg-white text-pink-600 text-lg py-4 px-8">
-                    <i class="fas fa-bolt mr-2"></i>RESERVAR MI ENTRADA (10€)
+                <div class="max-w-md mx-auto">
+                    <ul class="text-left mb-8 space-y-3">
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-green-300"></i> Tratamiento skincare de 4 pasos</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-green-300"></i> Participación en sorteos exclusivos</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-green-300"></i> Conocé todos los productos Atomy</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-green-300"></i> Podés venir con hasta 5 invitados</li>
+                    </ul>
+                    
+                    <button onclick="showModal()" class="main-cta bg-white text-pink-600 text-lg py-4 px-8">
+                        <i class="fas fa-bolt mr-2"></i>RESERVAR MI ENTRADA (10€)
+                    </button>
+                    
+                    <p class="text-sm mt-4 opacity-75">💳 Pago directo en el evento • 👥 Incluye hasta 6 personas</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="elegant-footer">
+            <div class="container mx-auto">
+                <div class="grid md:grid-cols-3 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Información del Evento</h3>
+                        <p><i class="fas fa-calendar-day mr-2"></i> Sábado 4 de Octubre 2025</p>
+                        <p><i class="fas fa-clock mr-2"></i> Horarios: 10:00 - 12:00 - 15:00 - 17:00 - 19:00</p>
+                        <p><i class="fas fa-map-marker-alt mr-2"></i> Hotel Staybridge Suites, Málaga</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Precio y Condiciones</h3>
+                        <p><i class="fas fa-ticket mr-2"></i> Entrada: 10€ por grupo</p>
+                        <p><i class="fas fa-users mr-2"></i> Incluye hasta 6 personas</p>
+                        <p><i class="fas fa-money-bill-wave mr-2"></i> Pago directo en el evento</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Contacto</h3>
+                        <p><i class="fas fa-phone mr-2"></i> +34 641 248 134</p>
+                        <p><i class="fas fa-envelope mr-2"></i> atomy.agm@gmail.com</p>
+                        <a href="https://wa.me/34641248134" class="inline-block mt-2 bg-green-500 text-white px-4 py-2 rounded-lg">
+                            <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <p class="text-center opacity-75">© 2025 Atomy Málaga - Evento Exclusivo 4 de Octubre</p>
+            </div>
+        </footer>
+
+        <!-- MODAL CON FORMULARIO COMPLETO PARA FORMSPREE -->
+        <div id="reservation-modal" class="modal-overlay">
+            <div class="elegant-form relative">
+                <button onclick="hideModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">
+                    <i class="fas fa-times"></i>
                 </button>
                 
-                <p class="text-sm mt-4 opacity-75">💳 Pago directo en el evento • 👥 Incluye hasta 6 personas</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="elegant-footer">
-        <div class="container mx-auto">
-            <div class="grid md:grid-cols-3 gap-8 mb-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Información del Evento</h3>
-                    <p><i class="fas fa-calendar-day mr-2"></i> Sábado 4 de Octubre 2025</p>
-                    <p><i class="fas fa-clock mr-2"></i> Horarios: 10:00 - 12:00 - 15:00 - 17:00 - 19:00</p>
-                    <p><i class="fas fa-map-marker-alt mr-2"></i> Hotel Staybridge Suites, Málaga</p>
-                </div>
+                <h2 class="text-3xl font-bold text-center mb-2 gradient-text">Reserva Tu Entrada</h2>
+                <p class="text-center text-gray-600 mb-6">10€ - Incluye a vos + hasta 5 invitados (se abona al llegar)</p>
                 
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Precio y Condiciones</h3>
-                    <p><i class="fas fa-ticket mr-2"></i> Entrada: 10€ por grupo</p>
-                    <p><i class="fas fa-users mr-2"></i> Incluye hasta 6 personas</p>
-                    <p><i class="fas fa-money-bill-wave mr-2"></i> Pago directo en el evento</p>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Contacto</h3>
-                    <p><i class="fas fa-phone mr-2"></i> +34 641 248 134</p>
-                    <p><i class="fas fa-envelope mr-2"></i> atomy.agm@gmail.com</p>
-                    <a href="https://wa.me/34641248134" class="inline-block mt-2 bg-green-500 text-white px-4 py-2 rounded-lg">
-                        <i class="fab fa-whatsapp mr-2"></i>WhatsApp
-                    </a>
-                </div>
-            </div>
-            
-            <p class="text-center opacity-75">© 2025 Atomy Málaga - Evento Exclusivo 4 de Octubre</p>
-        </div>
-    </footer>
-
-    <!-- MODAL CON FORMULARIO COMPLETO PARA FORMSPREE -->
-    <div id="reservation-modal" class="modal-overlay">
-        <div class="elegant-form relative">
-            <button onclick="hideModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">
-                <i class="fas fa-times"></i>
-            </button>
-            
-            <h2 class="text-3xl font-bold text-center mb-2 gradient-text">Reserva Tu Entrada</h2>
-            <p class="text-center text-gray-600 mb-6">10€ - Incluye a vos + hasta 5 invitados (se abona al llegar)</p>
-            
-            <form id="reservation-form" action="https://formspree.io/f/xanpqgek" method="POST" onsubmit="return handleSubmit(event)">
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Nombre *</label>
-                        <input type="text" name="nombre" class="form-input-elegant" required>
+                <form id="reservation-form" action="https://formspree.io/f/xanpqgek" method="POST" onsubmit="return handleSubmit(event)">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Nombre *</label>
+                            <input type="text" name="nombre" class="form-input-elegant" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Apellido *</label>
+                            <input type="text" name="apellido" class="form-input-elegant" required>
+                        </div>
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Apellido *</label>
-                        <input type="text" name="apellido" class="form-input-elegant" required>
-                    </div>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Teléfono *</label>
-                        <input type="tel" name="telefono" class="form-input-elegant" required>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Email *</label>
-                        <input type="email" name="email" class="form-input-elegant" required>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium mb-2">Selecciona tu horario preferido *</label>
-                    <select name="horario" class="select-time" required>
-                        <option value="" disabled selected>Elige un horario</option>
-                        <option value="10:00">10:00</option>
-                        <option value="12:00">12:00</option>
-                        <option value="15:00">15:00</option>
-                        <option value="17:00">17:00</option>
-                        <option value="19:00">19:00</option>
-                    </select>
-                </div>
-
-                <div class="bg-gray-50 p-4 rounded-lg mt-4">
-                    <h3 class="font-semibold mb-3">Tus Invitados (opcional)</h3>
-                    <p class="text-sm text-gray-600 mb-3">Podés agregar hasta 5 invitados. Si venís solo/a, dejá estos campos vacíos.</p>
                     
                     <div class="grid md:grid-cols-2 gap-4">
-                        <input type="text" name="invitado1" class="form-input-elegant" placeholder="Invitado 1">
-                        <input type="text" name="invitado2" class="form-input-elegant" placeholder="Invitado 2">
-                        <input type="text" name="invitado3" class="form-input-elegant" placeholder="Invitado 3">
-                        <input type="text" name="invitado4" class="form-input-elegant" placeholder="Invitado 4">
-                        <input type="text" name="invitado5" class="form-input-elegant" placeholder="Invitado 5">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Teléfono *</label>
+                            <input type="tel" name="telefono" class="form-input-elegant" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Email *</label>
+                            <input type="email" name="email" class="form-input-elegant" required>
+                        </div>
                     </div>
-                </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Selecciona tu horario preferido *</label>
+                        <select name="horario" class="select-time" required>
+                            <option value="" disabled selected>Elige un horario</option>
+                            <option value="10:00">10:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="17:00">17:00</option>
+                            <option value="19:00">19:00</option>
+                        </select>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded-lg mt-4">
+                        <h3 class="font-semibold mb-3">Tus Invitados (opcional)</h3>
+                        <p class="text-sm text-gray-600 mb-3">Podés agregar hasta 5 invitados. Si venís solo/a, dejá estos campos vacíos.</p>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <input type="text" name="invitado1" class="form-input-elegant" placeholder="Invitado 1">
+                            <input type="text" name="invitado2" class="form-input-elegant" placeholder="Invitado 2">
+                            <input type="text" name="invitado3" class="form-input-elegant" placeholder="Invitado 3">
+                            <input type="text" name="invitado4" class="form-input-elegant" placeholder="Invitado 4">
+                            <input type="text" name="invitado5" class="form-input-elegant" placeholder="Invitado 5">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn-elegant">
+                        <i class="fas fa-check-circle mr-2"></i>Confirmar Mi Reserva
+                    </button>
+                    
+                    <p class="text-xs text-gray-500 mt-4 text-center">* La entrada de 10€ incluye a vos + hasta 5 invitados. Se abona al llegar al evento.</p>
+                </form>
                 
-                <button type="submit" class="submit-btn-elegant">
-                    <i class="fas fa-check-circle mr-2"></i>Confirmar Mi Reserva
-                </button>
-                
-                <p class="text-xs text-gray-500 mt-4 text-center">* La entrada de 10€ incluye a vos + hasta 5 invitados. Se abona al llegar al evento.</p>
-            </form>
-            
-            <div id="thank-you-message" class="text-center py-8 hidden">
-                <div class="text-green-500 text-6xl mb-4">
-                    <i class="fas fa-check-circle"></i>
+                <div id="thank-you-message" class="text-center py-8 hidden">
+                    <div class="text-green-500 text-6xl mb-4">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">¡Reserva Confirmada!</h3>
+                    <p class="text-gray-600 mb-4">Te esperamos el <strong>4 de Octubre</strong> en el Hotel Staybridge Suites</p>
+                    <p class="text-gray-500 text-sm">Recibirás un recordatorio por email</p>
+                    <button onclick="hideModal()" class="submit-btn-elegant bg-gray-600 mt-4">
+                        Cerrar
+                    </button>
                 </div>
-                <h3 class="text-2xl font-bold mb-2">¡Reserva Confirmada!</h3>
-                <p class="text-gray-600 mb-4">Te esperamos el <strong>4 de Octubre</strong> en el Hotel Staybridge Suites</p>
-                <p class="text-gray-500 text-sm">Recibirás un recordatorio por email</p>
-                <button onclick="hideModal()" class="submit-btn-elegant bg-gray-600 mt-4">
-                    Cerrar
-                </button>
+            </div>
+        </div>
+
+        <!-- NOTIFICACIÓN DE CONFIRMACIÓN -->
+        <div id="confirmation-notification" class="confirmation-notification">
+            <div class="confirmation-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div>
+                <p><strong id="confirmation-name">María</strong> de <span id="confirmation-city">Málaga</span> acaba de reservar</p>
             </div>
         </div>
     </div>
 
-    <!-- NOTIFICACIÓN DE CONFIRMACIÓN -->
-    <div id="confirmation-notification" class="confirmation-notification">
-        <div class="confirmation-icon">
-            <i class="fas fa-check-circle"></i>
-        </div>
-        <div>
-            <p><strong id="confirmation-name">María</strong> de <span id="confirmation-city">Málaga</span> acaba de reservar</p>
+    <!-- PÁGINA DE AGRADECIMIENTO -->
+    <div id="thank-you-page" class="thank-you-page" style="display: none;">
+        <div class="thank-you-container">
+            <div class="thank-you-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h1 class="text-4xl font-bold mb-6 gradient-text">¡Gracias por tu reserva!</h1>
+            <p class="text-xl mb-4">Tu plaza para el evento de Atomy Málaga ha sido confirmada.</p>
+            <p class="text-lg mb-8">Te esperamos el <strong>4 de Octubre de 2025</strong> en el Hotel Staybridge Suites.</p>
+            
+            <div class="bg-gray-50 p-6 rounded-lg mb-8">
+                <h2 class="text-2xl font-bold mb-4">Detalles de tu reserva:</h2>
+                <ul class="text-left space-y-2">
+                    <li class="flex items-center"><i class="fas fa-calendar-alt mr-3 text-pink-500"></i> <strong>Fecha:</strong> Sábado 4 de Octubre 2025</li>
+                    <li class="flex items-center"><i class="fas fa-map-marker-alt mr-3 text-pink-500"></i> <strong>Lugar:</strong> Hotel Staybridge Suites, Málaga</li>
+                    <li class="flex items-center"><i class="fas fa-ticket-alt mr-3 text-pink-500"></i> <strong>Entrada:</strong> 10€ (incluye hasta 6 personas)</li>
+                    <li class="flex items-center"><i class="fas fa-money-bill-wave mr-3 text-pink-500"></i> <strong>Pago:</strong> Directo en el evento</li>
+                </ul>
+            </div>
+            
+            <p class="mb-6">Recibirás un email de confirmación con todos los detalles.</p>
+            
+            <a href="index.html" class="main-cta inline-block">
+                <i class="fas fa-home mr-2"></i>Volver a la página principal
+            </a>
         </div>
     </div>
+
+    <script>
+        // Mostrar la página correcta según la URL
+        if (window.location.pathname.includes('thankyou.html')) {
+            document.getElementById('thank-you-page').style.display = 'flex';
+            document.getElementById('main-content').style.display = 'none';
+        } else {
+            document.getElementById('thank-you-page').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
