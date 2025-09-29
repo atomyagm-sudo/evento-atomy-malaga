@@ -584,11 +584,16 @@
         /* PÁGINA DE AGRADECIMIENTO */
         .thank-you-page {
             min-height: 100vh;
-            display: flex;
+            display: none; /* Oculto por defecto */
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, #fef7f7 0%, #f8f8f8 100%);
             padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 3000;
         }
 
         .thank-you-container {
@@ -872,12 +877,6 @@
 
             // Inicializar notificaciones de confirmación
             initConfirmationNotifications();
-
-            // Verificar si estamos en la página de agradecimiento
-            if (window.location.pathname.includes('thankyou.html')) {
-                // Disparar evento de conversión para el Pixel de Facebook
-                fbq('track', 'Lead');
-            }
         });
 
         // Contador con fecha correcta: 4 de octubre 2025
@@ -993,7 +992,7 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Formulario con Formspree y redirección a página de agradecimiento
+        // Formulario con Formspree y mostrar página de agradecimiento
         window.handleSubmit = function(event) {
             event.preventDefault();
             
@@ -1016,8 +1015,11 @@
             })
             .then(response => {
                 if (response.ok) {
-                    // Éxito - redirigir a página de agradecimiento
-                    window.location.href = 'thankyou.html';
+                    // Éxito - mostrar página de agradecimiento
+                    showThankYouPage();
+                    
+                    // Disparar evento de conversión para el Pixel de Facebook
+                    fbq('track', 'Lead');
                 } else {
                     // Error
                     throw new Error('Error al enviar el formulario');
@@ -1030,6 +1032,16 @@
                 submitButton.disabled = false;
             });
         };
+
+        // Mostrar página de agradecimiento
+        function showThankYouPage() {
+            // Ocultar el contenido principal
+            document.getElementById('main-content').style.display = 'none';
+            // Mostrar la página de agradecimiento
+            document.getElementById('thank-you-page').style.display = 'flex';
+            // Desplazar al inicio de la página
+            window.scrollTo(0, 0);
+        }
 
         // Cerrar modal al hacer clic fuera
         document.addEventListener('click', function(e) {
@@ -1044,10 +1056,8 @@
         });
     </script>
 
-    <!-- Verificar si estamos en la página de agradecimiento -->
-    <div id="main-content" style="display: none;">
-        <!-- Contenido principal de la página -->
-        
+    <!-- CONTENIDO PRINCIPAL -->
+    <div id="main-content">
         <!-- HEADER CON LOGO ATomy -->
         <header class="elegant-header">
             <div class="container mx-auto px-4">
@@ -1452,8 +1462,8 @@
         </div>
     </div>
 
-    <!-- PÁGINA DE AGRADECIMIENTO -->
-    <div id="thank-you-page" class="thank-you-page" style="display: none;">
+    <!-- PÁGINA DE AGRADECIMIENTO (OCULTA INICIALMENTE) -->
+    <div id="thank-you-page" class="thank-you-page">
         <div class="thank-you-container">
             <div class="thank-you-icon">
                 <i class="fas fa-check-circle"></i>
@@ -1474,21 +1484,10 @@
             
             <p class="mb-6">Recibirás un email de confirmación con todos los detalles.</p>
             
-            <a href="index.html" class="main-cta inline-block">
+            <button onclick="location.reload()" class="main-cta">
                 <i class="fas fa-home mr-2"></i>Volver a la página principal
-            </a>
+            </button>
         </div>
     </div>
-
-    <script>
-        // Mostrar la página correcta según la URL
-        if (window.location.pathname.includes('thankyou.html')) {
-            document.getElementById('thank-you-page').style.display = 'flex';
-            document.getElementById('main-content').style.display = 'none';
-        } else {
-            document.getElementById('thank-you-page').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
-        }
-    </script>
 </body>
 </html>
