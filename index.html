@@ -418,7 +418,12 @@
             transform: scale(1.2);
         }
 
-        /* FORMULARIO */
+        /* FORMULARIO INTEGRADO EN PÁGINA PRINCIPAL */
+        .form-section {
+            background: linear-gradient(135deg, #fef7f7 0%, #f8f8f8 100%);
+            padding: 80px 20px;
+        }
+
         .elegant-form {
             background: white;
             padding: 50px;
@@ -533,25 +538,6 @@
             background: rgba(255,255,255,0.1);
             padding: 10px 20px;
             border-radius: 10px;
-        }
-
-        /* MODAL */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            padding: 20px;
-        }
-
-        .modal-overlay.active {
-            display: flex;
         }
 
         /* NOTIFICACIÓN DE CONFIRMACIÓN */
@@ -704,6 +690,30 @@
             .thank-you-container {
                 padding: 40px 20px;
             }
+
+            /* MEJORAS RESPONSIVE ESPECÍFICAS PARA EL FORMULARIO EN MÓVIL */
+            .elegant-form {
+                padding: 25px 15px;
+                margin: 10px;
+                max-width: 95%;
+            }
+            
+            .form-input-elegant, .select-time {
+                padding: 16px 15px;
+                font-size: 16px;
+                margin-bottom: 15px;
+                min-height: 50px;
+            }
+            
+            .grid.md\:grid-cols-2 {
+                grid-template-columns: 1fr !important;
+                gap: 10px;
+            }
+            
+            .submit-btn-elegant {
+                padding: 16px;
+                font-size: 1.1em;
+            }
         }
 
         @media (max-width: 480px) {
@@ -761,70 +771,10 @@
             .carousel-indicators {
                 gap: 8px;
             }
-        }
 
-        /* MEJORAS RESPONSIVE ESPECÍFICAS PARA EL FORMULARIO EN MÓVIL */
-        @media (max-width: 768px) {
-            .elegant-form {
-                padding: 25px 15px;
-                margin: 10px;
-                max-width: 95%;
-                max-height: 90vh;
-                overflow-y: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-            
-            .modal-overlay.active {
-                padding: 10px;
-                align-items: flex-start;
-                padding-top: 50px;
-            }
-            
-            .form-input-elegant, .select-time {
-                padding: 16px 15px;
-                font-size: 16px;
-                margin-bottom: 15px;
-                min-height: 50px;
-            }
-            
-            .grid.md\:grid-cols-2 {
-                grid-template-columns: 1fr !important;
-                gap: 10px;
-            }
-            
-            .submit-btn-elegant {
-                padding: 16px;
-                font-size: 1.1em;
-            }
-            
-            /* Mejorar el modal para que sea más fácil de cerrar */
-            .elegant-form .absolute {
-                top: 10px;
-                right: 10px;
-                z-index: 10;
-                background: rgba(255,255,255,0.9);
-                border-radius: 50%;
-                width: 40px;
-                height: 40px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
             .elegant-form {
                 padding: 20px 12px;
                 border-radius: 15px;
-            }
-            
-            .hero h1 {
-                font-size: 2em;
-            }
-            
-            .main-cta {
-                padding: 16px 30px;
-                font-size: 1.1em;
             }
             
             /* Hacer los inputs más grandes y fáciles de tocar */
@@ -836,11 +786,6 @@
             .bg-gray-50 {
                 padding: 15px 10px !important;
             }
-        }
-
-        /* Scroll suave para el modal en móvil */
-        .elegant-form {
-            -webkit-overflow-scrolling: touch;
         }
     </style>
 </head>
@@ -978,20 +923,6 @@
             setInterval(showRandomConfirmation, 25000 + Math.random() * 10000);
         }
 
-        // Función del modal
-        window.showModal = () => {
-            document.getElementById('reservation-modal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        window.hideModal = () => {
-            document.getElementById('reservation-modal').classList.remove('active');
-            document.getElementById('reservation-form').reset();
-            document.getElementById('thank-you-message').style.display = 'none';
-            document.getElementById('reservation-form').style.display = 'block';
-            document.body.style.overflow = 'auto';
-        }
-
         // Formulario con Formspree y mostrar página de agradecimiento
         window.handleSubmit = function(event) {
             event.preventDefault();
@@ -1042,18 +973,6 @@
             // Desplazar al inicio de la página
             window.scrollTo(0, 0);
         }
-
-        // Cerrar modal al hacer clic fuera
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('modal-overlay')) {
-                hideModal();
-            }
-        });
-
-        // Cerrar con ESC
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') hideModal();
-        });
     </script>
 
     <!-- CONTENIDO PRINCIPAL -->
@@ -1063,9 +982,9 @@
             <div class="container mx-auto px-4">
                 <div class="flex justify-between items-center">
                     <div class="logo-atomy">ATOMY</div>
-                    <button onclick="showModal()" class="bg-white text-pink-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-all">
+                    <a href="#form-section" class="bg-white text-pink-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-all">
                         Reservar Ahora
-                    </button>
+                    </a>
                 </div>
             </div>
         </header>
@@ -1090,9 +1009,9 @@
                     </div>
                     <br>
                     
-                    <button onclick="showModal()" class="main-cta pulse-glow">
+                    <a href="#form-section" class="main-cta pulse-glow">
                         <i class="fas fa-calendar-plus mr-2"></i>Reservar Mi Plaza VIP
-                    </button>
+                    </a>
                     
                     <div class="countdown-elegant">
                         <div class="countdown-item floating">
@@ -1134,9 +1053,9 @@
                     <span>4 de Octubre 2025</span>
                 </div>
             </div>
-            <button onclick="showModal()" class="main-cta bg-white text-pink-600">
+            <a href="#form-section" class="main-cta bg-white text-pink-600">
                 <i class="fas fa-lock mr-2"></i>Quiero Mi Plaza
-            </button>
+            </a>
         </div>
 
         <!-- BENEFICIOS ACTUALIZADOS -->
@@ -1316,26 +1235,67 @@
             </div>
         </section>
 
-        <!-- CTA FINAL -->
-        <section class="conversion-optimized">
+        <!-- FORMULARIO INTEGRADO EN PÁGINA PRINCIPAL -->
+        <section id="form-section" class="form-section">
             <div class="container mx-auto">
-                <div class="urgency-badge">🎟️ ENTRADA: 10€ (INCLUYE HASTA 6 PERSONAS)</div>
-                <h2 class="text-4xl font-bold mb-4">¿Lista para Experimentar la Belleza Coreana?</h2>
-                <p class="text-xl mb-8 opacity-90">Últimas 30 plazas disponibles para el sábado 4 de octubre</p>
+                <h2 class="section-title gradient-text slide-in">Reserva Tu Entrada</h2>
+                <p class="text-center text-gray-600 mb-8 text-lg">10€ - Incluye a vos + hasta 5 invitados (se abona al llegar)</p>
                 
-                <div class="max-w-md mx-auto">
-                    <ul class="text-left mb-8 space-y-3">
-                        <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-green-300"></i> Tratamiento skincare de 4 pasos</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-green-300"></i> Participación en sorteos exclusivos</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-green-300"></i> Conocé todos los productos Atomy</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-green-300"></i> Podés venir con hasta 5 invitados</li>
-                    </ul>
-                    
-                    <button onclick="showModal()" class="main-cta bg-white text-pink-600 text-lg py-4 px-8">
-                        <i class="fas fa-bolt mr-2"></i>RESERVAR MI ENTRADA (10€)
-                    </button>
-                    
-                    <p class="text-sm mt-4 opacity-75">💳 Pago directo en el evento • 👥 Incluye hasta 6 personas</p>
+                <div class="elegant-form slide-in">
+                    <form id="reservation-form" action="https://formspree.io/f/xanpqgek" method="POST" onsubmit="return handleSubmit(event)">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Nombre *</label>
+                                <input type="text" name="nombre" class="form-input-elegant" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Apellido *</label>
+                                <input type="text" name="apellido" class="form-input-elegant" required>
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Teléfono *</label>
+                                <input type="tel" name="telefono" class="form-input-elegant" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Email *</label>
+                                <input type="email" name="email" class="form-input-elegant" required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Selecciona tu horario preferido *</label>
+                            <select name="horario" class="select-time" required>
+                                <option value="" disabled selected>Elige un horario</option>
+                                <option value="10:00">10:00</option>
+                                <option value="12:00">12:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="17:00">17:00</option>
+                                <option value="19:00">19:00</option>
+                            </select>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg mt-4">
+                            <h3 class="font-semibold mb-3">Tus Invitados (opcional)</h3>
+                            <p class="text-sm text-gray-600 mb-3">Podés agregar hasta 5 invitados. Si venís solo/a, dejá estos campos vacíos.</p>
+                            
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <input type="text" name="invitado1" class="form-input-elegant" placeholder="Invitado 1">
+                                <input type="text" name="invitado2" class="form-input-elegant" placeholder="Invitado 2">
+                                <input type="text" name="invitado3" class="form-input-elegant" placeholder="Invitado 3">
+                                <input type="text" name="invitado4" class="form-input-elegant" placeholder="Invitado 4">
+                                <input type="text" name="invitado5" class="form-input-elegant" placeholder="Invitado 5">
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn-elegant">
+                            <i class="fas fa-check-circle mr-2"></i>Confirmar Mi Reserva
+                        </button>
+                        
+                        <p class="text-xs text-gray-500 mt-4 text-center">* La entrada de 10€ incluye a vos + hasta 5 invitados. Se abona al llegar al evento.</p>
+                    </form>
                 </div>
             </div>
         </section>
@@ -1371,85 +1331,6 @@
                 <p class="text-center opacity-75">© 2025 Atomy Málaga - Evento Exclusivo 4 de Octubre</p>
             </div>
         </footer>
-
-        <!-- MODAL CON FORMULARIO COMPLETO PARA FORMSPREE -->
-        <div id="reservation-modal" class="modal-overlay">
-            <div class="elegant-form relative">
-                <button onclick="hideModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">
-                    <i class="fas fa-times"></i>
-                </button>
-                
-                <h2 class="text-3xl font-bold text-center mb-2 gradient-text">Reserva Tu Entrada</h2>
-                <p class="text-center text-gray-600 mb-6">10€ - Incluye a vos + hasta 5 invitados (se abona al llegar)</p>
-                
-                <form id="reservation-form" action="https://formspree.io/f/xanpqgek" method="POST" onsubmit="return handleSubmit(event)">
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium mb-2">Nombre *</label>
-                            <input type="text" name="nombre" class="form-input-elegant" required>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium mb-2">Apellido *</label>
-                            <input type="text" name="apellido" class="form-input-elegant" required>
-                        </div>
-                    </div>
-                    
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium mb-2">Teléfono *</label>
-                            <input type="tel" name="telefono" class="form-input-elegant" required>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium mb-2">Email *</label>
-                            <input type="email" name="email" class="form-input-elegant" required>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Selecciona tu horario preferido *</label>
-                        <select name="horario" class="select-time" required>
-                            <option value="" disabled selected>Elige un horario</option>
-                            <option value="10:00">10:00</option>
-                            <option value="12:00">12:00</option>
-                            <option value="15:00">15:00</option>
-                            <option value="17:00">17:00</option>
-                            <option value="19:00">19:00</option>
-                        </select>
-                    </div>
-
-                    <div class="bg-gray-50 p-4 rounded-lg mt-4">
-                        <h3 class="font-semibold mb-3">Tus Invitados (opcional)</h3>
-                        <p class="text-sm text-gray-600 mb-3">Podés agregar hasta 5 invitados. Si venís solo/a, dejá estos campos vacíos.</p>
-                        
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <input type="text" name="invitado1" class="form-input-elegant" placeholder="Invitado 1">
-                            <input type="text" name="invitado2" class="form-input-elegant" placeholder="Invitado 2">
-                            <input type="text" name="invitado3" class="form-input-elegant" placeholder="Invitado 3">
-                            <input type="text" name="invitado4" class="form-input-elegant" placeholder="Invitado 4">
-                            <input type="text" name="invitado5" class="form-input-elegant" placeholder="Invitado 5">
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn-elegant">
-                        <i class="fas fa-check-circle mr-2"></i>Confirmar Mi Reserva
-                    </button>
-                    
-                    <p class="text-xs text-gray-500 mt-4 text-center">* La entrada de 10€ incluye a vos + hasta 5 invitados. Se abona al llegar al evento.</p>
-                </form>
-                
-                <div id="thank-you-message" class="text-center py-8 hidden">
-                    <div class="text-green-500 text-6xl mb-4">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2">¡Reserva Confirmada!</h3>
-                    <p class="text-gray-600 mb-4">Te esperamos el <strong>4 de Octubre</strong> en el Hotel Staybridge Suites</p>
-                    <p class="text-gray-500 text-sm">Recibirás un recordatorio por email</p>
-                    <button onclick="hideModal()" class="submit-btn-elegant bg-gray-600 mt-4">
-                        Cerrar
-                    </button>
-                </div>
-            </div>
-        </div>
 
         <!-- NOTIFICACIÓN DE CONFIRMACIÓN -->
         <div id="confirmation-notification" class="confirmation-notification">
