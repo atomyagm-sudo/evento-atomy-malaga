@@ -1,774 +1,762 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- METADATOS SEO -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evento Atomy Málaga 2025 | Skincare Coreano + Sorteos | 4 Octubre</title>
-    <meta name="description" content="¡Evento exclusivo Atomy en Málaga! 4 Octubre 2025. Tratamiento facial de 4 pasos, sorteos de productos coreanos y experiencia skincare. Entrada 10€ incluye hasta 6 personas. ¡Reserva ya!">
-    <meta name="keywords" content="atomy malaga, evento atomy, skincare coreano, tratamiento facial, productos atomy, belleza coreana, malaga octubre 2025, sorteo atomy">
-    
-    <!-- OPEN GRAPH -->
-    <meta property="og:title" content="Evento Exclusivo Atomy Málaga - 4 Octubre 2025">
-    <meta property="og:description" content="Experiencia única de skincare coreano con Atomy. Tratamientos faciales, sorteos y productos exclusivos. ¡No te lo pierdas!">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="assets/banner-atomy.png">
-    
-    <!-- TWITTER CARD -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Evento Atomy Málaga 2025 | Skincare Coreano">
-    <meta name="twitter:description" content="Únete al evento exclusivo de Atomy en Málaga. 4 Octubre 2025">
-    
-    <!-- SCHEMA MARKUP -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Event",
-      "name": "Experiencia Atomy: Skincare Coreano & Sorteos Exclusivos",
-      "description": "Evento exclusivo de Atomy en Málaga con tratamiento facial de 4 pasos y sorteos de productos coreanos",
-      "startDate": "2025-10-04T10:00",
-      "endDate": "2025-10-04T21:00",
-      "location": {
-        "@type": "Place",
-        "name": "Hotel Staybridge Suites Málaga",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Paseo de los Mártires 36",
-          "addressLocality": "Málaga",
-          "addressCountry": "ES"
-        }
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "10",
-        "priceCurrency": "EUR",
-        "description": "Entrada grupal (hasta 6 personas)"
-      },
-      "organizer": {
-        "@type": "Organization",
-        "name": "Atomy Málaga",
-        "email": "atomy.agm@gmail.com",
-        "telephone": "+34641248134"
-      }
-    }
-    </script>
-
-    <!-- Meta Pixel Code (ÚNICA INSTANCIA) -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1974179936709784');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1974179936709784&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
-
-    <!-- CSS Y FUENTES -->
+    <title>Pet Portrait AI - Generador de Estilos</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap');
-        
-        :root {
-            --primary-color: #d6a3a3;
-            --secondary-color: #c48c8c;
-            --accent-color: #9c6b6b;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #fef7f7 0%, #f8f8f8 100%);
-            color: #4a4a4a;
-            overflow-x: hidden;
-            font-size: 18px;
-            line-height: 1.7;
+            font-family: 'Inter', sans-serif;
         }
-
-        .glass-effect { background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.18); }
-        .gradient-text { background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .floating { animation: floating 3s ease-in-out infinite; }
-        @keyframes floating { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
-        .pulse-glow { animation: pulse-glow 2s infinite; }
-        @keyframes pulse-glow { 0% { box-shadow: 0 0 20px rgba(214, 163, 163, 0.4); } 50% { box-shadow: 0 0 30px rgba(214, 163, 163, 0.8); } 100% { box-shadow: 0 0 20px rgba(214, 163, 163, 0.4); } }
-        .slide-in { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
-        .slide-in.visible { opacity: 1; transform: translateY(0); }
-
-        /* HEADER CON LOGO ATomy */
-        .elegant-header { background: linear-gradient(135deg, rgba(214, 163, 163, 0.95), rgba(196, 140, 140, 0.95)); backdrop-filter: blur(10px); padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 5px 30px rgba(0,0,0,0.1); }
-        .logo-atomy { font-family: 'Montserrat', sans-serif; font-size: 2.2em; font-weight: 800; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); letter-spacing: 1px; }
-        .urgency-banner { background: linear-gradient(90deg, #fff, #f8f8f8); color: #555; padding: 15px; text-align: center; font-weight: 600; font-size: 16px; position: relative; overflow: hidden; margin-top: 70px; }
-
-        /* HERO SECTION */
-        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('assets/banner-atomy.png') center/cover; text-align: center; }
-        .hero-content { position: relative; z-index: 2; padding: 40px 20px; max-width: 1000px; margin: 0 auto; }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5em; font-weight: 700; margin-bottom: 20px; color: #ffffff; text-shadow: 2px 2px 15px rgba(0,0,0,0.5); line-height: 1.1; }
-        .main-cta { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 20px 50px; font-size: 1.2em; font-weight: 600; border: none; border-radius: 50px; cursor: pointer; text-decoration: none; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 15px 35px rgba(214, 163, 163, 0.4); display: inline-block; margin: 25px 0; }
-        .main-cta:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 20px 40px rgba(214, 163, 163, 0.6); }
-
-        /* COUNTDOWN */
-        .countdown-elegant { display: flex; justify-content: center; gap: 20px; margin: 40px 0; flex-wrap: wrap; }
-        .countdown-item { background: rgba(255, 255, 255, 0.15); border-radius: 15px; padding: 20px; min-width: 100px; text-align: center; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
-        .countdown-number { font-size: 2.5em; font-weight: 700; color: white; line-height: 1; }
-        .countdown-label { font-size: 0.9em; color: rgba(255, 255, 255, 0.9); margin-top: 8px; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* SECCIONES */
-        .elegant-section { padding: 100px 20px; position: relative; }
-        .section-title { font-family: 'Playfair Display', serif; font-size: 3em; text-align: center; margin-bottom: 60px; position: relative; }
-        .section-title::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 100px; height: 3px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); }
-
-        /* BENEFICIOS */
-        .benefits-grid-elegant { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .benefit-card { background: white; padding: 40px 30px; border-radius: 20px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.08); transition: all 0.4s ease; border: 1px solid #f0f0f0; }
-        .benefit-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
-        .benefit-icon { width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; font-size: 2em; color: white; }
-
-        /* MAPA GRANDE */
-        .map-container-elegant { width: 100%; height: 500px; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.15); margin: 50px 0; }
-
-        /* TESTIMONIOS - CARRUSEL - MEJORADO PARA MÓVIL */
-        .testimonials-elegant { background: linear-gradient(135deg, #fafafa, #f0f0f0); padding: 100px 20px; }
-        .testimonial-carousel { max-width: 1000px; margin: 0 auto; position: relative; overflow: hidden; }
-        .carousel-container { display: flex; transition: transform 0.5s ease; }
-        .testimonial-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); margin: 20px; position: relative; min-width: calc(100% - 40px); flex-shrink: 0; }
-        .testimonial-card::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 6em; color: var(--primary-color); position: absolute; top: -20px; left: 20px; opacity: 0.2; }
-        .carousel-controls { display: flex; justify-content: center; margin-top: 30px; gap: 15px; }
-        .carousel-btn { background: var(--primary-color); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
-        .carousel-btn:hover { background: var(--accent-color); transform: scale(1.1); }
-        .carousel-indicators { display: flex; justify-content: center; margin-top: 20px; gap: 10px; }
-        .indicator { width: 12px; height: 12px; border-radius: 50%; background: #ddd; cursor: pointer; transition: all 0.3s ease; }
-        .indicator.active { background: var(--primary-color); transform: scale(1.2); }
-
-        /* FORMULARIO INTEGRADO EN PÁGINA PRINCIPAL */
-        .form-section { background: linear-gradient(135deg, #fef7f7 0%, #f8f8f8 100%); padding: 80px 20px; }
-        .elegant-form { background: white; padding: 50px; border-radius: 25px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); max-width: 800px; margin: 0 auto; }
-        .form-input-elegant { width: 100%; padding: 18px 20px; border: 2px solid #e1e5e9; border-radius: 12px; font-size: 16px; transition: all 0.3s ease; background: #fafafa; margin-bottom: 20px; }
-        .form-input-elegant:focus { outline: none; border-color: var(--primary-color); background: white; box-shadow: 0 0 0 3px rgba(214, 163, 163, 0.1); }
-        .select-time { width: 100%; padding: 18px 20px; border: 2px solid #e1e5e9; border-radius: 12px; font-size: 16px; transition: all 0.3s ease; background: #fafafa; margin-bottom: 20px; appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 15px center; background-size: 16px; }
-        .select-time:focus { outline: none; border-color: var(--primary-color); background: white; box-shadow: 0 0 0 3px rgba(214, 163, 163, 0.1); }
-        .submit-btn-elegant { width: 100%; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 18px; border: none; border-radius: 12px; font-size: 1.2em; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-top: 20px; }
-        .submit-btn-elegant:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(214, 163, 163, 0.4); }
-
-        /* FOOTER */
-        .elegant-footer { background: linear-gradient(135deg, #2c3e50, #34495e); color: white; padding: 60px 20px; text-align: center; }
-
-        /* OPTIMIZACIÓN CONVERSIÓN */
-        .conversion-optimized { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 60px 20px; text-align: center; margin: 50px 0; }
-        .urgency-badge { background: #e74c3c; color: white; padding: 8px 20px; border-radius: 20px; font-size: 0.9em; font-weight: 600; display: inline-block; margin-bottom: 20px; animation: pulse 2s infinite; }
-        .social-proof { display: flex; justify-content: center; align-items: center; gap: 15px; margin: 30px 0; flex-wrap: wrap; }
-        .proof-item { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 10px; }
-
-        /* NOTIFICACIÓN DE CONFIRMACIÓN */
-        .confirmation-notification { position: fixed; bottom: 20px; right: 20px; background: white; padding: 15px 20px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); z-index: 1500; display: flex; align-items: center; gap: 10px; transform: translateX(120%); transition: transform 0.5s ease; max-width: 300px; }
-        .confirmation-notification.show { transform: translateX(0); }
-        .confirmation-icon { color: #4CAF50; font-size: 1.5em; }
-
-        /* PÁGINA DE AGRADECIMIENTO */
-        .thank-you-page { min-height: 100vh; display: none; align-items: center; justify-content: center; background: linear-gradient(135deg, #fef7f7 0%, #f8f8f8 100%); padding: 20px; position: fixed; top: 0; left: 0; width: 100%; z-index: 3000; }
-        .thank-you-container { max-width: 800px; text-align: center; background: white; padding: 60px 40px; border-radius: 25px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
-        .thank-you-icon { font-size: 5em; color: var(--primary-color); margin-bottom: 30px; }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5em; }
-            .section-title { font-size: 2.2em; }
-            .benefits-grid-elegant { grid-template-columns: 1fr; }
-            .map-container-elegant { height: 400px; }
-            .countdown-item { min-width: 80px; padding: 15px; }
-            .countdown-number { font-size: 2em; }
-            .logo-atomy { font-size: 1.8em; }
-            .testimonial-carousel { max-width: 100%; overflow: hidden; }
-            .carousel-container { width: 100%; }
-            .testimonial-card { padding: 30px 20px; margin: 10px; min-width: calc(100% - 20px); width: calc(100% - 20px); box-sizing: border-box; }
-            .testimonial-card::before { font-size: 4em; top: -10px; left: 15px; }
-            .testimonial-card p { font-size: 16px; line-height: 1.6; }
-            .testimonial-card .flex img { width: 40px; height: 40px; }
-            .testimonial-card .flex div { font-size: 14px; }
-            .carousel-btn { width: 50px; height: 50px; font-size: 1.2em; }
-            .carousel-indicators { margin-top: 15px; }
-            .indicator { width: 10px; height: 10px; }
-            .confirmation-notification { max-width: 250px; right: 10px; bottom: 10px; }
-            .thank-you-container { padding: 40px 20px; }
-            .elegant-form { padding: 25px 15px; margin: 10px; max-width: 95%; }
-            .form-input-elegant, .select-time { padding: 16px 15px; font-size: 16px; margin-bottom: 15px; min-height: 50px; }
-            .grid.md\:grid-cols-2 { grid-template-columns: 1fr !important; gap: 10px; }
-            .submit-btn-elegant { padding: 16px; font-size: 1.1em; }
+        .file-upload-card {
+            border: 2px dashed #d1d5db;
+            transition: all 0.3s ease;
         }
-
-        @media (max-width: 480px) {
-            .hero h1 { font-size: 2em; }
-            .main-cta { padding: 18px 35px; font-size: 1.1em; }
-            .map-container-elegant { height: 300px; }
-            .testimonials-elegant { padding: 60px 10px; }
-            .testimonial-card { padding: 25px 15px; margin: 5px; min-width: calc(100% - 10px); width: calc(100% - 10px); }
-            .testimonial-card::before { font-size: 3.5em; top: -5px; left: 10px; }
-            .testimonial-card p { font-size: 15px; margin-bottom: 15px; }
-            .testimonial-card .flex img { width: 35px; height: 35px; margin-right: 10px; }
-            .testimonial-card .flex div { font-size: 13px; }
-            .carousel-btn { width: 45px; height: 45px; }
-            .carousel-indicators { gap: 8px; }
-            .elegant-form { padding: 20px 12px; border-radius: 15px; }
-            .form-input-elegant, .select-time { min-height: 55px; font-size: 16px; }
-            .bg-gray-50 { padding: 15px 10px !important; }
+        .file-upload-card.drag-over {
+            border-color: #667eea;
+            background-color: #f0f2ff;
+        }
+        .preview-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            border: 2px solid #e5e7eb;
+        }
+        #dog-previews-container .preview-image {
+            width: 80px;
+            height: 80px;
+        }
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* Custom Modal for alerts */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 90%;
+            width: 400px;
+            text-align: center;
+        }
+        .sticker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            justify-items: center;
+        }
+        .sticker-container {
+            border: 1px solid #e5e7eb;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            background-color: #fafafa;
+        }
+        .sticker-container img {
+            width: 100%;
+            height: auto;
+            max-height: 100px;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
         }
     </style>
 </head>
-<body>
-
-    <script>
-        // Observador para animaciones al hacer scroll
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } }); }, observerOptions);
-
-        // Inicializar animaciones
-        document.addEventListener('DOMContentLoaded', function() {
-            // Observar elementos para animaciones
-            document.querySelectorAll('.slide-in').forEach(el => { observer.observe(el); });
-
-            // Inicializar contador - FECHA CORREGIDA: 4 DE OCTUBRE 2025
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
-
-            // Inicializar carrusel de testimonios
-            initTestimonialCarousel();
-
-            // Inicializar notificaciones de confirmación
-            initConfirmationNotifications();
-
-            // —— Pixel extra: track Contact al hacer clic en WhatsApp ——
-            const waBtn = document.querySelector('a[href^="https://wa.me/"]');
-            if (waBtn) {
-                waBtn.addEventListener('click', function() {
-                    if (typeof fbq === 'function') {
-                        fbq('track', 'Contact');
-                    }
-                });
-            }
-        });
-
-        // Contador con fecha correcta: 4 de octubre 2025
-        function updateCountdown() {
-            const eventDate = new Date("October 4, 2025 10:00:00").getTime();
-            const now = new Date().getTime();
-            const distance = eventDate - now;
-            
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Actualizar contadores en toda la página
-            document.querySelectorAll("#days").forEach(el => el.textContent = days.toString().padStart(2, '0'));
-            document.querySelectorAll("#hours").forEach(el => el.textContent = hours.toString().padStart(2, '0'));
-            document.querySelectorAll("#minutes").forEach(el => el.textContent = minutes.toString().padStart(2, '0'));
-            document.querySelectorAll("#seconds").forEach(el => el.textContent = seconds.toString().padStart(2, '0'));
-
-            // Actualizar también el display del banner
-            document.getElementById("countdown-display").innerHTML = 
-                `Finaliza en: <span>${days.toString().padStart(2, '0')}</span>d <span>${hours.toString().padStart(2, '0')}</span>h <span>${minutes.toString().padStart(2, '0')}</span>m <span>${seconds.toString().padStart(2, '0')}</span>s`;
-        }
-
-        // Carrusel de testimonios
-        function initTestimonialCarousel() {
-            const container = document.querySelector('.carousel-container');
-            const cards = document.querySelectorAll('.testimonial-card');
-            const indicators = document.querySelectorAll('.indicator');
-            const prevBtn = document.querySelector('.carousel-prev');
-            const nextBtn = document.querySelector('.carousel-next');
-            
-            let currentIndex = 0;
-            const totalCards = cards.length;
-            
-            function updateCarousel() {
-                container.style.transform = `translateX(-${currentIndex * 100}%)`;
-                indicators.forEach((indicator, index) => {
-                    indicator.classList.toggle('active', index === currentIndex);
-                });
-            }
-            
-            function nextCard() { currentIndex = (currentIndex + 1) % totalCards; updateCarousel(); }
-            function prevCard() { currentIndex = (currentIndex - 1 + totalCards) % totalCards; updateCarousel(); }
-            
-            nextBtn.addEventListener('click', nextCard);
-            prevBtn.addEventListener('click', prevCard);
-            indicators.forEach((indicator, index) => { indicator.addEventListener('click', () => { currentIndex = index; updateCarousel(); }); });
-            setInterval(nextCard, 5000);
-        }
-
-        // Notificaciones de confirmación aleatorias
-        function initConfirmationNotifications() {
-            const names = ['María', 'Ana', 'Laura', 'Sofía', 'Elena', 'Carmen', 'Patricia', 'Isabel', 'Lucía', 'Paula'];
-            const cities = ['Málaga', 'Sevilla', 'Granada', 'Córdoba', 'Madrid', 'Barcelona', 'Valencia'];
-            
-            function showRandomConfirmation() {
-                const randomName = names[Math.floor(Math.random() * names.length)];
-                const randomCity = cities[Math.floor(Math.random() * cities.length)];
-                
-                const notification = document.getElementById('confirmation-notification');
-                const nameElement = document.getElementById('confirmation-name');
-                const cityElement = document.getElementById('confirmation-city');
-                
-                nameElement.textContent = randomName;
-                cityElement.textContent = randomCity;
-                
-                notification.classList.add('show');
-                setTimeout(() => { notification.classList.remove('show'); }, 4000);
-            }
-            setTimeout(showRandomConfirmation, 10000);
-            setInterval(showRandomConfirmation, 25000 + Math.random() * 10000);
-        }
-
-        // Formulario con Formspree y mostrar página de agradecimiento
-        window.handleSubmit = function(event) {
-            event.preventDefault();
-            
-            const form = document.getElementById('reservation-form');
-            const submitButton = form.querySelector('button[type="submit"]');
-            
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-            submitButton.disabled = true;
-            
-            const formData = new FormData(form);
-            
-            fetch('https://formspree.io/f/xanpqgek', {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            })
-            .then(response => {
-                if (response.ok) {
-                    showThankYouPage();
-                    // —— Pixel: conversion (Lead) ——
-                    if (typeof fbq === 'function') {
-                        fbq('track', 'Lead');
-                    }
-                } else {
-                    throw new Error('Error al enviar el formulario');
-                }
-            })
-            .catch(error => {
-                alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.');
-                submitButton.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Confirmar Mi Reserva';
-                submitButton.disabled = false;
-            });
-        };
-
-        // Mostrar página de agradecimiento
-        function showThankYouPage() {
-            document.getElementById('main-content').style.display = 'none';
-            document.getElementById('thank-you-page').style.display = 'flex';
-            window.scrollTo(0, 0);
-        }
-    </script>
-
-    <!-- CONTENIDO PRINCIPAL -->
-    <div id="main-content">
-        <!-- HEADER CON LOGO ATomy -->
-        <header class="elegant-header">
-            <div class="container mx-auto px-4">
-                <div class="flex justify-between items-center">
-                    <div class="logo-atomy">ATOMY</div>
-                    <a href="#form-section" class="bg-white text-pink-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-all">
-                        Reservar Ahora
-                    </a>
-                </div>
+<body class="bg-gradient-to-r from-blue-50 to-purple-50 min-h-screen">
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <!-- HEADER -->
+        <header class="text-center mb-8 md:mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800">
+                🐾 Pet Portrait AI
+            </h1>
+            <div class="inline-block bg-purple-100 text-purple-800 text-sm font-semibold mt-2 px-3 py-1 rounded-full">
+                Impulsado por Gemini 2.5 (Nano Banana)
             </div>
+            <p class="text-lg md:text-xl text-gray-600 mt-3">Transforma tus momentos con mascotas en obras de arte</p>
         </header>
 
-        <!-- BANNER DE URGENCIA ACTUALIZADO -->
-        <div class="urgency-banner">
-            ⚡ <strong>100 PERSONAS YA CONFIRMARON • SOLO 30 PLAZAS RESTANTES</strong> • 
-            <span id="countdown-display" class="ml-2">Finaliza en: <span id="days">00</span>d <span id="hours">00</span>h <span id="minutes">00</span>m <span id="seconds">00</span>s</span>
-        </div>
+        <!-- MAIN LAYOUT: Inputs (Left) vs. Results (Right) -->
+        <main class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
 
-        <!-- HERO SECTION -->
-        <section class="hero">
-            <div class="hero-content">
-                <div class="slide-in">
-                    <p class="text-white text-xl mb-4 opacity-90">Sábado 4 de Octubre 2025 • Málaga</p>
-                    <h1>Experiencia Atomy: Skincare Coreano & Sorteos Exclusivos</h1>
-                    <p class="text-white text-lg mb-8 opacity-90">Tratamiento facial de 4 pasos + Conocé la marca + Participá de increíbles sorteos</p>
-                    
-                    <div class="bg-white bg-opacity-20 rounded-2xl p-6 mb-6 inline-block">
-                        <p class="text-white text-lg font-semibold">🎟️ Entrada: <strong>10€</strong> - Incluye a vos + hasta 5 invitados</p>
-                        <p class="text-white text-sm">(Se abona al llegar al evento)</p>
-                    </div>
-                    <br>
-                    
-                    <a href="#form-section" class="main-cta pulse-glow">
-                        <i class="fas fa-calendar-plus mr-2"></i>Reservar Mi Plaza VIP
-                    </a>
-                    
-                    <div class="countdown-elegant">
-                        <div class="countdown-item floating">
-                            <div class="countdown-number" id="days">00</div>
-                            <div class="countdown-label">Días</div>
-                        </div>
-                        <div class="countdown-item floating" style="animation-delay: 0.2s">
-                            <div class="countdown-number" id="hours">00</div>
-                            <div class="countdown-label">Horas</div>
-                        </div>
-                        <div class="countdown-item floating" style="animation-delay: 0.4s">
-                            <div class="countdown-number" id="minutes">00</div>
-                            <div class="countdown-label">Minutos</div>
-                        </div>
-                        <div class="countdown-item floating" style="animation-delay: 0.6s">
-                            <div class="countdown-number" id="seconds">00</div>
-                            <div class="countdown-label">Segundos</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SOCIAL PROOF ACTUALIZADO -->
-        <div class="conversion-optimized">
-            <div class="urgency-badge">⚠️ SOLO 30 PLAZAS RESTANTES</div>
-            <h2 class="text-3xl font-bold mb-4">¡Más de 100 personas ya confirmaron su asistencia!</h2>
-            <div class="social-proof">
-                <div class="proof-item">
-                    <i class="fas fa-users"></i>
-                    <span>100+ Reservas Confirmadas</span>
-                </div>
-                <div class="proof-item">
-                    <i class="fas fa-star"></i>
-                    <span>Evento Exclusivo</span>
-                </div>
-                <div class="proof-item">
-                    <i class="fas fa-calendar-check"></i>
-                    <span>4 de Octubre 2025</span>
-                </div>
-            </div>
-            <a href="#form-section" class="main-cta bg-white text-pink-600">
-                <i class="fas fa-lock mr-2"></i>Quiero Mi Plaza
-            </a>
-        </div>
-
-        <!-- BENEFICIOS ACTUALIZADOS -->
-        <section class="elegant-section">
-            <div class="container mx-auto">
-                <h2 class="section-title gradient-text slide-in">¿Qué Incluye Tu Entrada de 10€?</h2>
-                <div class="benefits-grid-elegant">
-                    <div class="benefit-card slide-in">
-                        <div class="benefit-icon">
-                            <i class="fas fa-spa"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Tratamiento Skincare de 4 Pasos</h3>
-                        <p class="text-gray-600">Experiencia práctica para todos los participantes</p>
-                    </div>
-                    
-                    <div class="benefit-card slide-in" style="animation-delay: 0.2s">
-                        <div class="benefit-icon">
-                            <i class="fas fa-gift"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Sorteos Exclusivos</h3>
-                        <p class="text-gray-600">Participación en increíbles sorteos de productos Atomy</p>
-                    </div>
-                    
-                    <div class="benefit-card slide-in" style="animation-delay: 0.4s">
-                        <div class="benefit-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Descubrí la Marca</h3>
-                        <p class="text-gray-600">Conocé todos los productos Atomy y sus beneficios</p>
-                    </div>
-
-                    <div class="benefit-card slide-in" style="animation-delay: 0.6s">
-                        <div class="benefit-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Hasta 6 Personas</h3>
-                        <p class="text-gray-600">Tu entrada incluye a vos + 5 invitados (10€ total)</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- MAPA -->
-        <section class="elegant-section bg-gray-50">
-            <div class="container mx-auto">
-                <h2 class="section-title gradient-text slide-in">Ubicación del Evento</h2>
-                <p class="text-center text-gray-600 mb-8 text-lg">Hotel Staybridge Suites • Paseo de los Mártires 36, Málaga<br>
-                <strong>Sábado 4 de Octubre 2025</strong></p>
+            <!-- COLUMNA DE ENTRADAS Y CONTROLES -->
+            <div class="space-y-8">
                 
-                <div class="map-container-elegant slide-in">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1260.7128323957545!2d-4.427557071166203!3d36.73047497934034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd72f7e772791af5%3A0x9541b978ef482ca6!2sStaybridge%20Suites%20Malaga!5e0!3m2!1ses-419!2sar!4v1758741497380!5m2!1ses-419!2sar" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
-            </div>
-        </section>
-
-        <!-- TESTIMONIOS ACTUALIZADOS - CARRUSEL MEJORADO PARA MÓVIL -->
-        <section class="testimonials-elegant">
-            <div class="container mx-auto">
-                <h2 class="section-title gradient-text slide-in">Quienes ya probaron Atomy</h2>
-                
-                <div class="testimonial-carousel slide-in">
-                    <div class="carousel-container">
-                        <!-- Testimonio 1 -->
-                        <div class="testimonial-card">
-                            <p class="text-gray-700 mb-4">"Los productos Atomy cambiaron completamente mi piel. En solo un mes noté una diferencia increíble en textura y luminosidad."</p>
-                            <div class="flex items-center">
-                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="María" class="w-12 h-12 rounded-full mr-4">
-                                <div>
-                                    <div class="font-semibold">María González</div>
-                                    <div class="text-sm text-gray-500">Usuaria Atomy desde 2024</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Testimonio 2 -->
-                        <div class="testimonial-card">
-                            <p class="text-gray-700 mb-4">"La calidad de los productos coreanos es incomparable. Atomy superó todas mis expectativas, especialmente la línea de skincare."</p>
-                            <div class="flex items-center">
-                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ana" class="w-12 h-12 rounded-full mr-4">
-                                <div>
-                                    <div class="font-semibold">Ana Martínez</div>
-                                    <div class="text-sm text-gray-500">Especialista en Skincare</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Testimonio 3 -->
-                        <div class="testimonial-card">
-                            <p class="text-gray-700 mb-4">"Empecé usando la crema hidratante y ahora tengo toda la línea. La diferencia con otras marcas es abismal, se nota la calidad coreana."</p>
-                            <div class="flex items-center">
-                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Laura" class="w-12 h-12 rounded-full mr-4">
-                                <div>
-                                    <div class="font-semibold">Laura Fernández</div>
-                                    <div class="text-sm text-gray-500">Clienta satisfecha</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Testimonio 4 -->
-                        <div class="testimonial-card">
-                            <p class="text-gray-700 mb-4">"Recomiendo Atomy a todas mis amigas. Los resultados son visibles desde la primera semana de uso. ¡Vale cada euro!"</p>
-                            <div class="flex items-center">
-                                <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Sofía" class="w-12 h-12 rounded-full mr-4">
-                                <div>
-                                    <div class="font-semibold">Sofía Rodríguez</div>
-                                    <div class="text-sm text-gray-500">Fanática de la belleza coreana</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Testimonio 5 (NUEVO) -->
-                        <div class="testimonial-card">
-                            <p class="text-gray-700 mb-4">"Después de probar muchas marcas, Atomy es la única que realmente ha mejorado mi piel sensible sin causar irritaciones."</p>
-                            <div class="flex items-center">
-                                <img src="https://randomuser.me/api/portraits/women/27.jpg" alt="Elena" class="w-12 h-12 rounded-full mr-4">
-                                <div>
-                                    <div class="font-semibold">Elena Vargas</div>
-                                    <div class="text-sm text-gray-500">Piel sensible</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Testimonio 6 (NUEVO) -->
-                        <div class="testimonial-card">
-                            <p class="text-gray-700 mb-4">"La textura de los productos es increíble, se absorben rápidamente y no dejan la piel grasosa. ¡Me encanta!"</p>
-                            <div class="flex items-center">
-                                <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Carmen" class="w-12 h-12 rounded-full mr-4">
-                                <div>
-                                    <div class="font-semibold">Carmen López</div>
-                                    <div class="text-sm text-gray-500">Usuaria desde 2023</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Testimonio 7 (NUEVO) -->
-                        <div class="testimonial-card">
-                            <p class="text-gray-700 mb-4">"Como profesional de estética, recomiendo Atomy por sus ingredientes de alta calidad y resultados comprobables."</p>
-                            <div class="flex items-center">
-                                <img src="https://randomuser.me/api/portraits/women/71.jpg" alt="Patricia" class="w-12 h-12 rounded-full mr-4">
-                                <div>
-                                    <div class="font-semibold">Patricia Moreno</div>
-                                    <div class="text-sm text-gray-500">Esteticista profesional</div>
-                                </div>
-                            </div>
+                <!-- 1. Sube tu Foto (Selfie) -->
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h2 class="text-xl font-semibold text-gray-700 mb-4 flex items-center gap-2">1. Sube tu Foto 👤</h2>
+                    <div id="selfie-drop-area" class="file-upload-card p-6 text-center rounded-lg cursor-pointer">
+                        <input type="file" id="selfie-input" accept="image/png, image/jpeg, image/webp" class="hidden">
+                        <div class="text-gray-500">
+                            <svg class="w-12 h-12 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                            <p class="mt-2 text-lg font-medium">+ Sube tu selfie</p>
+                            <p class="text-xs text-gray-400 mt-1">Arrastra y suelta o haz clic aquí</p>
                         </div>
                     </div>
-                    
-                    <!-- Controles del carrusel -->
-                    <div class="carousel-controls">
-                        <button class="carousel-btn carousel-prev">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="carousel-btn carousel-next">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                    
-                    <!-- Indicadores -->
-                    <div class="carousel-indicators">
-                        <span class="indicator active" data-slide="0"></span>
-                        <span class="indicator" data-slide="1"></span>
-                        <span class="indicator" data-slide="2"></span>
-                        <span class="indicator" data-slide="3"></span>
-                        <span class="indicator" data-slide="4"></span>
-                        <span class="indicator" data-slide="5"></span>
-                        <span class="indicator" data-slide="6"></span>
+                    <div id="selfie-preview-container" class="mt-4 hidden">
+                        <p class="font-medium text-sm text-gray-600 mb-2">Vista Previa:</p>
+                        <div id="selfie-preview" class="flex justify-center"></div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- FORMULARIO INTEGRADO EN PÁGINA PRINCIPAL -->
-        <section id="form-section" class="form-section">
-            <div class="container mx-auto">
-                <h2 class="section-title gradient-text slide-in">Reserva Tu Entrada</h2>
-                <p class="text-center text-gray-600 mb-8 text-lg">10€ - Incluye a vos + hasta 5 invitados (se abona al llegar)</p>
-                
-                <div class="elegant-form slide-in">
-                    <form id="reservation-form" action="https://formspree.io/f/xanpqgek" method="POST" onsubmit="return handleSubmit(event)">
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-medium mb-2">Nombre *</label>
-                                <input type="text" name="nombre" class="form-input-elegant" required>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2">Apellido *</label>
-                                <input type="text" name="apellido" class="form-input-elegant" required>
-                            </div>
+                <!-- 2. Sube fotos de la Mascota -->
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h2 class="text-xl font-semibold text-gray-700 mb-4 flex items-center gap-2">2. Sube sus Fotos 🐕</h2>
+                    <div id="dogs-drop-area" class="file-upload-card p-6 text-center rounded-lg cursor-pointer">
+                        <input type="file" id="dogs-input" accept="image/png, image/jpeg, image/webp" multiple class="hidden">
+                        <div class="text-gray-500">
+                           <svg class="w-12 h-12 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                            <p class="mt-2 text-lg font-medium">+ Sube fotos de tus perros</p>
+                            <p class="text-xs text-gray-400 mt-1">Puedes seleccionar múltiples archivos</p>
                         </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-medium mb-2">Teléfono *</label>
-                                <input type="tel" name="telefono" class="form-input-elegant" required>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2">Email *</label>
-                                <input type="email" name="email" class="form-input-elegant" required>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium mb-2">Selecciona tu horario preferido *</label>
-                            <select name="horario" class="select-time" required>
-                                <option value="" disabled selected>Elige un horario</option>
-                                <option value="10:00">10:00</option>
-                                <option value="12:00">12:00</option>
-                                <option value="15:00">15:00</option>
-                                <option value="17:00">17:00</option>
-                                <option value="19:00">19:00</option>
-                            </select>
-                        </div>
-
-                        <div class="bg-gray-50 p-4 rounded-lg mt-4">
-                            <h3 class="font-semibold mb-3">Tus Invitados (opcional)</h3>
-                            <p class="text-sm text-gray-600 mb-3">Podés agregar hasta 5 invitados. Si venís solo/a, dejá estos campos vacíos.</p>
-                            
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <input type="text" name="invitado1" class="form-input-elegant" placeholder="Invitado 1">
-                                <input type="text" name="invitado2" class="form-input-elegant" placeholder="Invitado 2">
-                                <input type="text" name="invitado3" class="form-input-elegant" placeholder="Invitado 3">
-                                <input type="text" name="invitado4" class="form-input-elegant" placeholder="Invitado 4">
-                                <input type="text" name="invitado5" class="form-input-elegant" placeholder="Invitado 5">
-                            </div>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn-elegant">
-                            <i class="fas fa-check-circle mr-2"></i>Confirmar Mi Reserva
-                        </button>
-                        
-                        <p class="text-xs text-gray-500 mt-4 text-center">* La entrada de 10€ incluye a vos + hasta 5 invitados. Se abona al llegar al evento.</p>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="elegant-footer">
-            <div class="container mx-auto">
-                <div class="grid md:grid-cols-3 gap-8 mb-8">
-                    <div>
-                        <h3 class="text-xl font-bold mb-4">Información del Evento</h3>
-                        <p><i class="fas fa-calendar-day mr-2"></i> Sábado 4 de Octubre 2025</p>
-                        <p><i class="fas fa-clock mr-2"></i> Horarios: 10:00 - 12:00 - 15:00 - 17:00 - 19:00</p>
-                        <p><i class="fas fa-map-marker-alt mr-2"></i> Hotel Staybridge Suites, Málaga</p>
                     </div>
-                    
-                    <div>
-                        <h3 class="text-xl font-bold mb-4">Precio y Condiciones</h3>
-                        <p><i class="fas fa-ticket mr-2"></i> Entrada: 10€ por grupo</p>
-                        <p><i class="fas fa-users mr-2"></i> Incluye hasta 6 personas</p>
-                        <p><i class="fas fa-money-bill-wave mr-2"></i> Pago directo en el evento</p>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-xl font-bold mb-4">Contacto</h3>
-                        <p><i class="fas fa-phone mr-2"></i> +34 641 248 134</p>
-                        <p><i class="fas fa-envelope mr-2"></i> atomy.agm@gmail.com</p>
-                        <a href="https://wa.me/34641248134" class="inline-block mt-2 bg-green-500 text-white px-4 py-2 rounded-lg">
-                            <i class="fab fa-whatsapp mr-2"></i>WhatsApp
-                        </a>
+                    <div id="dogs-previews-container" class="mt-4 hidden">
+                        <p class="font-medium text-sm text-gray-600 mb-2">Vistas Previas:</p>
+                        <div id="dog-previews" class="flex flex-wrap gap-3 justify-center"></div>
                     </div>
                 </div>
                 
-                <p class="text-center opacity-75">© 2025 Atomy Málaga - Evento Exclusivo 4 de Octubre</p>
-            </div>
-        </footer>
+                <!-- 3. Elige el Estilo -->
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h2 class="text-xl font-semibold text-gray-700 mb-4 flex items-center gap-2">3. Elige el Estilo Artístico 🎨</h2>
+                    <p class="text-sm text-gray-600 mb-3">La composición será de cabezas apiladas y mirando a cámara.</p>
+                    <label for="style-select" class="block text-sm font-medium text-gray-700 mb-2">Selecciona un Estilo:</label>
+                    <select id="style-select" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500 bg-gray-50">
+                        <!-- Opciones de estilos se llenarán con JS -->
+                    </select>
+                    <div id="style-details" class="mt-3 text-sm text-gray-500 p-3 bg-gray-100 rounded-lg">
+                        Alta resolución, emotivo, minimalista.
+                    </div>
+                </div>
 
-        <!-- NOTIFICACIÓN DE CONFIRMACIÓN -->
-        <div id="confirmation-notification" class="confirmation-notification">
-            <div class="confirmation-icon">
-                <i class="fas fa-check-circle"></i>
+                <!-- 4. Botón de Generación -->
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h2 class="text-xl font-semibold text-gray-700 mb-4 flex items-center gap-2">4. ¡Crea la Magia! ✨</h2>
+                    <button id="generate-btn" class="w-full bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white font-bold py-3 px-4 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">
+                        🎨 Crear Mi Retrato
+                    </button>
+                </div>
             </div>
+
+            <!-- COLUMNA DE ESTADO Y RESULTADOS (Simplificada) -->
             <div>
-                <p><strong id="confirmation-name">María</strong> de <span id="confirmation-city">Málaga</span> acaba de reservar</p>
+                
+                <!-- ESTADO DE CARGA/MENSAJE -->
+                <div id="message-column" class="hidden bg-white p-6 rounded-xl shadow-lg text-center flex flex-col justify-center items-center min-h-[400px]">
+                    <div id="loader" class="loader mb-4"></div>
+                    <h3 id="message-title" class="text-xl font-bold text-gray-800">Generando tu obra de arte...</h3>
+                    <p id="message-text" class="text-gray-600 mt-2">La IA está trabajando su magia. Esto puede tardar un momento...</p>
+                </div>
+
+                <!-- RESULTADOS (IMAGEN + STICKERS + CONTROLES) -->
+                <div id="result-column" class="hidden bg-white p-6 rounded-xl shadow-lg">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4" id="result-title">🎉 ¡Tu Retrato Está Listo!</h2>
+                    
+                    <!-- 1. Área de la Imagen Principal -->
+                    <div id="portrait-result-section" class="mb-6">
+                        <h3 class="text-xl font-semibold text-gray-700 mb-3">Retrato Artístico Principal</h3>
+                        <!-- Contenedor de la Imagen -->
+                        <div class="w-full aspect-video bg-gray-100 flex items-center justify-center rounded-lg shadow-inner border border-gray-300 overflow-hidden">
+                             <img id="result-image" src="" alt="Retrato generado por IA" class="w-full h-auto object-cover">
+                        </div>
+                        
+                        <button id="download-btn" class="w-full mt-4 bg-green-500 text-white font-bold py-3 px-4 rounded-lg shadow-md hover:bg-green-600 transition-all duration-300">
+                            ⬇️ Descargar Retrato Principal
+                        </button>
+                    </div>
+
+                    <!-- 2. Área para los Stickers/Pegatinas -->
+                    <div id="sticker-result-section" class="mt-6 pt-4 border-t border-gray-200">
+                        <h3 class="text-xl font-semibold text-gray-700 mb-3">Tu Set de Stickers Personalizado</h3>
+                        <button id="generate-sticker-btn" class="w-full bg-pink-500 text-white font-bold py-3 px-4 rounded-lg shadow-md hover:bg-pink-600 transition-all duration-300 mb-3">
+                            ✨ Generar Stickers
+                        </button>
+                        
+                        <!-- Contenedor donde se insertarán los stickers generados -->
+                        <div id="sticker-list" class="sticker-grid">
+                            <p class="text-gray-500 text-sm italic col-span-full" id="sticker-placeholder">
+                                Haz clic en "Generar Stickers" para crear un set de pegatinas de tus personajes.
+                            </p>
+                        </div>
+                        
+                        <p class="text-xs text-gray-500 mt-4 hidden" id="sticker-note">Nota: Haz clic en "Descargar" en cada sticker para obtener la versión PNG con fondo transparente/blanco.</p>
+                    </div>
+
+                    <!-- Botones de Acción -->
+                    <div class="mt-6 pt-4 border-t border-gray-200 space-y-3">
+                        <button id="regenerate-btn" class="w-full bg-indigo-500 text-white font-bold py-3 px-4 rounded-lg shadow-md hover:bg-indigo-600 transition-all duration-300">
+                            🔄 Regenerar Retrato (Mismas Fotos)
+                        </button>
+                        <button id="start-over-btn" class="w-full bg-gray-200 text-gray-800 font-bold py-3 px-4 rounded-lg hover:bg-gray-300 transition-all duration-300">
+                            Empezar de Nuevo
+                        </button>
+                    </div>
+                </div>
+
             </div>
+        </main>
+    </div>
+
+    <!-- Custom Alert Modal -->
+    <div id="custom-alert" class="modal-backdrop hidden">
+        <div class="modal-content">
+            <p id="alert-message" class="text-gray-700 mb-6"></p>
+            <button id="alert-close-btn" class="bg-purple-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-purple-700 transition-colors">Entendido</button>
         </div>
     </div>
 
-    <!-- PÁGINA DE AGRADECIMIENTO (OCULTA INICIALMENTE) -->
-    <div id="thank-you-page" class="thank-you-page">
-        <div class="thank-you-container">
-            <div class="thank-you-icon">
-                <i class="fas fa-check-circle"></i>
-            </div>
-            <h1 class="text-4xl font-bold mb-6 gradient-text">¡Gracias por tu reserva!</h1>
-            <p class="text-xl mb-4">Tu plaza para el evento de Atomy Málaga ha sido confirmada.</p>
-            <p class="text-lg mb-8">Te esperamos el <strong>4 de Octubre de 2025</strong> en el Hotel Staybridge Suites.</p>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- VARIABLES DE ELEMENTOS ---
+            const selfieDropArea = document.getElementById('selfie-drop-area');
+            const selfieInput = document.getElementById('selfie-input');
+            const selfiePreviewContainer = document.getElementById('selfie-preview-container');
+            const selfiePreview = document.getElementById('selfie-preview');
+
+            const dogsDropArea = document.getElementById('dogs-drop-area');
+            const dogsInput = document.getElementById('dogs-input');
+            const dogsPreviewsContainer = document.getElementById('dogs-previews-container');
+            const dogPreviews = document.getElementById('dog-previews');
             
-            <div class="bg-gray-50 p-6 rounded-lg mb-8">
-                <h2 class="text-2xl font-bold mb-4">Detalles de tu reserva:</h2>
-                <ul class="text-left space-y-2">
-                    <li class="flex items-center"><i class="fas fa-calendar-alt mr-3 text-pink-500"></i> <strong>Fecha:</strong> Sábado 4 de Octubre 2025</li>
-                    <li class="flex items-center"><i class="fas fa-map-marker-alt mr-3 text-pink-500"></i> <strong>Lugar:</strong> Hotel Staybridge Suites, Málaga</li>
-                    <li class="flex items-center"><i class="fas fa-ticket-alt mr-3 text-pink-500"></i> <strong>Entrada:</strong> 10€ (incluye hasta 6 personas)</li>
-                    <li class="flex items-center"><i class="fas fa-money-bill-wave mr-3 text-pink-500"></i> <strong>Pago:</strong> Directo en el evento</li>
-                </ul>
-            </div>
+            const styleSelect = document.getElementById('style-select');
+            const styleDetails = document.getElementById('style-details');
             
-            <p class="mb-6">Recibirás un email de confirmación con todos los detalles.</p>
+            const generateBtn = document.getElementById('generate-btn');
+            const generateStickerBtn = document.getElementById('generate-sticker-btn'); 
             
-            <button onclick="location.reload()" class="main-cta">
-                <i class="fas fa-home mr-2"></i>Volver a la página principal
-            </button>
-        </div>
-    </div>
+            const messageCol = document.getElementById('message-column');
+            const resultCol = document.getElementById('result-column');
+            
+            const resultImage = document.getElementById('result-image');
+            const stickerList = document.getElementById('sticker-list'); 
+            const stickerPlaceholder = document.getElementById('sticker-placeholder');
+            const stickerNote = document.getElementById('sticker-note');
+            
+            const startOverBtn = document.getElementById('start-over-btn');
+            const downloadBtn = document.getElementById('download-btn');
+            const regenerateBtn = document.getElementById('regenerate-btn'); 
+
+            const customAlert = document.getElementById('custom-alert');
+            const alertMessage = document.getElementById('alert-message');
+            const alertCloseBtn = document.getElementById('alert-close-btn');
+            
+            let selfieFile = null;
+            let dogFiles = [];
+            let loadingInterval = null;
+            let currentMode = 'portrait'; 
+            let currentPortraitUrl = '';
+            
+            // --- DEFINICIÓN DE ESTILOS (ACTUALIZADOS) ---
+            const styles = {
+                'fine_art_bw': {
+                    name: 'Fine Art Blanco y Negro 🖼️',
+                    description: `black and white fine art portrait of a person resting their head on a soft couch, with one or more dogs with their heads stacked one on top of the other, gently leaning on the person’s head and shoulder, creating an intimate, calm, emotional composition. Soft natural window light, shallow depth of field, cinematic mood, high-resolution photo with fine skin detail and visible dog fur texture, neutral background out of focus (bokeh). All subjects looking directly into the camera lens. Shot on a professional camera (Canon RF 50mm f/1.2 or similar). Moody, editorial style, minimal distractions, focus on the emotional bond between human and pets.`,
+                    details: 'Retrato de estudio en B/N, alta calidad, luz suave.'
+                },
+                'watercolor': {
+                    name: 'Acuarela Suave 🎨',
+                    description: `soft watercolor portrait of a person resting their head on a soft couch, with one or more dogs with their heads stacked one on top of the other, gently leaning on the person’s head and shoulder, creating an intimate, calm, emotional composition. Pastel color palette, light paper texture, ethereal mood, shallow depth of field, detailed watercolor strokes. All subjects looking directly into the camera lens.`,
+                    details: 'Colores pastel, bordes suaves, sensación pintada.'
+                },
+                'oil_painting': {
+                    name: 'Pintura al Óleo Clásica 🖌️',
+                    description: `classic oil painting portrait of a person resting their head on a soft couch, with one or more dogs with their heads stacked one on top of the other, gently leaning on the person’s head and shoulder, creating an intimate, calm, emotional composition. Rich, warm colors, visible impasto brushstrokes, golden hour lighting, deep depth of field, dramatic chiaroscuro. All subjects looking directly into the camera lens.`,
+                    details: 'Colores ricos, pinceladas visibles, luz dramática.'
+                },
+                'charcoal_sketch': {
+                    name: 'Boceto a Carboncillo ✏️',
+                    description: `realistic charcoal sketch on textured paper of a person resting their head on a soft couch, with one or more dogs with their heads stacked. Dramatic shading, highly detailed texture of charcoal and paper, high-contrast black and white. All subjects looking directly into the camera lens.`,
+                    details: 'Boceto dramático, texturas detalladas de carbón, alto contraste B/N.'
+                },
+                'anime_manga': {
+                    name: 'Anime Japonés 🎌',
+                    description: `vibrant Japanese anime style portrait of a person resting their head on a soft couch, with one or more dogs with their heads stacked one on top of the other, gently leaning on the person’s head and shoulder, creating an intimate, calm, emotional composition. Large, expressive eyes, dynamic lighting, clean line work, vibrant cell-shading, soft focus background, cinematic composition. All subjects looking directly into the camera lens.`,
+                    details: 'Líneas limpias, colores brillantes, ojos grandes y expresivos.'
+                },
+                'ghibli_studio': {
+                    name: 'Estilo Studio Ghibli 🍃',
+                    description: `hand-drawn, warm, and whimsical Studio Ghibli-inspired animation style portrait of a person resting their head on a soft couch, with one or more dogs with their heads stacked one on top of the other, gently leaning on the person’s head and shoulder, creating an intimate, calm, emotional composition. Detailed natural environment background, soft light, emotional, nostalgic feeling, watercolor-like textures. All subjects looking directly into the camera lens.`,
+                    details: 'Dibujo a mano, colores cálidos, fondo detallado de naturaleza, sensación nostálgica.'
+                },
+                'cartoon_flat': {
+                    name: 'Caricatura Estilizada (Cartoon) 📺',
+                    description: `modern cartoon style portrait with thick, clean outlines and flat colors, similar to popular adult animated sitcoms. A person and their dogs in an intimate pose, heads stacked, vibrant, highly stylized, minimal shading. All subjects looking directly into the camera lens.`,
+                    details: 'Colores planos, contornos gruesos y limpios, look de caricatura moderna.'
+                }
+            };
+            
+            // --- DEFINICIÓN DE STICKERS EMOCIONALES ---
+            const groupStickerEmotions = [
+                { name: 'Grupo Feliz', key: 'group-happy', prompt: 'happy and smiling, showing positive emotion.' },
+                { name: 'Grupo Sorprendido', key: 'group-surprised', prompt: 'looking very surprised, with big open eyes and exaggerated expressions.' }
+            ];
+
+            const individualStickerEmotions = [
+                { name: 'Soñoliento', key: 'sleepy', prompt: 'looking sleepy or tired, perhaps with small yawns or closed eyes.' },
+                { name: 'Cariño', key: 'love', prompt: 'showing affection and love, maybe with a small heart icon or a gentle, loving look.' },
+                { name: 'Gracioso', key: 'silly', prompt: 'looking silly and wacky, making funny or exaggerated faces.' },
+                { name: 'Curioso', key: 'curious', prompt: 'looking curious, with head tilted slightly.' },
+                { name: 'Enojado', key: 'angry', prompt: 'looking slightly annoyed or angry, with a furrowed brow.' }
+            ];
+
+            let selectedStyleKey = 'fine_art_bw'; 
+            
+            // --- CUSTOM ALERT ---
+            function showAlert(message) {
+                alertMessage.textContent = message;
+                customAlert.classList.remove('hidden');
+            }
+            alertCloseBtn.addEventListener('click', () => customAlert.classList.add('hidden'));
+
+            // --- LÓGICA DE DRAG & DROP Y PREVIEWS (Unchanged) ---
+            function setupDragDrop(dropArea, input, handleFiles) {
+                dropArea.addEventListener('click', () => input.click());
+                input.addEventListener('change', (e) => handleFiles(e.target.files));
+
+                ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                    dropArea.addEventListener(eventName, preventDefaults, false);
+                });
+
+                ['dragenter', 'dragover'].forEach(eventName => {
+                    dropArea.addEventListener(eventName, () => dropArea.classList.add('drag-over'), false);
+                });
+
+                ['dragleave', 'drop'].forEach(eventName => {
+                    dropArea.addEventListener(eventName, () => dropArea.classList.remove('drag-over'), false);
+                });
+                
+                dropArea.addEventListener('drop', (e) => handleFiles(e.dataTransfer.files), false);
+            }
+            
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            function handleSelfieFile(files) {
+                const file = files[0];
+                if (file && file.type.startsWith('image/')) {
+                    selfieFile = file;
+                    selfiePreview.innerHTML = '';
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.className = 'preview-image';
+                        selfiePreview.appendChild(img);
+                        selfiePreviewContainer.classList.remove('hidden');
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    showAlert("Por favor, sube un archivo de imagen válido (JPG, PNG, WEBP).");
+                }
+            }
+            
+            function handleDogFiles(newFiles) {
+                const validNewFiles = Array.from(newFiles).filter(file => file.type.startsWith('image/'));
+                
+                // Note: The input.files property doesn't reflect the combined set, 
+                // so we manage dogFiles array manually based on if input.files was used (to replace)
+                // or if we're adding (drag and drop/multiple selection).
+                if (dogsInput.files.length === newFiles.length && dogsInput.files.length > 0) {
+                    // This implies a full replacement (e.g., selecting via dialog)
+                    dogFiles = validNewFiles;
+                } else {
+                    // Drag and drop or adding to an existing set
+                    dogFiles = [...dogFiles, ...validNewFiles]; 
+                }
+
+                if(dogFiles.length > 0) {
+                    dogPreviews.innerHTML = '';
+                    dogFiles.forEach(file => {
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            const img = document.createElement('img');
+                            img.src = e.target.result;
+                            img.className = 'preview-image';
+                            dogPreviews.appendChild(img);
+                        };
+                        reader.readAsDataURL(file);
+                    });
+                    dogsPreviewsContainer.classList.remove('hidden');
+                } else {
+                     dogsPreviewsContainer.classList.add('hidden');
+                }
+                
+                // Clear the input value to allow the 'change' event to fire again if the same file is selected
+                dogsInput.value = '';
+
+                if (newFiles.length > 0 && validNewFiles.length === 0) {
+                     showAlert("Algunos archivos no eran imágenes válidas y han sido ignorados.");
+                }
+            }
+            
+            // --- LÓGICA DE ESTILOS Y UI DINÁMICA ---
+            function populateStyleSelect() {
+                let options = '';
+                for (const key in styles) {
+                    const style = styles[key];
+                    options += `<option value="${key}">${style.name}</option>`;
+                }
+                styleSelect.innerHTML = options;
+                updateStyleUI('fine_art_bw');
+            }
+
+            function updateStyleUI(key) {
+                const style = styles[key];
+                if (!style) return;
+                
+                selectedStyleKey = key;
+                styleDetails.textContent = style.details;
+            }
+
+            styleSelect.addEventListener('change', (e) => {
+                updateStyleUI(e.target.value);
+            });
+
+
+            // --- HELPER TO CONVERT FILE TO BASE64 ---
+            function fileToBase64(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = () => resolve(reader.result.split(',')[1]);
+                    reader.onerror = error => reject(error);
+                });
+            }
+
+            // --- LÓGICA DE MENSAJES DE CARGA ---
+            const loadingMessages = {
+                'portrait': [
+                    { title: "📷 Analizando tus Fotos...", text: "Reconociendo los rostros y las texturas de pelaje para la semejanza exacta." },
+                    { title: "🧠 Diseñando la Composición...", text: "La IA está creando la composición de cabezas apiladas y asegurando que todos miren a cámara." },
+                    { title: "✨ Aplicando el Estilo Artístico...", text: `Pintando tu retrato final en el estilo {styleName}.` } 
+                ],
+                'sticker': [
+                    { title: "✨ Preparando Estilo Caricatura...", text: "Simplificando los sujetos a un estilo *chibi* vibrante." },
+                    { title: "✂️ Generando Stickers Grupales...", text: "Creando stickers con la persona y todos los perros juntos." },
+                    { title: "🚀 Generando Stickers Individuales...", text: "Ahora, haciendo stickers para cada personaje por separado con emociones." },
+                    { title: "✅ Set de Stickers Listo...", text: "Todos tus stickers están creados y listos para descargar." }
+                ]
+            };
+
+
+            function updateLoadingMessage(mode, stepIndex, delay, customText = null) {
+                clearLoadingMessages();
+                const steps = loadingMessages[mode];
+                
+                let currentStepIndex = stepIndex;
+                
+                const update = () => {
+                    let currentStep = { ...steps[currentStepIndex % steps.length] }; // Clone to modify
+                    
+                    if (customText) {
+                        currentStep.text = customText;
+                    } else if (mode === 'portrait' && currentStepIndex % steps.length === 2) {
+                        currentStep.text = currentStep.text.replace('{styleName}', styles[selectedStyleKey].name);
+                    }
+                    
+                    document.getElementById('message-title').textContent = currentStep.title;
+                    document.getElementById('message-text').textContent = currentStep.text;
+                    currentStepIndex++;
+                };
+
+                update();
+                loadingInterval = setInterval(update, delay);
+            }
+
+            function clearLoadingMessages() {
+                if (loadingInterval) {
+                    clearInterval(loadingInterval);
+                    loadingInterval = null;
+                }
+            }
+            
+            // Helper to make the API call with retries
+            async function callNanoBanana(finalPrompt, imageParts, retries = 0) {
+                 const MAX_RETRIES = 3;
+                 while (retries < MAX_RETRIES) {
+                    try {
+                        const payload = {
+                            contents: [{
+                                parts: [{ text: finalPrompt }, ...imageParts]
+                            }],
+                            generationConfig: {
+                                responseModalities: ['IMAGE']
+                            },
+                        };
+                        
+                        const apiKey = "";  
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=${apiKey}`;
+
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        
+                        if (!response.ok) {
+                            const errorData = await response.json();
+                             // Retry on specific error codes
+                            if (response.status === 429 || response.status >= 500) {
+                                throw new Error('Retryable API Error');
+                            }
+                            throw new Error(errorData.error.message || 'La API devolvió un error inesperado.');
+                        }
+
+                        const result = await response.json();
+                        const base64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
+                        
+                        if (!base64Data) {
+                              throw new Error('No se recibió una imagen en la respuesta de la API.');
+                        }
+                        
+                        return `data:image/png;base64,${base64Data}`;
+
+                    } catch(error) {
+                        if (error.message === 'Retryable API Error' && retries < MAX_RETRIES - 1) {
+                            retries++;
+                            const delay = Math.pow(2, retries) * 1000;
+                            await new Promise(resolve => setTimeout(resolve, delay));
+                        } else {
+                            throw error; // Re-throw fatal errors
+                        }
+                    }
+                } // end while
+                throw new Error('La solicitud falló después de varios intentos.');
+            }
+
+            // --- API & GENERATION LOGIC ---
+            async function generateImage(isStickerGeneration = false) {
+                if (!selfieFile || dogFiles.length === 0) {
+                    showAlert('Por favor, sube tu selfie y al menos una foto de tu perro.');
+                    return;
+                }
+                
+                currentMode = isStickerGeneration ? 'sticker' : 'portrait';
+
+                // 1. Gestión de estado inicial de botones y UI
+                generateBtn.disabled = true;
+                generateStickerBtn.disabled = true;
+                regenerateBtn.disabled = true; 
+                
+                generateBtn.textContent = 'Generando...';
+                if (isStickerGeneration) generateStickerBtn.textContent = 'Generando set de stickers...';
+                
+                resultCol.classList.add('hidden');
+                messageCol.classList.remove('hidden');
+                
+                if (!isStickerGeneration) {
+                    stickerList.innerHTML = `<p class="text-gray-500 text-sm italic col-span-full" id="sticker-placeholder">Haz clic en "Generar Stickers" para crear un set de pegatinas de tus personajes.</p>`;
+                    stickerNote.classList.add('hidden');
+                } else {
+                    stickerList.innerHTML = ''; // Clear existing stickers
+                    stickerPlaceholder.remove();
+                }
+
+                // Iniciar mensajes de progreso
+                updateLoadingMessage(currentMode, 0, 4000); 
+
+                try {
+                    // 2. Convert all images to Base64 (needed for all generations)
+                    const selfieBase64 = await fileToBase64(selfieFile);
+                    const dogBase64Promises = dogFiles.map(file => fileToBase64(file));
+                    const dogBase64s = await Promise.all(dogBase64Promises);
+                    
+                    let imageParts = [
+                        { inlineData: { mimeType: selfieFile.type, data: selfieBase64 } },
+                        ...dogBase64s.map((data, i) => ({
+                            inlineData: { mimeType: dogFiles[i].type, data: data }
+                        }))
+                    ];
+
+                    if (isStickerGeneration) {
+                        // --- GENERACIÓN DE STICKERS (GRUPALES E INDIVIDUALES) ---
+                        let stickerResults = [];
+                        
+                        // Base prompt for stickers
+                        const stickerBasePrompt = `chibi, cartoon-style digital sticker illustration. The image must have a thick white border, placed on a clean white background. High resolution, vibrant colors, vector-like quality.`;
+
+                        // 2.1 Generate Group Stickers
+                        updateLoadingMessage(currentMode, 1, 4000); 
+                        for (let i = 0; i < groupStickerEmotions.length; i++) {
+                            const emotion = groupStickerEmotions[i];
+                            const prompt = `${stickerBasePrompt} Subjects: a person and one or more dogs, with their heads stacked one on top of the other, looking directly into the camera. Emotion: ${emotion.prompt}`;
+                            
+                            updateLoadingMessage(currentMode, 1, 4000, `Generando sticker grupal ${i + 1} de ${groupStickerEmotions.length}: ${emotion.name}...`);
+                            const imageUrl = await callNanoBanana(prompt, imageParts);
+                            stickerResults.push({ name: emotion.name, key: emotion.key, imageUrl });
+                        }
+
+                        // 2.2 Generate Individual Stickers
+                        updateLoadingMessage(currentMode, 2, 4000); 
+
+                        const allSubjects = [{ name: 'Persona', file: selfieFile, base64: selfieBase64, type: 'person' }];
+                        dogFiles.forEach((file, index) => {
+                            allSubjects.push({ name: `Perro ${index + 1}`, file: file, base64: dogBase64s[index], type: 'dog' });
+                        });
+
+                        for (let i = 0; i < allSubjects.length; i++) {
+                            const subject = allSubjects[i];
+                            const emotionIndex = i % individualStickerEmotions.length; // Cycle through emotions
+                            const emotion = individualStickerEmotions[emotionIndex];
+
+                            let individualImageParts = [{ inlineData: { mimeType: subject.file.type, data: subject.base64 } }];
+                            let individualPrompt;
+
+                            if (subject.type === 'person') {
+                                individualPrompt = `${stickerBasePrompt} Subject: a person, looking directly into the camera. Emotion: ${emotion.prompt}`;
+                            } else { // It's a dog
+                                individualPrompt = `${stickerBasePrompt} Subject: a dog, looking directly into the camera. Emotion: ${emotion.prompt}`;
+                            }
+                            
+                            updateLoadingMessage(currentMode, 2, 4000, `Generando sticker individual de ${subject.name} (${emotion.name})...`);
+                            const imageUrl = await callNanoBanana(individualPrompt, individualImageParts);
+                            stickerResults.push({ name: `${subject.name} ${emotion.name}`, key: `${subject.type}-${subject.name.replace(' ', '-').toLowerCase()}-${emotion.key}`, imageUrl });
+                        }
+                        
+                        // Display all generated stickers
+                        stickerList.innerHTML = stickerResults.map(s => `
+                            <div class="sticker-container">
+                                <p class="text-xs font-medium text-gray-700 mb-1 truncate">${s.name}</p>
+                                <img src="${s.imageUrl}" alt="Sticker ${s.name}" class="rounded-lg shadow-md">
+                                <button onclick="downloadSticker('${s.imageUrl}', '${s.key}')" class="text-xs mt-2 bg-purple-500 hover:bg-purple-600 text-white font-semibold py-1 px-2 rounded-full w-full">
+                                    Descargar
+                                </button>
+                            </div>
+                        `).join('');
+
+                        stickerNote.classList.remove('hidden');
+                        document.getElementById('result-title').textContent = `🎉 ¡Set de Stickers Listo (${stickerResults.length} stickers)!`;
+                        showAlert(`¡Tu set de ${stickerResults.length} stickers digitales está listo!`);
+                        
+                    } else {
+                        // --- GENERACIÓN DE RETRATO PRINCIPAL ---
+                        const baseDescription = styles[selectedStyleKey].description;
+                        const finalPrompt = baseDescription; 
+                        
+                        const imageUrl = await callNanoBanana(finalPrompt, imageParts);
+                        
+                        resultImage.src = imageUrl;
+                        currentPortraitUrl = imageUrl;
+                        document.getElementById('result-title').textContent = `🎉 ¡Tu Retrato ${styles[selectedStyleKey].name} Está Listo!`;
+                    }
+                    
+                    // 3. Finalización exitosa
+                    clearLoadingMessages();
+                    messageCol.classList.add('hidden');
+                    resultCol.classList.remove('hidden');
+
+                } catch(error) {
+                    console.error("Fallo la generación:", error);
+                    showAlert(`Hubo un error al generar ${currentMode === 'sticker' ? 'tus stickers' : 'tu retrato'}: ${error.message.includes('Retryable') ? 'La solicitud falló después de varios intentos.' : error.message}. Por favor, inténtalo de nuevo.`);
+                    
+                    clearLoadingMessages();
+                    // If portrait generation fails, revert to input state
+                    if (currentMode === 'portrait') resetUI(); 
+                }
+
+                // 4. Resetear estado de botones
+                generateBtn.disabled = false;
+                generateBtn.textContent = '🎨 Crear Mi Retrato';
+                generateStickerBtn.disabled = false; 
+                generateStickerBtn.textContent = '✨ Generar Set de Stickers';
+                regenerateBtn.disabled = false; 
+            } // end generateImage
+            
+            // --- UI RESET ---
+            function resetUI() {
+                resultCol.classList.add('hidden');
+                messageCol.classList.add('hidden');
+                
+                selfieFile = null;
+                dogFiles = [];
+                selfieInput.value = '';
+                dogsInput.value = '';
+                selfiePreview.innerHTML = '';
+                dogPreviews.innerHTML = '';
+                selfiePreviewContainer.classList.add('hidden');
+                dogsPreviewsContainer.classList.add('hidden');
+                stickerList.innerHTML = `<p class="text-gray-500 text-sm italic col-span-full" id="sticker-placeholder">Haz clic en "Generar Stickers" para crear un set de pegatinas de tus personajes.</p>`;
+                stickerNote.classList.add('hidden');
+                currentPortraitUrl = '';
+
+                // Asegurar el estado del botón al resetear
+                generateBtn.disabled = false;
+                generateBtn.textContent = '🎨 Crear Mi Retrato';
+                generateStickerBtn.disabled = false;
+                generateStickerBtn.textContent = '✨ Generar Set de Stickers';
+                
+                clearLoadingMessages();
+                currentMode = 'portrait';
+            }
+
+            // --- DOWNLOAD LOGIC ---
+            function downloadPortrait() {
+                if (!currentPortraitUrl) {
+                     showAlert("No hay una imagen principal generada para descargar.");
+                     return;
+                }
+                const a = document.createElement('a');
+                a.href = currentPortraitUrl;
+                a.download = `pet-portrait-ai-portrait-${selectedStyleKey}.png`; 
+                document.body.appendChild(a); 
+                a.click();
+                document.body.removeChild(a);
+                showAlert("¡Tu retrato principal ha sido descargado! 🎉");
+            }
+            
+            window.downloadSticker = function(imageUrl, key) {
+                const a = document.createElement('a');
+                a.href = imageUrl;
+                a.download = `pet-portrait-ai-sticker-${key}.png`; 
+                document.body.appendChild(a); 
+                a.click();
+                document.body.removeChild(a);
+                // No alert here to avoid cluttering during mass download attempts
+            }
+
+            // --- INICIALIZACIÓN ---
+            setupDragDrop(selfieDropArea, selfieInput, handleSelfieFile);
+            setupDragDrop(dogsDropArea, dogsInput, handleDogFiles);
+            populateStyleSelect(); // Llenar el selector de estilos
+            
+            generateBtn.addEventListener('click', () => generateImage(false)); // Portrait
+            generateStickerBtn.addEventListener('click', () => generateImage(true)); // Stickers
+            startOverBtn.addEventListener('click', resetUI);
+            downloadBtn.addEventListener('click', downloadPortrait);
+            regenerateBtn.addEventListener('click', () => generateImage(false)); // Regenerate Portrait
+            
+            // Initial state button reset
+             generateBtn.disabled = false;
+             generateStickerBtn.disabled = false;
+        });
+    </script>
 </body>
 </html>
