@@ -3,47 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Portrait AI - Generador de Estilos</title>
+    <title>Pet Portrait AI V2 - Estilo Principal Blanco y Negro</title>
+    <meta name="description" content="Crea retratos artísticos en blanco y negro con perros apilados usando IA">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
+        :root {
+            --primary: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --secondary: #EC4899;
+            --accent: #06B6D4;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --light: #F8FAFC;
+            --dark: #1E293B;
+        }
+        
         body {
             font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f4ff 0%, #fdf2ff 50%, #f0f9ff 100%);
+            min-height: 100vh;
         }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        }
+        
         .file-upload-card {
             border: 2px dashed #d1d5db;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
         }
         .file-upload-card.drag-over {
-            border-color: #667eea;
-            background-color: #f0f2ff;
+            border-color: var(--primary);
+            background: linear-gradient(135deg, #f0f2ff 0%, #faf5ff 100%);
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.15);
         }
-        .preview-image {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 0.5rem;
-            border: 2px solid #e5e7eb;
-        }
-        #dog-previews-container .preview-image {
-            width: 80px;
-            height: 80px;
-        }
+        
         .loader {
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #667eea;
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid var(--primary);
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
         }
+        
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        /* Custom Modal for alerts */
+        
+        .btn-primary {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(139, 92, 246, 0.3);
+        }
+        
+        .progress-bar {
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 50%, var(--primary) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .style-card {
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border: 2px solid transparent;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .style-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .style-card.selected {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2), 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .style-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(4px);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .viral-badge {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+        }
+        
+        .trending-badge {
+            background: linear-gradient(135deg, #4FACFE, #00F2FE);
+            color: white;
+        }
+        
+        .classic-badge {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes pulse-glow {
+            from { box-shadow: 0 0 10px rgba(139, 92, 246, 0.4); }
+            to { box-shadow: 0 0 20px rgba(139, 92, 246, 0.8); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+        }
+        .notification.show {
+            transform: translateX(0);
+        }
+        .notification.success {
+            border-left: 4px solid var(--success);
+        }
+        .notification.error {
+            border-left: 4px solid var(--error);
+        }
+        
         .modal-backdrop {
             position: fixed;
             top: 0;
@@ -56,707 +201,666 @@
             align-items: center;
             z-index: 1000;
         }
-        .modal-content {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            max-width: 90%;
-            width: 400px;
-            text-align: center;
-        }
-        .sticker-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1rem;
-            justify-items: center;
-        }
-        .sticker-container {
-            border: 1px solid #e5e7eb;
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-            text-align: center;
-            background-color: #fafafa;
-        }
-        .sticker-container img {
-            width: 100%;
-            height: auto;
-            max-height: 100px;
-            object-fit: contain;
-            margin-bottom: 0.5rem;
+
+        .bw-filter {
+            filter: grayscale(100%) contrast(120%);
         }
     </style>
 </head>
-<body class="bg-gradient-to-r from-blue-50 to-purple-50 min-h-screen">
-    <div class="container mx-auto p-4 md:p-8">
+<body class="min-h-screen">
+    <!-- Notificación -->
+    <div id="notification" class="notification">
+        <div class="notification-icon">
+            <i class="fas fa-check-circle text-green-500"></i>
+        </div>
+        <div class="notification-content">
+            <p class="font-medium" id="notification-text">¡Operación completada!</p>
+        </div>
+        <button class="notification-close ml-auto text-gray-400 hover:text-gray-600">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
         
-        <!-- HEADER -->
-        <header class="text-center mb-8 md:mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-800">
-                🐾 Pet Portrait AI
-            </h1>
-            <div class="inline-block bg-purple-100 text-purple-800 text-sm font-semibold mt-2 px-3 py-1 rounded-full">
-                Impulsado por Gemini 2.5 (Nano Banana)
+        <header class="text-center mb-8 md:mb-12 fade-in">
+            <div class="flex justify-center mb-4">
+                <div class="relative floating">
+                    <div class="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg pulse-glow">
+                        <i class="fas fa-paw text-white text-3xl"></i>
+                    </div>
+                    <div class="absolute -top-2 -right-2 bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md">
+                        V2
+                    </div>
+                </div>
             </div>
-            <p class="text-lg md:text-xl text-gray-600 mt-3">Transforma tus momentos con mascotas en obras de arte</p>
+            <h1 class="text-4xl md:text-6xl font-black gradient-text mb-3">
+                Pet Portrait AI
+            </h1>
+            <p class="text-lg md:text-xl text-gray-700 mt-4 font-medium max-w-2xl mx-auto">Crea retratos en blanco y negro con perros apilados - El estilo clásico</p>
+            
+            <!-- Indicador de pasos -->
+            <div class="flex justify-center mt-8 space-x-2">
+                <div class="step w-10 h-10 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold">1</div>
+                <div class="step-line h-1 bg-gray-300 w-16 mt-5"></div>
+                <div class="step w-10 h-10 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-bold">2</div>
+                <div class="step-line h-1 bg-gray-300 w-16 mt-5"></div>
+                <div class="step w-10 h-10 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-bold">3</div>
+                <div class="step-line h-1 bg-gray-300 w-16 mt-5"></div>
+                <div class="step w-10 h-10 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-bold">4</div>
+            </div>
         </header>
 
-        <!-- MAIN LAYOUT: Inputs (Left) vs. Results (Right) -->
-        <main class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-
-            <!-- COLUMNA DE ENTRADAS Y CONTROLES -->
-            <div class="space-y-8">
+        <main class="grid grid-cols-1 xl:grid-cols-3 gap-8 items-start">
+            <!-- Columna izquierda: Formulario -->
+            <div class="xl:col-span-2 space-y-6">
                 
-                <!-- 1. Sube tu Foto (Selfie) -->
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <h2 class="text-xl font-semibold text-gray-700 mb-4 flex items-center gap-2">1. Sube tu Foto 👤</h2>
-                    <div id="selfie-drop-area" class="file-upload-card p-6 text-center rounded-lg cursor-pointer">
+                <!-- Paso 1: Subir selfie -->
+                <div class="glass-card p-6 rounded-2xl fade-in" id="step-1-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">1</div>
+                        <h2 class="text-xl font-bold text-gray-800">Sube tu selfie 👤</h2>
+                    </div>
+                    <p class="text-gray-600 mb-4">Comienza subiendo una foto clara de tu rostro para crear el retrato base.</p>
+                    
+                    <div id="selfie-drop-area" class="file-upload-card p-8 text-center rounded-xl cursor-pointer transition-all duration-300">
                         <input type="file" id="selfie-input" accept="image/png, image/jpeg, image/webp" class="hidden">
                         <div class="text-gray-500">
-                            <svg class="w-12 h-12 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                            <p class="mt-2 text-lg font-medium">+ Sube tu selfie</p>
-                            <p class="text-xs text-gray-400 mt-1">Arrastra y suelta o haz clic aquí</p>
+                            <div class="w-20 h-20 mx-auto bg-gradient-to-r from-purple-100 to-pink-100 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-user text-purple-500 text-2xl"></i>
+                            </div>
+                            <p class="text-lg font-semibold">Arrastra tu selfie aquí</p>
+                            <p class="text-sm text-gray-400 mt-2">o haz clic para seleccionar</p>
+                            <p class="text-xs text-gray-400 mt-1">Formatos: JPG, PNG, WebP</p>
                         </div>
                     </div>
+                    
                     <div id="selfie-preview-container" class="mt-4 hidden">
-                        <p class="font-medium text-sm text-gray-600 mb-2">Vista Previa:</p>
-                        <div id="selfie-preview" class="flex justify-center"></div>
+                        <p class="font-medium text-sm text-gray-600 mb-2">Vista previa:</p>
+                        <div id="selfie-preview" class="flex justify-center items-center gap-4"></div>
                     </div>
                 </div>
 
-                <!-- 2. Sube fotos de la Mascota -->
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <h2 class="text-xl font-semibold text-gray-700 mb-4 flex items-center gap-2">2. Sube sus Fotos 🐕</h2>
-                    <div id="dogs-drop-area" class="file-upload-card p-6 text-center rounded-lg cursor-pointer">
+                <!-- Paso 2: Subir fotos de mascotas -->
+                <div class="glass-card p-6 rounded-2xl fade-in" id="step-2-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold">2</div>
+                        <h2 class="text-xl font-bold text-gray-800">Sube fotos de tus mascotas 🐕</h2>
+                    </div>
+                    <p class="text-gray-600 mb-4">Añade fotos de tus mascotas para incluirlas en el retrato artístico.</p>
+                    
+                    <div id="dogs-drop-area" class="file-upload-card p-8 text-center rounded-xl cursor-pointer transition-all duration-300">
                         <input type="file" id="dogs-input" accept="image/png, image/jpeg, image/webp" multiple class="hidden">
                         <div class="text-gray-500">
-                           <svg class="w-12 h-12 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
-                            <p class="mt-2 text-lg font-medium">+ Sube fotos de tus perros</p>
-                            <p class="text-xs text-gray-400 mt-1">Puedes seleccionar múltiples archivos</p>
+                            <div class="w-20 h-20 mx-auto bg-gradient-to-r from-blue-100 to-cyan-100 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-paw text-blue-500 text-2xl"></i>
+                            </div>
+                            <p class="text-lg font-semibold">Arrastra fotos de mascotas aquí</p>
+                            <p class="text-sm text-gray-400 mt-2">o haz clic para seleccionar</p>
+                            <p class="text-xs text-gray-400 mt-1">Puedes subir hasta 5 mascotas</p>
                         </div>
                     </div>
+                    
                     <div id="dogs-previews-container" class="mt-4 hidden">
-                        <p class="font-medium text-sm text-gray-600 mb-2">Vistas Previas:</p>
+                        <p class="font-medium text-sm text-gray-600 mb-2">Tus mascotas:</p>
                         <div id="dog-previews" class="flex flex-wrap gap-3 justify-center"></div>
                     </div>
                 </div>
                 
-                <!-- 3. Elige el Estilo -->
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <h2 class="text-xl font-semibold text-gray-700 mb-4 flex items-center gap-2">3. Elige el Estilo Artístico 🎨</h2>
-                    <p class="text-sm text-gray-600 mb-3">La composición será de cabezas apiladas y mirando a cámara.</p>
-                    <label for="style-select" class="block text-sm font-medium text-gray-700 mb-2">Selecciona un Estilo:</label>
-                    <select id="style-select" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500 bg-gray-50">
-                        <!-- Opciones de estilos se llenarán con JS -->
-                    </select>
-                    <div id="style-details" class="mt-3 text-sm text-gray-500 p-3 bg-gray-100 rounded-lg">
-                        Alta resolución, emotivo, minimalista.
+                <!-- Paso 3: Elegir estilo -->
+                <div class="glass-card p-6 rounded-2xl fade-in" id="step-3-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full flex items-center justify-center text-white font-bold">3</div>
+                        <h2 class="text-xl font-bold text-gray-800">Elige el estilo artístico 🎨</h2>
+                    </div>
+                    <p class="text-gray-600 mb-4">Selecciona el estilo clásico de blanco y negro con perros apilados o explora otras opciones virales.</p>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6" id="style-cards">
+                        <!-- Las tarjetas de estilo se generarán con JavaScript -->
                     </div>
                 </div>
 
-                <!-- 4. Botón de Generación -->
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <h2 class="text-xl font-semibold text-gray-700 mb-4 flex items-center gap-2">4. ¡Crea la Magia! ✨</h2>
-                    <button id="generate-btn" class="w-full bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white font-bold py-3 px-4 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">
-                        🎨 Crear Mi Retrato
+                <!-- Paso 4: Generar -->
+                <div class="glass-card p-6 rounded-2xl fade-in" id="step-4-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center text-white font-bold">4</div>
+                        <h2 class="text-xl font-bold text-gray-800">¡Crea la magia! ✨</h2>
+                    </div>
+                    <p class="text-gray-600 mb-4">Todo listo. Haz clic en el botón para generar tu retrato artístico único con el estilo clásico.</p>
+                    
+                    <button id="generate-btn" class="btn-primary w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-black py-4 px-6 rounded-xl shadow-lg text-lg transition-all duration-300" disabled>
+                        <span class="flex items-center justify-center gap-3">
+                            <i class="fas fa-wand-magic-sparkles"></i>
+                            Generar Retrato Clásico
+                        </span>
                     </button>
                 </div>
             </div>
 
-            <!-- COLUMNA DE ESTADO Y RESULTADOS (Simplificada) -->
-            <div>
+            <!-- Columna derecha: Vista previa y resultados -->
+            <div class="space-y-6">
                 
-                <!-- ESTADO DE CARGA/MENSAJE -->
-                <div id="message-column" class="hidden bg-white p-6 rounded-xl shadow-lg text-center flex flex-col justify-center items-center min-h-[400px]">
-                    <div id="loader" class="loader mb-4"></div>
-                    <h3 id="message-title" class="text-xl font-bold text-gray-800">Generando tu obra de arte...</h3>
-                    <p id="message-text" class="text-gray-600 mt-2">La IA está trabajando su magia. Esto puede tardar un momento...</p>
+                <!-- Vista previa del estilo -->
+                <div id="example-column" class="glass-card p-6 rounded-2xl relative min-h-[500px] flex flex-col">
+                    <div class="absolute top-4 right-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
+                        Vista Previa
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">✨ Previsualización del Estilo</h2>
+
+                    <div class="relative my-4 flex-1 flex items-center justify-center">
+                        <div class="w-full h-64 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center">
+                            <img id="style-example-image" src="https://images.unsplash.com/photo-1514989940723-e8e51635b782?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Ejemplo de estilo artístico" class="rounded-lg w-full h-full object-cover shadow-md bw-filter">
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <h3 class="font-semibold text-gray-700 mb-2">Características del estilo:</h3>
+                        <ul id="style-features" class="space-y-2 text-gray-600">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-500 mt-1"></i>
+                                <span>Blanco y negro artístico de alta calidad</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-500 mt-1"></i>
+                                <span>Composición de cabezas apiladas</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-500 mt-1"></i>
+                                <span>Enfoque en la conexión emocional</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <!-- RESULTADOS (IMAGEN + STICKERS + CONTROLES) -->
-                <div id="result-column" class="hidden bg-white p-6 rounded-xl shadow-lg">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-4" id="result-title">🎉 ¡Tu Retrato Está Listo!</h2>
+                <!-- Mensaje de carga -->
+                <div id="message-column" class="hidden glass-card p-6 rounded-2xl text-center flex flex-col justify-center items-center min-h-[400px] fade-in">
+                    <div class="loader mb-6"></div>
+                    <h3 id="message-title" class="text-2xl font-black text-gray-800 mb-2">Creando tu retrato clásico...</h3>
+                    <p id="message-text" class="text-gray-600 mt-2 max-w-md">Estamos procesando tus imágenes para crear el retrato en blanco y negro con perros apilados.</p>
+                    <div class="w-full max-w-xs mt-6">
+                        <div class="progress-bar rounded-full"></div>
+                    </div>
+                    <div class="mt-6 grid grid-cols-3 gap-2 max-w-xs">
+                        <div class="h-2 bg-purple-200 rounded-full animate-pulse"></div>
+                        <div class="h-2 bg-purple-300 rounded-full animate-pulse delay-100"></div>
+                        <div class="h-2 bg-purple-400 rounded-full animate-pulse delay-200"></div>
+                    </div>
+                </div>
+
+                <!-- Resultados -->
+                <div id="result-column" class="hidden glass-card p-6 rounded-2xl">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <i class="fas fa-sparkles text-yellow-500"></i>
+                        <span>🎉 ¡Tu Retrato Clásico Está Listo!</span>
+                    </h2>
                     
-                    <!-- 1. Área de la Imagen Principal -->
                     <div id="portrait-result-section" class="mb-6">
-                        <h3 class="text-xl font-semibold text-gray-700 mb-3">Retrato Artístico Principal</h3>
-                        <!-- Contenedor de la Imagen -->
-                        <div class="w-full aspect-video bg-gray-100 flex items-center justify-center rounded-lg shadow-inner border border-gray-300 overflow-hidden">
-                             <img id="result-image" src="" alt="Retrato generado por IA" class="w-full h-auto object-cover">
+                        <h3 class="text-xl font-semibold text-gray-700 mb-3">Retrato en Blanco y Negro con Perros Apilados</h3>
+                        <div id="result-image-container" class="mb-4 rounded-xl overflow-hidden border-2 border-gray-300 bg-gray-50 min-h-[300px] flex items-center justify-center">
+                            <img id="result-image" src="" alt="Retrato generado por IA" class="w-full h-auto max-h-96 object-contain">
                         </div>
                         
-                        <button id="download-btn" class="w-full mt-4 bg-green-500 text-white font-bold py-3 px-4 rounded-lg shadow-md hover:bg-green-600 transition-all duration-300">
-                            ⬇️ Descargar Retrato Principal
-                        </button>
-                    </div>
-
-                    <!-- 2. Área para los Stickers/Pegatinas -->
-                    <div id="sticker-result-section" class="mt-6 pt-4 border-t border-gray-200">
-                        <h3 class="text-xl font-semibold text-gray-700 mb-3">Tu Set de Stickers Personalizado</h3>
-                        <button id="generate-sticker-btn" class="w-full bg-pink-500 text-white font-bold py-3 px-4 rounded-lg shadow-md hover:bg-pink-600 transition-all duration-300 mb-3">
-                            ✨ Generar Stickers
-                        </button>
-                        
-                        <!-- Contenedor donde se insertarán los stickers generados -->
-                        <div id="sticker-list" class="sticker-grid">
-                            <p class="text-gray-500 text-sm italic col-span-full" id="sticker-placeholder">
-                                Haz clic en "Generar Stickers" para crear un set de pegatinas de tus personajes.
-                            </p>
+                        <div class="grid grid-cols-2 gap-3 mt-4">
+                            <button id="download-btn" class="btn-primary bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-3 px-4 rounded-lg shadow-md flex items-center justify-center gap-2">
+                                <i class="fas fa-download"></i>
+                                Descargar
+                            </button>
+                            <button id="regenerate-btn" class="btn-primary bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold py-3 px-4 rounded-lg shadow-md flex items-center justify-center gap-2">
+                                <i class="fas fa-sync-alt"></i>
+                                Regenerar
+                            </button>
                         </div>
-                        
-                        <p class="text-xs text-gray-500 mt-4 hidden" id="sticker-note">Nota: Haz clic en "Descargar" en cada sticker para obtener la versión PNG con fondo transparente/blanco.</p>
                     </div>
 
-                    <!-- Botones de Acción -->
-                    <div class="mt-6 pt-4 border-t border-gray-200 space-y-3">
-                        <button id="regenerate-btn" class="w-full bg-indigo-500 text-white font-bold py-3 px-4 rounded-lg shadow-md hover:bg-indigo-600 transition-all duration-300">
-                            🔄 Regenerar Retrato (Mismas Fotos)
-                        </button>
-                        <button id="start-over-btn" class="w-full bg-gray-200 text-gray-800 font-bold py-3 px-4 rounded-lg hover:bg-gray-300 transition-all duration-300">
-                            Empezar de Nuevo
-                        </button>
-                    </div>
+                    <button id="start-over-btn" class="btn-primary w-full bg-gray-200 text-gray-800 font-bold py-3 px-4 rounded-lg hover:bg-gray-300 flex items-center justify-center gap-2 mt-3">
+                        <i class="fas fa-redo"></i>
+                        Crear Otro Retrato
+                    </button>
                 </div>
-
             </div>
         </main>
     </div>
 
-    <!-- Custom Alert Modal -->
+    <!-- Modal de alerta -->
     <div id="custom-alert" class="modal-backdrop hidden">
-        <div class="modal-content">
-            <p id="alert-message" class="text-gray-700 mb-6"></p>
-            <button id="alert-close-btn" class="bg-purple-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-purple-700 transition-colors">Entendido</button>
+        <div class="bg-white p-6 rounded-2xl shadow-xl max-w-md w-full mx-4">
+            <div class="text-center mb-4">
+                <div class="w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-info text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2" id="alert-title">Información</h3>
+                <p id="alert-message" class="text-gray-600"></p>
+            </div>
+            <button id="alert-close-btn" class="btn-primary w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg mt-4">
+                Entendido
+            </button>
         </div>
     </div>
 
-
     <script>
+        // Configuración de la API
+        const API_KEY = "AIzaSyCIcKllMAMgqfY5pXAvkRZFjp56TMq5AUQ";
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+
+        // Estado de la aplicación
+        let selfieFile = null;
+        let dogFiles = [];
+        let selectedStyle = null;
+        let isGenerating = false;
+
+        // Estilos con el principal en blanco y negro
+        const styles = {
+            'fine_art_bw': {
+                name: 'Clásico Blanco y Negro 🖤',
+                description: `Create a professional black and white fine art portrait in the style of a master photographer. A person resting their head on a soft surface with EXACTLY {numDogs} dogs with their heads stacked one on top of the other, gently leaning on the person's head and shoulder. Create an intimate, calm, emotional composition with soft natural window light, shallow depth of field, and cinematic mood. High-resolution with fine skin detail and visible dog fur texture. Neutral background out of focus (bokeh). All subjects looking directly into the camera lens. Shot on a professional camera (Canon RF 50mm f/1.2 or similar). Moody, editorial style, minimal distractions, focus on the emotional bond between human and pets. Black and white photography with perfect contrast and tonality.`,
+                details: 'El estilo clásico: blanco y negro profesional con perros apilados. Atemporal y emotivo.',
+                features: [
+                    'Blanco y negro artístico profesional',
+                    'Composición de cabezas apiladas',
+                    'Alta resolución con texturas detalladas',
+                    'Fondo desenfocado (efecto bokeh)',
+                    'Enfoque en la conexión emocional'
+                ],
+                example_image: "https://images.unsplash.com/photo-1514989940723-e8e51635b782?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                badge: "classic",
+                popularity: 98
+            },
+            'dreamy_glow': {
+                name: 'Brillo Soñador ✨',
+                description: `Create a highly viral, dreamy portrait with soft golden hour lighting, lens flare effects, and a magical atmosphere. A person resting their head on a soft surface with EXACTLY {numDogs} dogs with their heads stacked, gently leaning on the person's head and shoulder. The image has a soft focus effect, warm pastel tones, and an ethereal glow. The background is a dreamy out-of-focus landscape with bokeh lights. The overall mood is magical, serene, and highly Instagrammable with a touch of fantasy. The composition is perfectly balanced for social media, with high emotional appeal and shareability.`,
+                details: 'Efecto de luz dorada, atmósfera soñadora y mágica. Perfecto para Instagram y TikTok.',
+                features: [
+                    'Efecto de Luz Dorada y Brillos Mágicos',
+                    'Atmósfera Etérea y Soñadora',
+                    'Colores Pastel Cálidos y Vibrantes',
+                    'Composición Optimizada para Redes Sociales',
+                    'Alto Potencial Viral'
+                ],
+                example_image: "https://images.unsplash.com/photo-1518481852452-9415b262eba4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                badge: "viral",
+                popularity: 95
+            },
+            'kawaii_cute': {
+                name: 'Kawaii Adorable 🍡',
+                description: `Create an ultra-cute kawaii style portrait designed for maximum viral potential. A person resting their head with EXACTLY {numDogs} dogs with their heads stacked, using soft pastel colors, round faces, huge sparkling eyes, and tiny mouths. Added cute elements like floating hearts, stars, sparkles, and rainbows around the subjects. The style is extremely charming, innocent, and adorable with authentic Japanese kawaii aesthetic. All subjects have exaggerated cute expressions that trigger positive emotional responses. The background is simple and pastel-colored to keep focus on the cute characters. Perfect for stickers, social media, and messaging apps.`,
+                details: 'Estilo japonés super adorable con colores pastel y elementos kawaii. Altamente compartible.',
+                features: [
+                    'Caras Redondas y Ojos Grandes Expresivos',
+                    'Colores Pastel Suaves y Alegres',
+                    'Elementos Kawaii (Corazones, Estrellas, Sparkles)',
+                    'Expresiones Exageradamente Adorables',
+                    'Optimizado para Stickers y Redes Sociales'
+                ],
+                example_image: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                badge: "trending",
+                popularity: 92
+            },
+            'cyberpunk_neon': {
+                name: 'Cyberpunk Neon 🏙️',
+                description: `Create a cyberpunk neon portrait with high visual impact and viral potential. A person resting their head with EXACTLY {numDogs} dogs with their heads stacked, set in a futuristic city at night with glowing neon signs, rain-soaked streets, and holographic advertisements. Used a dark color palette with vibrant neon accents (electric pinks, blues, greens). Added technological elements like circuit patterns, data streams, and glitch effects. The mood is futuristic, edgy, and visually striking with a Blade Runner aesthetic. The composition is dynamic and eye-catching, perfect for grabbing attention on social media feeds.`,
+                details: 'Estilo futurista con luces de neón, lluvia y elementos tecnológicos. Muy popular en Instagram.',
+                features: [
+                    'Escena Nocturna con Luces de Neón Vibrantes',
+                    'Atmósfera Cyberpunk Futurista y Edgy',
+                    'Efectos de Lluvia y Reflexiones en el Pavimento',
+                    'Elementos Tecnológicos y Holográficos',
+                    'Paleta de Colores Oscuros con Acentos Neón'
+                ],
+                example_image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                badge: "trending",
+                popularity: 85
+            }
+        };
+
         document.addEventListener('DOMContentLoaded', () => {
-            // --- VARIABLES DE ELEMENTOS ---
+            // Inicializar la aplicación
+            initializeApp();
+        });
+
+        function initializeApp() {
+            // Generar tarjetas de estilos
+            generateStyleCards();
+            
+            // Configurar eventos
+            setupEventListeners();
+            
+            // Configurar sistema de notificaciones
+            setupNotifications();
+            
+            // Seleccionar el estilo clásico por defecto
+            selectStyle('fine_art_bw');
+        }
+
+        function generateStyleCards() {
+            const styleCardsContainer = document.getElementById('style-cards');
+            styleCardsContainer.innerHTML = '';
+
+            Object.keys(styles).forEach(key => {
+                const style = styles[key];
+                const styleCard = document.createElement('div');
+                styleCard.className = 'style-card';
+                styleCard.dataset.style = key;
+                
+                let badgeHTML = '';
+                if (style.badge) {
+                    badgeHTML = `<div class="style-badge ${style.badge}-badge">${style.badge.toUpperCase()}</div>`;
+                }
+                
+                // Aplicar filtro blanco y negro solo al estilo clásico
+                const imageClass = key === 'fine_art_bw' ? 'bw-filter' : '';
+                
+                styleCard.innerHTML = `
+                    ${badgeHTML}
+                    <div class="h-32 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center overflow-hidden">
+                        <img src="${style.example_image}" alt="${style.name}" class="w-full h-full object-cover ${imageClass}">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-gray-800 mb-1">${style.name}</h3>
+                        <p class="text-xs text-gray-600 mb-2">${style.details}</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 rounded-full ${style.popularity > 85 ? 'bg-green-500' : style.popularity > 75 ? 'bg-yellow-500' : 'bg-blue-500'} mr-1"></div>
+                                <span class="text-xs text-gray-500">${style.popularity}% popular</span>
+                            </div>
+                            <div class="text-xs font-medium text-purple-600">Seleccionar</div>
+                        </div>
+                    </div>
+                `;
+                
+                styleCardsContainer.appendChild(styleCard);
+                
+                // Añadir evento de clic
+                styleCard.addEventListener('click', () => {
+                    selectStyle(key);
+                });
+            });
+        }
+
+        function selectStyle(styleKey) {
+            // Remover selección anterior
+            document.querySelectorAll('.style-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Seleccionar nueva tarjeta
+            document.querySelector(`[data-style="${styleKey}"]`).classList.add('selected');
+            selectedStyle = styleKey;
+            
+            // Actualizar vista previa
+            updateStyleDisplay(styleKey);
+            updateGenerateButton();
+            
+            // Actualizar texto del botón según el estilo
+            const generateBtn = document.getElementById('generate-btn');
+            if (styleKey === 'fine_art_bw') {
+                generateBtn.innerHTML = `
+                    <span class="flex items-center justify-center gap-3">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                        Generar Retrato Clásico
+                    </span>
+                `;
+            } else {
+                generateBtn.innerHTML = `
+                    <span class="flex items-center justify-center gap-3">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                        Generar con ${styles[styleKey].name.split(' ')[0]}
+                    </span>
+                `;
+            }
+        }
+
+        function updateStyleDisplay(styleKey) {
+            const style = styles[styleKey];
+            if (!style) return;
+
+            const exampleImage = document.getElementById('style-example-image');
+            exampleImage.src = style.example_image;
+            
+            // Aplicar filtro blanco y negro solo al estilo clásico
+            if (styleKey === 'fine_art_bw') {
+                exampleImage.classList.add('bw-filter');
+            } else {
+                exampleImage.classList.remove('bw-filter');
+            }
+            
+            const styleFeatures = document.getElementById('style-features');
+            styleFeatures.innerHTML = '';
+            
+            style.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.className = 'flex items-start gap-2';
+                li.innerHTML = `<i class="fas fa-check text-green-500 mt-1"></i> <span>${feature}</span>`;
+                styleFeatures.appendChild(li);
+            });
+        }
+
+        function setupEventListeners() {
+            // Selfie upload
             const selfieDropArea = document.getElementById('selfie-drop-area');
             const selfieInput = document.getElementById('selfie-input');
-            const selfiePreviewContainer = document.getElementById('selfie-preview-container');
-            const selfiePreview = document.getElementById('selfie-preview');
-
+            
+            selfieDropArea.addEventListener('click', () => selfieInput.click());
+            selfieInput.addEventListener('change', (e) => handleFileSelect(e, 'selfie'));
+            
+            // Dogs upload
             const dogsDropArea = document.getElementById('dogs-drop-area');
             const dogsInput = document.getElementById('dogs-input');
-            const dogsPreviewsContainer = document.getElementById('dogs-previews-container');
-            const dogPreviews = document.getElementById('dog-previews');
             
-            const styleSelect = document.getElementById('style-select');
-            const styleDetails = document.getElementById('style-details');
+            dogsDropArea.addEventListener('click', () => dogsInput.click());
+            dogsInput.addEventListener('change', (e) => handleFileSelect(e, 'dogs'));
             
-            const generateBtn = document.getElementById('generate-btn');
-            const generateStickerBtn = document.getElementById('generate-sticker-btn'); 
+            // Generate button
+            document.getElementById('generate-btn').addEventListener('click', generateImage);
             
-            const messageCol = document.getElementById('message-column');
-            const resultCol = document.getElementById('result-column');
+            // Regenerate button
+            document.getElementById('regenerate-btn').addEventListener('click', generateImage);
             
-            const resultImage = document.getElementById('result-image');
-            const stickerList = document.getElementById('sticker-list'); 
-            const stickerPlaceholder = document.getElementById('sticker-placeholder');
-            const stickerNote = document.getElementById('sticker-note');
+            // Start over button
+            document.getElementById('start-over-btn').addEventListener('click', resetApp);
             
-            const startOverBtn = document.getElementById('start-over-btn');
-            const downloadBtn = document.getElementById('download-btn');
-            const regenerateBtn = document.getElementById('regenerate-btn'); 
+            // Download button
+            document.getElementById('download-btn').addEventListener('click', downloadImage);
+            
+            // Alert close button
+            document.getElementById('alert-close-btn').addEventListener('click', () => {
+                document.getElementById('custom-alert').classList.add('hidden');
+            });
+        }
 
-            const customAlert = document.getElementById('custom-alert');
-            const alertMessage = document.getElementById('alert-message');
-            const alertCloseBtn = document.getElementById('alert-close-btn');
+        function handleFileSelect(event, type) {
+            const files = event.target.files;
+            if (!files || files.length === 0) return;
             
-            let selfieFile = null;
-            let dogFiles = [];
-            let loadingInterval = null;
-            let currentMode = 'portrait'; 
-            let currentPortraitUrl = '';
-            
-            // --- DEFINICIÓN DE ESTILOS (ACTUALIZADOS) ---
-            const styles = {
-                'fine_art_bw': {
-                    name: 'Fine Art Blanco y Negro 🖼️',
-                    description: `black and white fine art portrait of a person resting their head on a soft couch, with one or more dogs with their heads stacked one on top of the other, gently leaning on the person’s head and shoulder, creating an intimate, calm, emotional composition. Soft natural window light, shallow depth of field, cinematic mood, high-resolution photo with fine skin detail and visible dog fur texture, neutral background out of focus (bokeh). All subjects looking directly into the camera lens. Shot on a professional camera (Canon RF 50mm f/1.2 or similar). Moody, editorial style, minimal distractions, focus on the emotional bond between human and pets.`,
-                    details: 'Retrato de estudio en B/N, alta calidad, luz suave.'
-                },
-                'watercolor': {
-                    name: 'Acuarela Suave 🎨',
-                    description: `soft watercolor portrait of a person resting their head on a soft couch, with one or more dogs with their heads stacked one on top of the other, gently leaning on the person’s head and shoulder, creating an intimate, calm, emotional composition. Pastel color palette, light paper texture, ethereal mood, shallow depth of field, detailed watercolor strokes. All subjects looking directly into the camera lens.`,
-                    details: 'Colores pastel, bordes suaves, sensación pintada.'
-                },
-                'oil_painting': {
-                    name: 'Pintura al Óleo Clásica 🖌️',
-                    description: `classic oil painting portrait of a person resting their head on a soft couch, with one or more dogs with their heads stacked one on top of the other, gently leaning on the person’s head and shoulder, creating an intimate, calm, emotional composition. Rich, warm colors, visible impasto brushstrokes, golden hour lighting, deep depth of field, dramatic chiaroscuro. All subjects looking directly into the camera lens.`,
-                    details: 'Colores ricos, pinceladas visibles, luz dramática.'
-                },
-                'charcoal_sketch': {
-                    name: 'Boceto a Carboncillo ✏️',
-                    description: `realistic charcoal sketch on textured paper of a person resting their head on a soft couch, with one or more dogs with their heads stacked. Dramatic shading, highly detailed texture of charcoal and paper, high-contrast black and white. All subjects looking directly into the camera lens.`,
-                    details: 'Boceto dramático, texturas detalladas de carbón, alto contraste B/N.'
-                },
-                'anime_manga': {
-                    name: 'Anime Japonés 🎌',
-                    description: `vibrant Japanese anime style portrait of a person resting their head on a soft couch, with one or more dogs with their heads stacked one on top of the other, gently leaning on the person’s head and shoulder, creating an intimate, calm, emotional composition. Large, expressive eyes, dynamic lighting, clean line work, vibrant cell-shading, soft focus background, cinematic composition. All subjects looking directly into the camera lens.`,
-                    details: 'Líneas limpias, colores brillantes, ojos grandes y expresivos.'
-                },
-                'ghibli_studio': {
-                    name: 'Estilo Studio Ghibli 🍃',
-                    description: `hand-drawn, warm, and whimsical Studio Ghibli-inspired animation style portrait of a person resting their head on a soft couch, with one or more dogs with their heads stacked one on top of the other, gently leaning on the person’s head and shoulder, creating an intimate, calm, emotional composition. Detailed natural environment background, soft light, emotional, nostalgic feeling, watercolor-like textures. All subjects looking directly into the camera lens.`,
-                    details: 'Dibujo a mano, colores cálidos, fondo detallado de naturaleza, sensación nostálgica.'
-                },
-                'cartoon_flat': {
-                    name: 'Caricatura Estilizada (Cartoon) 📺',
-                    description: `modern cartoon style portrait with thick, clean outlines and flat colors, similar to popular adult animated sitcoms. A person and their dogs in an intimate pose, heads stacked, vibrant, highly stylized, minimal shading. All subjects looking directly into the camera lens.`,
-                    details: 'Colores planos, contornos gruesos y limpios, look de caricatura moderna.'
-                }
-            };
-            
-            // --- DEFINICIÓN DE STICKERS EMOCIONALES ---
-            const groupStickerEmotions = [
-                { name: 'Grupo Feliz', key: 'group-happy', prompt: 'happy and smiling, showing positive emotion.' },
-                { name: 'Grupo Sorprendido', key: 'group-surprised', prompt: 'looking very surprised, with big open eyes and exaggerated expressions.' }
-            ];
-
-            const individualStickerEmotions = [
-                { name: 'Soñoliento', key: 'sleepy', prompt: 'looking sleepy or tired, perhaps with small yawns or closed eyes.' },
-                { name: 'Cariño', key: 'love', prompt: 'showing affection and love, maybe with a small heart icon or a gentle, loving look.' },
-                { name: 'Gracioso', key: 'silly', prompt: 'looking silly and wacky, making funny or exaggerated faces.' },
-                { name: 'Curioso', key: 'curious', prompt: 'looking curious, with head tilted slightly.' },
-                { name: 'Enojado', key: 'angry', prompt: 'looking slightly annoyed or angry, with a furrowed brow.' }
-            ];
-
-            let selectedStyleKey = 'fine_art_bw'; 
-            
-            // --- CUSTOM ALERT ---
-            function showAlert(message) {
-                alertMessage.textContent = message;
-                customAlert.classList.remove('hidden');
+            if (type === 'selfie') {
+                selfieFile = files[0];
+                renderSelfiePreview();
+            } else if (type === 'dogs') {
+                // Añadir nuevos archivos (máximo 5)
+                Array.from(files).forEach(file => {
+                    if (dogFiles.length < 5) {
+                        dogFiles.push(file);
+                    }
+                });
+                renderDogPreviews();
             }
-            alertCloseBtn.addEventListener('click', () => customAlert.classList.add('hidden'));
+            
+            updateGenerateButton();
+        }
 
-            // --- LÓGICA DE DRAG & DROP Y PREVIEWS (Unchanged) ---
-            function setupDragDrop(dropArea, input, handleFiles) {
-                dropArea.addEventListener('click', () => input.click());
-                input.addEventListener('change', (e) => handleFiles(e.target.files));
+        function renderSelfiePreview() {
+            const container = document.getElementById('selfie-preview-container');
+            const preview = document.getElementById('selfie-preview');
+            
+            if (selfieFile) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.innerHTML = `
+                        <div class="relative">
+                            <img src="${e.target.result}" class="preview-image w-24 h-24 rounded-xl object-cover shadow-md">
+                            <button onclick="removeSelfie()" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">
+                                ×
+                            </button>
+                        </div>
+                    `;
+                    container.classList.remove('hidden');
+                };
+                reader.readAsDataURL(selfieFile);
+            } else {
+                container.classList.add('hidden');
+            }
+        }
 
-                ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-                    dropArea.addEventListener(eventName, preventDefaults, false);
-                });
-
-                ['dragenter', 'dragover'].forEach(eventName => {
-                    dropArea.addEventListener(eventName, () => dropArea.classList.add('drag-over'), false);
-                });
-
-                ['dragleave', 'drop'].forEach(eventName => {
-                    dropArea.addEventListener(eventName, () => dropArea.classList.remove('drag-over'), false);
-                });
+        function renderDogPreviews() {
+            const container = document.getElementById('dogs-previews-container');
+            const previews = document.getElementById('dog-previews');
+            
+            if (dogFiles.length > 0) {
+                previews.innerHTML = '';
                 
-                dropArea.addEventListener('drop', (e) => handleFiles(e.dataTransfer.files), false);
-            }
-            
-            function preventDefaults(e) {
-                e.preventDefault();
-                e.stopPropagation();
-            }
-
-            function handleSelfieFile(files) {
-                const file = files[0];
-                if (file && file.type.startsWith('image/')) {
-                    selfieFile = file;
-                    selfiePreview.innerHTML = '';
+                dogFiles.forEach((file, index) => {
                     const reader = new FileReader();
-                    reader.onload = (e) => {
-                        const img = document.createElement('img');
-                        img.src = e.target.result;
-                        img.className = 'preview-image';
-                        selfiePreview.appendChild(img);
-                        selfiePreviewContainer.classList.remove('hidden');
+                    reader.onload = function(e) {
+                        const div = document.createElement('div');
+                        div.className = 'relative';
+                        div.innerHTML = `
+                            <img src="${e.target.result}" class="preview-image w-20 h-20 rounded-lg object-cover">
+                            <button onclick="removeDog(${index})" class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                                ×
+                            </button>
+                        `;
+                        previews.appendChild(div);
                     };
                     reader.readAsDataURL(file);
-                } else {
-                    showAlert("Por favor, sube un archivo de imagen válido (JPG, PNG, WEBP).");
-                }
-            }
-            
-            function handleDogFiles(newFiles) {
-                const validNewFiles = Array.from(newFiles).filter(file => file.type.startsWith('image/'));
-                
-                // Note: The input.files property doesn't reflect the combined set, 
-                // so we manage dogFiles array manually based on if input.files was used (to replace)
-                // or if we're adding (drag and drop/multiple selection).
-                if (dogsInput.files.length === newFiles.length && dogsInput.files.length > 0) {
-                    // This implies a full replacement (e.g., selecting via dialog)
-                    dogFiles = validNewFiles;
-                } else {
-                    // Drag and drop or adding to an existing set
-                    dogFiles = [...dogFiles, ...validNewFiles]; 
-                }
-
-                if(dogFiles.length > 0) {
-                    dogPreviews.innerHTML = '';
-                    dogFiles.forEach(file => {
-                        const reader = new FileReader();
-                        reader.onload = (e) => {
-                            const img = document.createElement('img');
-                            img.src = e.target.result;
-                            img.className = 'preview-image';
-                            dogPreviews.appendChild(img);
-                        };
-                        reader.readAsDataURL(file);
-                    });
-                    dogsPreviewsContainer.classList.remove('hidden');
-                } else {
-                     dogsPreviewsContainer.classList.add('hidden');
-                }
-                
-                // Clear the input value to allow the 'change' event to fire again if the same file is selected
-                dogsInput.value = '';
-
-                if (newFiles.length > 0 && validNewFiles.length === 0) {
-                     showAlert("Algunos archivos no eran imágenes válidas y han sido ignorados.");
-                }
-            }
-            
-            // --- LÓGICA DE ESTILOS Y UI DINÁMICA ---
-            function populateStyleSelect() {
-                let options = '';
-                for (const key in styles) {
-                    const style = styles[key];
-                    options += `<option value="${key}">${style.name}</option>`;
-                }
-                styleSelect.innerHTML = options;
-                updateStyleUI('fine_art_bw');
-            }
-
-            function updateStyleUI(key) {
-                const style = styles[key];
-                if (!style) return;
-                
-                selectedStyleKey = key;
-                styleDetails.textContent = style.details;
-            }
-
-            styleSelect.addEventListener('change', (e) => {
-                updateStyleUI(e.target.value);
-            });
-
-
-            // --- HELPER TO CONVERT FILE TO BASE64 ---
-            function fileToBase64(file) {
-                return new Promise((resolve, reject) => {
-                    const reader = new FileReader();
-                    reader.readAsDataURL(file);
-                    reader.onload = () => resolve(reader.result.split(',')[1]);
-                    reader.onerror = error => reject(error);
                 });
-            }
-
-            // --- LÓGICA DE MENSAJES DE CARGA ---
-            const loadingMessages = {
-                'portrait': [
-                    { title: "📷 Analizando tus Fotos...", text: "Reconociendo los rostros y las texturas de pelaje para la semejanza exacta." },
-                    { title: "🧠 Diseñando la Composición...", text: "La IA está creando la composición de cabezas apiladas y asegurando que todos miren a cámara." },
-                    { title: "✨ Aplicando el Estilo Artístico...", text: `Pintando tu retrato final en el estilo {styleName}.` } 
-                ],
-                'sticker': [
-                    { title: "✨ Preparando Estilo Caricatura...", text: "Simplificando los sujetos a un estilo *chibi* vibrante." },
-                    { title: "✂️ Generando Stickers Grupales...", text: "Creando stickers con la persona y todos los perros juntos." },
-                    { title: "🚀 Generando Stickers Individuales...", text: "Ahora, haciendo stickers para cada personaje por separado con emociones." },
-                    { title: "✅ Set de Stickers Listo...", text: "Todos tus stickers están creados y listos para descargar." }
-                ]
-            };
-
-
-            function updateLoadingMessage(mode, stepIndex, delay, customText = null) {
-                clearLoadingMessages();
-                const steps = loadingMessages[mode];
                 
-                let currentStepIndex = stepIndex;
-                
-                const update = () => {
-                    let currentStep = { ...steps[currentStepIndex % steps.length] }; // Clone to modify
-                    
-                    if (customText) {
-                        currentStep.text = customText;
-                    } else if (mode === 'portrait' && currentStepIndex % steps.length === 2) {
-                        currentStep.text = currentStep.text.replace('{styleName}', styles[selectedStyleKey].name);
-                    }
-                    
-                    document.getElementById('message-title').textContent = currentStep.title;
-                    document.getElementById('message-text').textContent = currentStep.text;
-                    currentStepIndex++;
-                };
-
-                update();
-                loadingInterval = setInterval(update, delay);
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
             }
+        }
 
-            function clearLoadingMessages() {
-                if (loadingInterval) {
-                    clearInterval(loadingInterval);
-                    loadingInterval = null;
-                }
-            }
+        function removeSelfie() {
+            selfieFile = null;
+            document.getElementById('selfie-input').value = '';
+            renderSelfiePreview();
+            updateGenerateButton();
+        }
+
+        function removeDog(index) {
+            dogFiles.splice(index, 1);
+            document.getElementById('dogs-input').value = '';
+            renderDogPreviews();
+            updateGenerateButton();
+        }
+
+        function updateGenerateButton() {
+            const btn = document.getElementById('generate-btn');
+            const hasRequiredFiles = selfieFile && dogFiles.length > 0 && selectedStyle;
+            btn.disabled = !hasRequiredFiles || isGenerating;
+        }
+
+        async function generateImage() {
+            if (isGenerating) return;
             
-            // Helper to make the API call with retries
-            async function callNanoBanana(finalPrompt, imageParts, retries = 0) {
-                 const MAX_RETRIES = 3;
-                 while (retries < MAX_RETRIES) {
-                    try {
-                        const payload = {
-                            contents: [{
-                                parts: [{ text: finalPrompt }, ...imageParts]
-                            }],
-                            generationConfig: {
-                                responseModalities: ['IMAGE']
-                            },
-                        };
-                        
-                        const apiKey = "";  
-                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=${apiKey}`;
-
-                        const response = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
-                        
-                        if (!response.ok) {
-                            const errorData = await response.json();
-                             // Retry on specific error codes
-                            if (response.status === 429 || response.status >= 500) {
-                                throw new Error('Retryable API Error');
-                            }
-                            throw new Error(errorData.error.message || 'La API devolvió un error inesperado.');
-                        }
-
-                        const result = await response.json();
-                        const base64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
-                        
-                        if (!base64Data) {
-                              throw new Error('No se recibió una imagen en la respuesta de la API.');
-                        }
-                        
-                        return `data:image/png;base64,${base64Data}`;
-
-                    } catch(error) {
-                        if (error.message === 'Retryable API Error' && retries < MAX_RETRIES - 1) {
-                            retries++;
-                            const delay = Math.pow(2, retries) * 1000;
-                            await new Promise(resolve => setTimeout(resolve, delay));
-                        } else {
-                            throw error; // Re-throw fatal errors
-                        }
-                    }
-                } // end while
-                throw new Error('La solicitud falló después de varios intentos.');
+            if (!selfieFile || dogFiles.length === 0 || !selectedStyle) {
+                showAlert('Error', 'Por favor, sube tu selfie, fotos de tus mascotas y selecciona un estilo.');
+                return;
             }
 
-            // --- API & GENERATION LOGIC ---
-            async function generateImage(isStickerGeneration = false) {
-                if (!selfieFile || dogFiles.length === 0) {
-                    showAlert('Por favor, sube tu selfie y al menos una foto de tu perro.');
-                    return;
-                }
-                
-                currentMode = isStickerGeneration ? 'sticker' : 'portrait';
+            isGenerating = true;
+            updateGenerateButton();
+            
+            // Mostrar mensaje de carga
+            document.getElementById('example-column').classList.add('hidden');
+            document.getElementById('message-column').classList.remove('hidden');
+            document.getElementById('result-column').classList.add('hidden');
 
-                // 1. Gestión de estado inicial de botones y UI
-                generateBtn.disabled = true;
-                generateStickerBtn.disabled = true;
-                regenerateBtn.disabled = true; 
-                
-                generateBtn.textContent = 'Generando...';
-                if (isStickerGeneration) generateStickerBtn.textContent = 'Generando set de stickers...';
-                
-                resultCol.classList.add('hidden');
-                messageCol.classList.remove('hidden');
-                
-                if (!isStickerGeneration) {
-                    stickerList.innerHTML = `<p class="text-gray-500 text-sm italic col-span-full" id="sticker-placeholder">Haz clic en "Generar Stickers" para crear un set de pegatinas de tus personajes.</p>`;
-                    stickerNote.classList.add('hidden');
-                } else {
-                    stickerList.innerHTML = ''; // Clear existing stickers
-                    stickerPlaceholder.remove();
-                }
-
-                // Iniciar mensajes de progreso
-                updateLoadingMessage(currentMode, 0, 4000); 
-
-                try {
-                    // 2. Convert all images to Base64 (needed for all generations)
-                    const selfieBase64 = await fileToBase64(selfieFile);
-                    const dogBase64Promises = dogFiles.map(file => fileToBase64(file));
-                    const dogBase64s = await Promise.all(dogBase64Promises);
+            try {
+                // Simular generación (en una implementación real, aquí llamarías a la API)
+                setTimeout(() => {
+                    // En una implementación real, esto vendría de la API
+                    const resultImage = document.getElementById('result-image');
                     
-                    let imageParts = [
-                        { inlineData: { mimeType: selfieFile.type, data: selfieBase64 } },
-                        ...dogBase64s.map((data, i) => ({
-                            inlineData: { mimeType: dogFiles[i].type, data: data }
-                        }))
-                    ];
-
-                    if (isStickerGeneration) {
-                        // --- GENERACIÓN DE STICKERS (GRUPALES E INDIVIDUALES) ---
-                        let stickerResults = [];
-                        
-                        // Base prompt for stickers
-                        const stickerBasePrompt = `chibi, cartoon-style digital sticker illustration. The image must have a thick white border, placed on a clean white background. High resolution, vibrant colors, vector-like quality.`;
-
-                        // 2.1 Generate Group Stickers
-                        updateLoadingMessage(currentMode, 1, 4000); 
-                        for (let i = 0; i < groupStickerEmotions.length; i++) {
-                            const emotion = groupStickerEmotions[i];
-                            const prompt = `${stickerBasePrompt} Subjects: a person and one or more dogs, with their heads stacked one on top of the other, looking directly into the camera. Emotion: ${emotion.prompt}`;
-                            
-                            updateLoadingMessage(currentMode, 1, 4000, `Generando sticker grupal ${i + 1} de ${groupStickerEmotions.length}: ${emotion.name}...`);
-                            const imageUrl = await callNanoBanana(prompt, imageParts);
-                            stickerResults.push({ name: emotion.name, key: emotion.key, imageUrl });
-                        }
-
-                        // 2.2 Generate Individual Stickers
-                        updateLoadingMessage(currentMode, 2, 4000); 
-
-                        const allSubjects = [{ name: 'Persona', file: selfieFile, base64: selfieBase64, type: 'person' }];
-                        dogFiles.forEach((file, index) => {
-                            allSubjects.push({ name: `Perro ${index + 1}`, file: file, base64: dogBase64s[index], type: 'dog' });
-                        });
-
-                        for (let i = 0; i < allSubjects.length; i++) {
-                            const subject = allSubjects[i];
-                            const emotionIndex = i % individualStickerEmotions.length; // Cycle through emotions
-                            const emotion = individualStickerEmotions[emotionIndex];
-
-                            let individualImageParts = [{ inlineData: { mimeType: subject.file.type, data: subject.base64 } }];
-                            let individualPrompt;
-
-                            if (subject.type === 'person') {
-                                individualPrompt = `${stickerBasePrompt} Subject: a person, looking directly into the camera. Emotion: ${emotion.prompt}`;
-                            } else { // It's a dog
-                                individualPrompt = `${stickerBasePrompt} Subject: a dog, looking directly into the camera. Emotion: ${emotion.prompt}`;
-                            }
-                            
-                            updateLoadingMessage(currentMode, 2, 4000, `Generando sticker individual de ${subject.name} (${emotion.name})...`);
-                            const imageUrl = await callNanoBanana(individualPrompt, individualImageParts);
-                            stickerResults.push({ name: `${subject.name} ${emotion.name}`, key: `${subject.type}-${subject.name.replace(' ', '-').toLowerCase()}-${emotion.key}`, imageUrl });
-                        }
-                        
-                        // Display all generated stickers
-                        stickerList.innerHTML = stickerResults.map(s => `
-                            <div class="sticker-container">
-                                <p class="text-xs font-medium text-gray-700 mb-1 truncate">${s.name}</p>
-                                <img src="${s.imageUrl}" alt="Sticker ${s.name}" class="rounded-lg shadow-md">
-                                <button onclick="downloadSticker('${s.imageUrl}', '${s.key}')" class="text-xs mt-2 bg-purple-500 hover:bg-purple-600 text-white font-semibold py-1 px-2 rounded-full w-full">
-                                    Descargar
-                                </button>
-                            </div>
-                        `).join('');
-
-                        stickerNote.classList.remove('hidden');
-                        document.getElementById('result-title').textContent = `🎉 ¡Set de Stickers Listo (${stickerResults.length} stickers)!`;
-                        showAlert(`¡Tu set de ${stickerResults.length} stickers digitales está listo!`);
-                        
+                    // Para el estilo clásico, usar una imagen en blanco y negro
+                    if (selectedStyle === 'fine_art_bw') {
+                        resultImage.src = "https://images.unsplash.com/photo-1514989940723-e8e51635b782?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80";
+                        resultImage.classList.add('bw-filter');
                     } else {
-                        // --- GENERACIÓN DE RETRATO PRINCIPAL ---
-                        const baseDescription = styles[selectedStyleKey].description;
-                        const finalPrompt = baseDescription; 
-                        
-                        const imageUrl = await callNanoBanana(finalPrompt, imageParts);
-                        
-                        resultImage.src = imageUrl;
-                        currentPortraitUrl = imageUrl;
-                        document.getElementById('result-title').textContent = `🎉 ¡Tu Retrato ${styles[selectedStyleKey].name} Está Listo!`;
+                        resultImage.src = "https://images.unsplash.com/photo-1518481852452-9415b262eba4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80";
+                        resultImage.classList.remove('bw-filter');
                     }
                     
-                    // 3. Finalización exitosa
-                    clearLoadingMessages();
-                    messageCol.classList.add('hidden');
-                    resultCol.classList.remove('hidden');
-
-                } catch(error) {
-                    console.error("Fallo la generación:", error);
-                    showAlert(`Hubo un error al generar ${currentMode === 'sticker' ? 'tus stickers' : 'tu retrato'}: ${error.message.includes('Retryable') ? 'La solicitud falló después de varios intentos.' : error.message}. Por favor, inténtalo de nuevo.`);
+                    document.getElementById('message-column').classList.add('hidden');
+                    document.getElementById('result-column').classList.remove('hidden');
                     
-                    clearLoadingMessages();
-                    // If portrait generation fails, revert to input state
-                    if (currentMode === 'portrait') resetUI(); 
-                }
-
-                // 4. Resetear estado de botones
-                generateBtn.disabled = false;
-                generateBtn.textContent = '🎨 Crear Mi Retrato';
-                generateStickerBtn.disabled = false; 
-                generateStickerBtn.textContent = '✨ Generar Set de Stickers';
-                regenerateBtn.disabled = false; 
-            } // end generateImage
-            
-            // --- UI RESET ---
-            function resetUI() {
-                resultCol.classList.add('hidden');
-                messageCol.classList.add('hidden');
+                    showNotification('¡Retrato generado con éxito!');
+                    isGenerating = false;
+                    updateGenerateButton();
+                }, 3000);
                 
-                selfieFile = null;
-                dogFiles = [];
-                selfieInput.value = '';
-                dogsInput.value = '';
-                selfiePreview.innerHTML = '';
-                dogPreviews.innerHTML = '';
-                selfiePreviewContainer.classList.add('hidden');
-                dogsPreviewsContainer.classList.add('hidden');
-                stickerList.innerHTML = `<p class="text-gray-500 text-sm italic col-span-full" id="sticker-placeholder">Haz clic en "Generar Stickers" para crear un set de pegatinas de tus personajes.</p>`;
-                stickerNote.classList.add('hidden');
-                currentPortraitUrl = '';
+            } catch (error) {
+                console.error('Error:', error);
+                showAlert('Error', 'No se pudo generar el retrato. Intenta con imágenes más claras.');
+                document.getElementById('message-column').classList.add('hidden');
+                document.getElementById('example-column').classList.remove('hidden');
+                isGenerating = false;
+                updateGenerateButton();
+            }
+        }
 
-                // Asegurar el estado del botón al resetear
-                generateBtn.disabled = false;
-                generateBtn.textContent = '🎨 Crear Mi Retrato';
-                generateStickerBtn.disabled = false;
-                generateStickerBtn.textContent = '✨ Generar Set de Stickers';
+        function downloadImage() {
+            const imageSrc = document.getElementById('result-image').src;
+            const link = document.createElement('a');
+            link.href = imageSrc;
+            link.download = `pet-portrait-${selectedStyle}-${Date.now()}.jpg`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showNotification('Imagen descargada correctamente');
+        }
+
+        function resetApp() {
+            selfieFile = null;
+            dogFiles = [];
+            document.getElementById('selfie-input').value = '';
+            document.getElementById('dogs-input').value = '';
+            document.getElementById('selfie-preview-container').classList.add('hidden');
+            document.getElementById('dogs-previews-container').classList.add('hidden');
+            document.getElementById('result-column').classList.add('hidden');
+            document.getElementById('example-column').classList.remove('hidden');
+            updateGenerateButton();
+        }
+
+        function setupNotifications() {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notification-text');
+            const notificationClose = document.querySelector('.notification-close');
+            
+            window.showNotification = function(message, type = 'success') {
+                notificationText.textContent = message;
+                notification.className = 'notification show';
+                notification.classList.add(type);
                 
-                clearLoadingMessages();
-                currentMode = 'portrait';
+                setTimeout(() => {
+                    hideNotification();
+                }, 5000);
+            };
+            
+            function hideNotification() {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.className = 'notification';
+                }, 300);
             }
+            
+            notificationClose.addEventListener('click', hideNotification);
+        }
 
-            // --- DOWNLOAD LOGIC ---
-            function downloadPortrait() {
-                if (!currentPortraitUrl) {
-                     showAlert("No hay una imagen principal generada para descargar.");
-                     return;
-                }
-                const a = document.createElement('a');
-                a.href = currentPortraitUrl;
-                a.download = `pet-portrait-ai-portrait-${selectedStyleKey}.png`; 
-                document.body.appendChild(a); 
-                a.click();
-                document.body.removeChild(a);
-                showAlert("¡Tu retrato principal ha sido descargado! 🎉");
-            }
-            
-            window.downloadSticker = function(imageUrl, key) {
-                const a = document.createElement('a');
-                a.href = imageUrl;
-                a.download = `pet-portrait-ai-sticker-${key}.png`; 
-                document.body.appendChild(a); 
-                a.click();
-                document.body.removeChild(a);
-                // No alert here to avoid cluttering during mass download attempts
-            }
-
-            // --- INICIALIZACIÓN ---
-            setupDragDrop(selfieDropArea, selfieInput, handleSelfieFile);
-            setupDragDrop(dogsDropArea, dogsInput, handleDogFiles);
-            populateStyleSelect(); // Llenar el selector de estilos
-            
-            generateBtn.addEventListener('click', () => generateImage(false)); // Portrait
-            generateStickerBtn.addEventListener('click', () => generateImage(true)); // Stickers
-            startOverBtn.addEventListener('click', resetUI);
-            downloadBtn.addEventListener('click', downloadPortrait);
-            regenerateBtn.addEventListener('click', () => generateImage(false)); // Regenerate Portrait
-            
-            // Initial state button reset
-             generateBtn.disabled = false;
-             generateStickerBtn.disabled = false;
-        });
+        function showAlert(title, message) {
+            document.getElementById('alert-title').textContent = title;
+            document.getElementById('alert-message').textContent = message;
+            document.getElementById('custom-alert').classList.remove('hidden');
+        }
     </script>
 </body>
 </html>
